@@ -12,16 +12,19 @@ class UsuarioTest {
 	
 	def void init(){
 		
-		matias = new Usuario
-		emi = new Usuario
+		matias = new Usuario => [
+			peso=70
+			altura=1.71
+		]
+		emi = new Usuario => [
+			peso=70
+			altura=1.76
+		]
 	}
 	
 	@Test
 	
 	def void creacionUsuario (){
-		
-		matias.peso=70
-		matias.altura=1.71
 		
 		Assert.assertEquals(23.938989774631512,matias.calcularImc(),0.1)
 		
@@ -32,8 +35,6 @@ class UsuarioTest {
 	
 	def void creacionUsuarioEmi (){
 		
-		emi.peso=70
-		emi.altura=1.76
 		Assert.assertEquals(22.59814049586776,emi.calcularImc(),0.1)
 	}
 	

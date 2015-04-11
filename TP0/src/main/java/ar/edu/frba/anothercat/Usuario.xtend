@@ -1,9 +1,12 @@
 package ar.edu.frba.anothercat
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Usuario {
 	
-	public int peso
-	public double altura
+	int peso
+	double altura
 	double imc
 	
 	def double calcularImc ()
@@ -13,3 +16,4 @@ class Usuario {
 	
 	
 }
+
