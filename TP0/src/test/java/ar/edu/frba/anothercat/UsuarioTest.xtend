@@ -66,11 +66,4 @@ class UsuarioTest {
 	def void creacionUsuarioPablo (){
 		Assert.assertEquals(23.661, pablo.calcularImc(),0.1) //Este test tiene que dar correcto
 	}
-	
-	@Test
-	def void creacionUsuarioPablo_testIncorrecto (){
-		Assert.assertEquals(23.861, pablo.calcularImc(),0.1) //Este test tiene que dar incorrecto 
-	}
-	
-
 }
