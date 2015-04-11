@@ -7,11 +7,13 @@ import org.junit.Before
 class UsuarioTest {
 	
 	Usuario matias
-	
+	Usuario emi
 	@Before
 	
 	def void init(){
+		
 		matias = new Usuario
+		emi = new Usuario
 	}
 	
 	@Test
@@ -25,6 +27,14 @@ class UsuarioTest {
 		
 		
 	}
+		
+	@Test
 	
+	def void creacionUsuarioEmi (){
+		
+		emi.peso=70
+		emi.altura=1.76
+		Assert.assertEquals(22.59814049586776,emi.calcularImc(),0.1)
+	}
 	
 }
