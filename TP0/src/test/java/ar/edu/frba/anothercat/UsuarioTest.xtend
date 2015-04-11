@@ -10,6 +10,7 @@ class UsuarioTest {
 	Usuario emi
 	Usuario dani
 	Usuario pablo
+	Usuario lili
 	
 	@Before
 	def void init(){
@@ -32,6 +33,11 @@ class UsuarioTest {
 			peso = 70
 			altura = 1.72
 		]
+		
+		lili = new Usuario => [
+			peso=69
+			altura=1.74
+		]
 	}
 	
 	@Test
@@ -51,6 +57,12 @@ class UsuarioTest {
 	}
 	
 	@Test
+	def void creacionUsuarioLili (){
+		Assert.assertEquals(22.799032897344431,lili.calcularImc(),0.1)
+				
+	}
+	
+	@Test
 	def void creacionUsuarioPablo (){
 		Assert.assertEquals(23.661, pablo.calcularImc(),0.1) //Este test tiene que dar correcto
 	}
@@ -59,4 +71,6 @@ class UsuarioTest {
 	def void creacionUsuarioPablo_testIncorrecto (){
 		Assert.assertEquals(23.861, pablo.calcularImc(),0.1) //Este test tiene que dar incorrecto 
 	}
+	
+
 }
