@@ -8,6 +8,7 @@ class UsuarioTest {
 	
 	Usuario matias
 	Usuario emi
+	Usuario dani
 	@Before
 	
 	def void init(){
@@ -19,6 +20,11 @@ class UsuarioTest {
 		emi = new Usuario => [
 			peso=70
 			altura=1.76
+		]
+		
+		dani = new Usuario => [
+			peso=70
+			altura=1.69
 		]
 	}
 	
@@ -36,5 +42,13 @@ class UsuarioTest {
 		
 		Assert.assertEquals(22.59814049586776,emi.calcularImc(),0.1)
 	}
+	
+	@Test
+	
+	def void creacionUsuarioDani (){
+		
+		Assert.assertEquals(24.50894576520429,dani.calcularImc(),0.1)
+	}
+	
 	
 }
