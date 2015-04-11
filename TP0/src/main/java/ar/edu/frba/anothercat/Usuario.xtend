@@ -13,7 +13,6 @@ class Usuario {
 	{
 		imc = peso/(altura*altura)
 	}
-	
-	
+		
 }
 

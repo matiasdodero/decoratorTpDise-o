@@ -27,8 +27,7 @@ class UsuarioTest {
 	def void creacionUsuario (){
 		
 		Assert.assertEquals(23.938989774631512,matias.calcularImc(),0.1)
-		
-		
+				
 	}
 		
 	@Test
