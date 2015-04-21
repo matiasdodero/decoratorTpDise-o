@@ -8,22 +8,22 @@ class TestUsuario {
 	
 	Usuario matias
 
-	
 	@Before
 	def void init(){
 	    matias = new Usuario => [
 	    	nombre = "mati"
-	    	fech = "04-18-2010"
+	    	fech = "05-29-2015"
 	    	rutina = "dsad"
-			peso=70
+			peso=60
 			altura=1.71
 			sexo = "m"
+			rutina = "INTENSIVO"
 			agregarCondicion(hiperten) 
 			agregarCondicion(diabe)
-			agregarCondicion(vegano) 
+		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
 		//	agregarPrefer(pollo)
-		]
+		] 
 
 	}
 	
@@ -51,6 +51,8 @@ class TestUsuario {
 	def void creacionUsuario () 
 	{
 		Assert.assertEquals(true,matias.sosValido())
+		Assert.assertEquals(true,matias.seguisDietaSaludable())
+		Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	
 

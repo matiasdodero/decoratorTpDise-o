@@ -6,6 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 import java.util.Date
 import java.text.SimpleDateFormat
+import java.util.Calendar
 
 @Accessors
 class Usuario {
@@ -58,23 +59,53 @@ class Usuario {
          	return false
          }
          
-         System.out.println(convertirFecha(fech))
+         if (validaFechNacim() == false )  
          
+         {  System.out.println("dio en 4")
+         	return false
+         }
+         
+         
+         //System.out.println(convertirFecha(fech))
+         //System.out.println(dameElDiaDeHoy())
          
 
 		return true	
 	}
 	
-	def Date convertirFecha(String unafech) {
+	    def Date convertirFecha(String unafech) {
 		var SimpleDateFormat formatoDelTexto
 		
-		formatoDelTexto = new SimpleDateFormat("mm-dd-yyyy");
+		formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
 		var Date fecha
         
 		fecha = formatoDelTexto.parse(unafech);
 		
 		return fecha
 	}
+	
+		def Date dameElDiaDeHoy() {
+
+		var SimpleDateFormat formatoDelTexto
+		var Calendar cal  = Calendar.getInstance();
+		
+		formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
+        
+		var Date fecha
+        
+		fecha = formatoDelTexto.parse(formatoDelTexto.format(cal.getTime()));
+		return fecha
+	}
+	
+	
+	
+	def public boolean validaFechNacim() {
+          if (this.convertirFecha(fech).before(dameElDiaDeHoy())) {
+          	return true
+          }
+          else {return false}
+
+	    }
 
 	
 	def public void agregarCondicion(C_Pr unaCond) {
@@ -89,6 +120,38 @@ class Usuario {
 		preferen.add(unaPrefe)
 
 	}	
+	
+	def double calcularImc()
+	{
+		return peso/(altura*altura)
+	}
+	
+	def public boolean sosHipertensoNoSaludable()
+	    {
+	    	if (precond.exists[condi | condi.dameCondicion() == "hipertenso"  
+         							&& rutina != "INTENSIVO"] == true) {return true}
+         	
+	    }
+	def public boolean sosDiabeticoNoSaludable()
+	    {
+	    	if (precond.exists[condi | condi.dameCondicion() == "diabetico"  
+         							&& (rutina != "INTENSIVO" && peso >= 70)] == true) 
+         							{return true}
+         	
+	    }
+	
+	def public boolean seguisDietaSaludable(){
+		if (this.calcularImc > 18 && this.calcularImc < 30 && precond.size < 1) {
+			return true
+		} 
+		else
+		{
+		 if (this.sosHipertensoNoSaludable()
+		 	|| this.sosDiabeticoNoSaludable()
+		 ) {return false}
+		}
+		return true
+	}
 	
  }
 
