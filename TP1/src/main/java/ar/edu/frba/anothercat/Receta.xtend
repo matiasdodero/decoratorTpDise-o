@@ -1,7 +1,7 @@
 package ar.edu.frba.anothercat
 
-import java.util.Collection
 import java.util.ArrayList
+import java.util.Collection
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
@@ -36,8 +36,12 @@ class Receta {
 		else
 		{
 			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
-		}
-		
-	}
+		}		
+	}	
 }
 
+class NoCumpleRequisitosException extends Exception {
+	new(String msg) {
+	super(msg)
+	}
+}
