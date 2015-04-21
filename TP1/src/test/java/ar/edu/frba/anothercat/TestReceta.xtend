@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.anothercat
+package ar.edu.frba.anothercat
 
 import org.junit.Before
 import org.junit.Test

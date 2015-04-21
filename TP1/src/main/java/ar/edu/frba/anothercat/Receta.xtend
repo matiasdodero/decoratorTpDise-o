@@ -7,7 +7,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Receta {
 
-	String nombre
+	String nombrePlato
 	Collection<Ingrediente> ingredientes = new ArrayList<Ingrediente>		
 	Collection<Condimento> condimentos = new ArrayList<Condimento>
 	Collection<Paso> pasos = new ArrayList<Paso>
@@ -38,10 +38,26 @@ class Receta {
 			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
 		}		
 	}	
-}
+	
+def void verificarHipertenso() {
+		if (ingredientes.contains("sal") || ingredientes.contains("caldo")) {
+			throw new HipertensoException("No apta para hipertensos")
+		}
 
-class NoCumpleRequisitosException extends Exception {
-	new(String msg) {
-	super(msg)
+	}
+
+	
+	def void verificarDiabetico() {
+
+		if ((condimentos.contains("azucar") && (condimentos.fold(0, [acum, condimento|acum + condimento.cantidad]) > 100))){
+			throw new DiabeticoException("No apta para diabeticos ")
+		}
+	}
+
+	def void verificarVegano() {
+		if (condimentos.contains("carne") || condimentos.contains("pollo") || condimentos.contains("chivito") ||	condimentos.contains("chori")) {
+			throw new NoAptaParaVeganosException("No apta para veganos")
+		}
+
 	}
 }
