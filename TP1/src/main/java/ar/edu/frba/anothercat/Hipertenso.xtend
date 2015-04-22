@@ -16,4 +16,10 @@ class Hipertenso extends CondicionPreexistente {
 			return false
 		}	
 	}
+	override subsanasteCondicionesPreEx(Usuario usuario){
+		if(usuario.rutina != "INTENSIVO" ){
+			return false
+		}
+		
+	}
 }

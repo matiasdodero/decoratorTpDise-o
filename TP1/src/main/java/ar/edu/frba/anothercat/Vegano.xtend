@@ -21,5 +21,9 @@ class Vegano extends CondicionPreexistente {
 			return false
 		}	
 	}
-	
+	override subsanasteCondicionesPreEx(Usuario usuario){
+		if(usuario.preferencias.exists[unaPre | unaPre.dameTipo() != "fruta"] ){
+			return false
+		}
+	}
 }

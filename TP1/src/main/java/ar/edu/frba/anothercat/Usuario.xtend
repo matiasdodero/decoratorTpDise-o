@@ -148,20 +148,21 @@ class Usuario {
 //         	
 //	    }
 	
-//	def public boolean seguisDietaSaludable(){
-//		if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1) {
-//			return true
-//		} 
-//		else
-//		{
+	def public boolean seguisDietaSaludable(){
+		if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1) {
+			return true
+		} 
+		else
+		{
+		precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
 //		 if (this.sosHipertensoNoSaludable()
 //		 	|| this.sosDiabeticoNoSaludable()
 //		    || this.sosVeganoNoSaludable())
 //		  {return false}
-//		}
-//		return true
-//	}
-//	
+		}
+		return true
+	}
+	
  }
 
 
