@@ -14,7 +14,7 @@ class TestUsuario {
 	def void init(){
 	    matias = new Usuario => [
 	    	nombre = "mati"
-	    	fech = "05-29-2015"
+	    	fech = "05-29-1989"
 	    	rutina = "dsad"
 			peso=60
 			altura=1.71
@@ -22,9 +22,9 @@ class TestUsuario {
 			rutina = "INTENSIVO"
 			agregarCondicion(hiperten) 
 			agregarCondicion(diabe)
-		//	agregarCondicion(vegano) 
+			agregarCondicion(vegano) 
 			agregarPrefer(manzana)
-		//	agregarPrefer(pollo)
+			agregarPrefer(pollo)
 		] 
 
 	}
@@ -43,10 +43,12 @@ class TestUsuario {
 	
 	Ingrediente pollo = new Ingrediente => [
 		nombreIngrediente = "pollo"		
+				tipoIngrediente = "carne"	
 	]
 	
 	Ingrediente manzana = new Ingrediente => [
-		nombreIngrediente = "manzana"		
+		nombreIngrediente = "manzana"	
+		tipoIngrediente = "fruta"	
 	]	
 	
 

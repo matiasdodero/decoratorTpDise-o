@@ -129,10 +129,20 @@ class Usuario {
          							&& rutina != "INTENSIVO"] == true) {return true}
          	
 	    }
+	    
 	def public boolean sosDiabeticoNoSaludable()
 	    {
 	    	if (precondiciones.exists[condi | condi.dameCondicion() == "diabetico"  
          							&& (rutina != "INTENSIVO" && peso >= 70)] == true) 
+         							{return true}
+         	
+	    }
+	    
+    def public boolean sosVeganoNoSaludable()
+	    {
+	    	if (precondiciones.exists[condi | condi.dameCondicion() == "vegano"  
+         							&& (preferencias.exists[unaPre | unaPre.dameTipo() != "fruta"
+         							] == true)] == true) 
          							{return true}
          	
 	    }
@@ -145,7 +155,8 @@ class Usuario {
 		{
 		 if (this.sosHipertensoNoSaludable()
 		 	|| this.sosDiabeticoNoSaludable()
-		 ) {return false}
+		    || this.sosVeganoNoSaludable())
+		  {return false}
 		}
 		return true
 	}
