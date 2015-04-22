@@ -13,6 +13,13 @@ class Vegano extends CondicionPreexistente {
 		ingredientesNoPermitidos.add("chivito")
 	}
 	
-	
+	override dameCondicion(Usuario unUsuario){
+		if ( unUsuario.preferencias.exists [unaPre | unaPre.dameNombre() == "pollo" ||
+         														 unaPre.dameNombre() == "carne" ||
+         														 unaPre.dameNombre() == "chivito" ||
+         														 unaPre.dameNombre() == "chori" ]) {
+			return false
+		}	
+	}
 	
 }

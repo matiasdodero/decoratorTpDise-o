@@ -6,12 +6,14 @@ class Hipertenso extends CondicionPreexistente {
 	
 	var Collection<String> ingredientesNoPermitidos
 	
-	def void cargarIngredientes(){
-
-	
+	def void cargarIngredientes(){	
 	ingredientesNoPermitidos.add("sal")
 	ingredientesNoPermitidos.add("caldo")
+		}
 	
+	override dameCondicion(Usuario unUsuario){
+		if ( unUsuario.preferencias.size < 1) {
+			return false
+		}	
 	}
-	
 }

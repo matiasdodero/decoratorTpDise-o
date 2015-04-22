@@ -11,5 +11,10 @@ class Diabetico extends CondicionPreexistente {
 	def void cargarIngredientes(){
 		ingredientesNoPermitidos.add("azucar")
 	}
-	
+	override dameCondicion(Usuario unUsuario){
+		if (unUsuario.sexo == null || unUsuario.preferencias.size < 1) {
+			return false
+		}
+		
+	}
 }
