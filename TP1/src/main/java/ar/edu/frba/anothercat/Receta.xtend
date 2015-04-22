@@ -15,6 +15,7 @@ class Receta {
 	int totalCalorias = 0
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
+	boolean esPublica
 
 	def void agregarIngrediente(Ingrediente unIngrediente) {
 
