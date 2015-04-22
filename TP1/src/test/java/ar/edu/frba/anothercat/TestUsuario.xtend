@@ -29,15 +29,15 @@ class TestUsuario {
 
 	}
 	
-	CondicionPreexistente diabe = new CondicionPreexistente => [
+	Diabetico diabe = new Diabetico => [
 		CondPreex = "diabetico"
 	]
 	
-	CondicionPreexistente hiperten = new CondicionPreexistente => [
+	Hipertenso hiperten = new Hipertenso => [
 		CondPreex = "hipertenso"
 	]
 	
-	CondicionPreexistente vegano = new CondicionPreexistente => [
+	Vegano vegano = new Vegano => [
 		CondPreex = "vegano"
 	]
 	

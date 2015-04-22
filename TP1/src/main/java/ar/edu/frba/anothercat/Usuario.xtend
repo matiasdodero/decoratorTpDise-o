@@ -23,7 +23,7 @@ class Usuario {
 	
 	
 	def boolean sosValido() {
-		var int error = 0
+		//var int error = 0
 
 		if ((nombre == null) || (peso == 0) || (altura == 0) || (fech == null) || (rutina == null)) {
 			return false
@@ -62,11 +62,10 @@ class Usuario {
          {  System.out.println("dio en 4")
          	return false
          }
-         
-         
+                  
          //System.out.println(convertirFecha(fech))
          //System.out.println(dameElDiaDeHoy())
-         
+       
 
 		return true	
 	}
@@ -160,8 +159,12 @@ class Usuario {
 //		    || this.sosVeganoNoSaludable())
 //		  {return false}
 		}
-		return true
+		///return true
 	}
+	
+	
+	
+	
 	
  }
 
