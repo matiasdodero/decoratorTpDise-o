@@ -6,6 +6,8 @@ import org.junit.Before
 
 class TestUsuario {
 	
+	String CondPreex
+	String nombreIngrediente
 	Usuario matias
 
 	@Before
@@ -27,25 +29,26 @@ class TestUsuario {
 
 	}
 	
-	C_Pr diabe = new C_Pr => [
-		condicion_preexistente = "diabetico"
+	CondicionPreexistente diabe = new CondicionPreexistente => [
+		CondPreex = "diabetico"
 	]
 	
-	C_Pr hiperten = new C_Pr => [
-		condicion_preexistente = "hipertenso"
+	CondicionPreexistente hiperten = new CondicionPreexistente => [
+		CondPreex = "hipertenso"
 	]
 	
-	C_Pr vegano = new C_Pr => [
-		condicion_preexistente = "vegano"
+	CondicionPreexistente vegano = new CondicionPreexistente => [
+		CondPreex = "vegano"
 	]
 	
-	Alimentos pollo = new Alimentos => [
-		nombreAlim = "pollo"		
+	Ingrediente pollo = new Ingrediente => [
+		nombreIngrediente = "pollo"		
 	]
 	
-	Alimentos manzana = new Alimentos => [
-		nombreAlim = "manzana"		
-	]
+	Ingrediente manzana = new Ingrediente => [
+		nombreIngrediente = "manzana"		
+	]	
+	
 
 	@Test
 	def void creacionUsuario () 

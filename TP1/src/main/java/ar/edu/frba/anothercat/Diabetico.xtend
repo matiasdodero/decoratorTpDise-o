@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 import java.util.Collection
 
-class Diabetico extends Condicion_Preexistente {
+class Diabetico extends CondicionPreexistente {
 	
 	int maximoDeAzucarPermitido = 100
 	

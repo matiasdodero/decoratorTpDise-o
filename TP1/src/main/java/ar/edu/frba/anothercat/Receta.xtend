@@ -1,20 +1,20 @@
 package ar.edu.frba.anothercat
 
 import java.util.ArrayList
-import java.util.Collection
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
 
 @Accessors
 class Receta {
 
 	String nombrePlato
-	Collection<Ingrediente> ingredientes = new ArrayList<Ingrediente>		
-	Collection<Condimento> condimentos = new ArrayList<Condimento>
-	Collection<Paso> pasos = new ArrayList<Paso>
-	Collection<Condicion_Preexistente> condiciones = new ArrayList<Condicion_Preexistente>
+	List<Ingrediente> ingredientes = new ArrayList<Ingrediente>		
+	List<Condimento> condimentos = new ArrayList<Condimento>
+	List<Paso> pasos = new ArrayList<Paso>
+	List<InadecuadoCondPreex> inadecuados = new ArrayList<InadecuadoCondPreex>
 	int totalCalorias=0
 	String dificultad
-	Collection<Temporada> temporadas = new ArrayList<Temporada>
+	List<Temporada> temporadas = new ArrayList<Temporada>
 	
 	
 

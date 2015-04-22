@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 import java.util.Collection
 
-class Hipertenso extends Condicion_Preexistente {
+class Hipertenso extends CondicionPreexistente {
 	
 	var Collection<String> ingredientesNoPermitidos
 	

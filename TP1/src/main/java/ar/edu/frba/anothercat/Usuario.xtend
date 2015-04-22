@@ -13,15 +13,12 @@ class Usuario {
 	
 	String nombre
 	String sexo
-
+	String fech
 	double altura
 	int peso
-	List<C_Pr> precond = new ArrayList<C_Pr>
-	
-	String fech
-	List<Alimentos> preferen = new ArrayList<Alimentos>
-	List<Alimentos> disgusta = new ArrayList<Alimentos>
-
+	List<CondicionPreexistente> precondiciones = new ArrayList<CondicionPreexistente>	
+	List<Ingrediente> preferencias = new ArrayList<Ingrediente>
+	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	String rutina
 	
 	
@@ -35,22 +32,22 @@ class Usuario {
 		{
 			return false
 		}
-		 if (precond.exists[condi | condi.dameCondicion() == "diabetico"  
+		 if (precondiciones.exists[condi | condi.dameCondicion() == "diabetico"  
 		 	&& sexo == null ] == true
 			)
          {  System.out.println("dio en 1")
          	return false
          }
-         if (precond.exists[condi | (condi.dameCondicion() == "diabetico" 
-         							&& preferen.size < 1) || 
+         if (precondiciones.exists[condi | (condi.dameCondicion() == "diabetico" 
+         							&& preferencias.size < 1) || 
          							(condi.dameCondicion() == "hipertenso"  
-         							&& preferen.size < 1)] == true)
+         							&& preferencias.size < 1)] == true)
          {  System.out.println("dio en 2")
          	return false
          }
          
-         if (precond.exists[condi | (condi.dameCondicion() == "vegano")
-         							&& preferen.exists [unaPre | unaPre.dameNombre() == "pollo" ||
+         if (precondiciones.exists[condi | (condi.dameCondicion() == "vegano")
+         							&& preferencias.exists [unaPre | unaPre.dameNombre() == "pollo" ||
          														 unaPre.dameNombre() == "carne" ||
          														 unaPre.dameNombre() == "chivito" ||
          														 unaPre.dameNombre() == "chori" ]
@@ -108,16 +105,16 @@ class Usuario {
 	    }
 
 	
-	def public void agregarCondicion(C_Pr unaCond) {
+	def public void agregarCondicion(CondicionPreexistente unaCond) {
 
-		precond.add(unaCond)
+		precondiciones.add(unaCond)
 
 	}
 	
 	
-	def public void agregarPrefer(Alimentos unaPrefe) {
+	def public void agregarPrefer(Ingrediente unaPreferencia) {
 
-		preferen.add(unaPrefe)
+		preferencias.add(unaPreferencia)
 
 	}	
 	
@@ -128,20 +125,20 @@ class Usuario {
 	
 	def public boolean sosHipertensoNoSaludable()
 	    {
-	    	if (precond.exists[condi | condi.dameCondicion() == "hipertenso"  
+	    	if (precondiciones.exists[condi | condi.dameCondicion() == "hipertenso"  
          							&& rutina != "INTENSIVO"] == true) {return true}
          	
 	    }
 	def public boolean sosDiabeticoNoSaludable()
 	    {
-	    	if (precond.exists[condi | condi.dameCondicion() == "diabetico"  
+	    	if (precondiciones.exists[condi | condi.dameCondicion() == "diabetico"  
          							&& (rutina != "INTENSIVO" && peso >= 70)] == true) 
          							{return true}
          	
 	    }
 	
 	def public boolean seguisDietaSaludable(){
-		if (this.calcularImc > 18 && this.calcularImc < 30 && precond.size < 1) {
+		if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1) {
 			return true
 		} 
 		else
@@ -156,20 +153,3 @@ class Usuario {
  }
 
 
-@Accessors
-class C_Pr {
-	String condicion_preexistente	
-	
-	def String dameCondicion() {
-		return condicion_preexistente
-	}
-}
-
-@Accessors
-class Alimentos {
-	String nombreAlim	
-	
-	def String dameNombre() {
-		return nombreAlim
-	}
-}

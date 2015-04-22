@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 import java.util.Collection
 
-class Vegano extends Condicion_Preexistente {
+class Vegano extends CondicionPreexistente {
 	
 	var Collection<String> ingredientesNoPermitidos
 	
