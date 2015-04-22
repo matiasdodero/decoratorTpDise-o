@@ -7,7 +7,7 @@ class Condimento {
 	
 	String nombre
 	
-	int cantidad
+	int cantidad=0
 	
 	def int dameCantidad(){
 		cantidad
