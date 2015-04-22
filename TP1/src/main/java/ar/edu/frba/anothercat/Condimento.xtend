@@ -1,5 +1,16 @@
 package ar.edu.frba.anothercat
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Condimento {
+	
+	String nombre
+	
+	int cantidad
+	
+	def int dameCantidad(){
+		cantidad
+	}
 	
 }

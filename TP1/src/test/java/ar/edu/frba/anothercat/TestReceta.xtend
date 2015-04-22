@@ -9,22 +9,30 @@ class TestReceta {
 	Ingrediente ingrediente1
 	Ingrediente ingrediente2
 	
-	Receta receta2
+	
+	Receta receta3
+	
+	Condimento condimento1
 
 	@Before
 	def void init() {
 		ingrediente1 = new Ingrediente => [
-			nombre = "carne"
+			nombreIngrediente = "carne"
 			calorias = 400
 		]
 
 		ingrediente2 = new Ingrediente => [
-			nombre = "agua"
+			nombreIngrediente = "agua"
 			calorias = 0
 		]
 		
-		receta1 = new Receta
-		receta2 = new Receta
+		condimento1 = new Condimento => [
+			nombre = "azucar"
+			cantidad = 120
+		]
+		
+		receta1 = new Receta		
+		receta3 = new Receta
 
 	}
 
@@ -34,18 +42,23 @@ class TestReceta {
 		receta1  => [
 			agregarIngrediente(ingrediente1)
 			sumarCalorias(ingrediente1.calorias)
+			validar()
 		]
-		receta1.validar()
+		
 
 	}
 	
 	@Test
-	def void creacionRecetaQueFalla(){
-		receta2  =>[
+	def void otraReceta(){
+		receta3 =>[
 			agregarIngrediente(ingrediente2)
-			sumarCalorias(ingrediente2.calorias)
+			agregarCondimento(condimento1)
+			verificarPlato()
 		]
-		receta2.validar()
+		
+		
 	}
+	
+	
 
 }

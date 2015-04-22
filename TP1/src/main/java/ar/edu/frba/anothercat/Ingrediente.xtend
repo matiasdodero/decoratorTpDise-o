@@ -6,6 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Ingrediente {
 	String nombreIngrediente
 	String tipoIngrediente	
+	int calorias
 	
 	def String dameNombre() {
 		return nombreIngrediente

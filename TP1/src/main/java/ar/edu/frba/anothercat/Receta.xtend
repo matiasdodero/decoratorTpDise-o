@@ -1,27 +1,29 @@
 package ar.edu.frba.anothercat
 
 import java.util.ArrayList
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class Receta {
 
 	String nombrePlato
-	List<Ingrediente> ingredientes = new ArrayList<Ingrediente>		
+	List<Ingrediente> ingredientes = new ArrayList<Ingrediente>
 	List<Condimento> condimentos = new ArrayList<Condimento>
-	List<Paso> pasos = new ArrayList<Paso>
-	List<InadecuadoCondPreex> inadecuados = new ArrayList<InadecuadoCondPreex>
-	int totalCalorias=0
+	List<Paso> pasos = new ArrayList<Paso>	
+	var List<String> condiciones
+	int totalCalorias = 0
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
-	
-	
 
 	def void agregarIngrediente(Ingrediente unIngrediente) {
 
 		ingredientes.add(unIngrediente)
 
+	}
+	
+	def void agregarCondimento(Condimento unCondimento){
+		condimentos.add(unCondimento)
 	}
 
 	def void sumarCalorias(int cal) {
@@ -29,35 +31,40 @@ class Receta {
 	}
 
 	def void validar() {
-		if(ingredientes.size >= 1 && (totalCalorias >= 10 && totalCalorias <= 5000))
-		{
-			
-		}
-		else
-		{
+		if (ingredientes.size >= 1 && (totalCalorias >= 10 && totalCalorias <= 5000)) {
+		} else {
 			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
-		}		
-	}	
+		}
+	}
+
+	def void verificarPlato() {
+
+		if (noEsAptoParaVeganos) {
+			condiciones.add("vegano")
+		}
+
+		if (noEsAptoParaDiabeticos) {
+			condiciones.add("diabetico")
+		}
+
+		if (noEsAptoParaHipertensos) {
+			condiciones.add("hipertenso")
+		}
+
+	}
 	
-def void verificarHipertenso() {
-		if (ingredientes.contains("sal") || ingredientes.contains("caldo")) {
-			throw new HipertensoException("No apta para hipertensos")
-		}
-
+	def boolean noEsAptoParaVeganos(){
+		ingredientes.contains("carne") || ingredientes.contains("pollo") || ingredientes.contains("chivito") ||
+			ingredientes.contains("chori")
 	}
-
 	
-	def void verificarDiabetico() {
-
-		if ((condimentos.contains("azucar") && (condimentos.fold(0, [acum, condimento|acum + condimento.cantidad]) > 100))){
-			throw new DiabeticoException("No apta para diabeticos ")
-		}
+	def boolean noEsAptoParaDiabeticos(){
+		(condimentos.contains("azucar") &&
+			(condimentos.fold(0, [acum, condimento|acum + condimento.dameCantidad]) > 100))
+	}
+	
+	def boolean noEsAptoParaHipertensos(){
+		ingredientes.contains("sal") || ingredientes.contains("caldo")
 	}
 
-	def void verificarVegano() {
-		if (condimentos.contains("carne") || condimentos.contains("pollo") || condimentos.contains("chivito") ||	condimentos.contains("chori")) {
-			throw new NoAptaParaVeganosException("No apta para veganos")
-		}
-
-	}
 }
