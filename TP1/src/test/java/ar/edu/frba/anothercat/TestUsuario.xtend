@@ -23,8 +23,9 @@ class TestUsuario {
 		//	agregarCondicion(hiperten) 
 		//	agregarCondicion(diabe)
 			agregarCondicion(vegano) 
-			agregarPrefer(manzana)
-			agregarPrefer(pollo)
+		//	agregarPrefer(manzana)
+		//	agregarPrefer(pollo)
+			agregarPrefer(lechuga)
 		] 
 
 	}
@@ -51,12 +52,17 @@ class TestUsuario {
 		setTipoIngrediente("fruta")
 	]	
 	
+	Ingrediente lechuga = new Ingrediente => [
+		setNombreIngrediente("lechuga")	
+		setTipoIngrediente("verdura")
+	]	
+	
 
 	@Test
 	def void creacionUsuario () 
 	{
-		Assert.assertEquals(true,matias.sosValido())
-	//	Assert.assertEquals(true,matias.seguisDietaSaludable())
+	//	Assert.assertEquals(true,matias.sosValido())
+		Assert.assertEquals(true,matias.seguisDietaSaludable())
 	//	Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	

@@ -28,5 +28,7 @@ class Vegano extends CondicionPreexistente {
 		if(usuario.preferencias.exists[unaPre | unaPre.dameTipo() != "fruta"] ){
 			return false
 		}
+		else
+		{return true}
 	}
 }
