@@ -12,10 +12,9 @@ class Hipertenso extends CondicionPreexistente {
 		}
 	
 	override dameCondicion(Usuario unUsuario){
-		if ( unUsuario.preferencias.size < 1) {
-			return false
-		}	
-	}
+		return (unUsuario.getPreferencias.size >= 1 ) 
+		}		
+
 	override subsanasteCondicionesPreEx(Usuario usuario){
 		if(usuario.rutina != "INTENSIVO" ){
 			return false

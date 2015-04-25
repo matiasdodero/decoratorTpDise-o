@@ -20,11 +20,11 @@ class TestUsuario {
 			altura=1.71
 			sexo = "m"
 			rutina = "INTENSIVO"
-			agregarCondicion(hiperten) 
-			agregarCondicion(diabe)
+		//	agregarCondicion(hiperten) 
+		//	agregarCondicion(diabe)
 			agregarCondicion(vegano) 
-			agregarPrefer(manzana)
-			agregarPrefer(pollo)
+		//	agregarPrefer(manzana)
+		//	agregarPrefer(pollo)
 		] 
 
 	}
@@ -56,8 +56,8 @@ class TestUsuario {
 	def void creacionUsuario () 
 	{
 		Assert.assertEquals(true,matias.sosValido())
-		Assert.assertEquals(true,matias.seguisDietaSaludable())
-		Assert.assertEquals(20.5,matias.calcularImc(),1)
+	//	Assert.assertEquals(true,matias.seguisDietaSaludable())
+	//	Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	
 

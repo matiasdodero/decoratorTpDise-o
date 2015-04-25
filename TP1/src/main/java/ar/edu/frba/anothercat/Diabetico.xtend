@@ -12,10 +12,10 @@ class Diabetico extends CondicionPreexistente {
 		ingredientesNoPermitidos.add("azucar")
 	}
 	override dameCondicion(Usuario unUsuario){
-		if (unUsuario.sexo == null || unUsuario.preferencias.size < 1) {
-			return false
-		}
-	}
+		return (unUsuario.getSexo() != null && unUsuario.getPreferencias.size >= 1 ) 
+		}	
+		
+	
 	override subsanasteCondicionesPreEx(Usuario usuario){
 		if(usuario.rutina != "INTENSIVO" && usuario.peso >= 70){
 			return false

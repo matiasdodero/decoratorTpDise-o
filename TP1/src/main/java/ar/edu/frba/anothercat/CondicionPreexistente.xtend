@@ -5,7 +5,7 @@ abstract class CondicionPreexistente {
 	
 	def boolean dameCondicion(Usuario unUsuario)
 	
-	def Boolean subsanasteCondicionesPreEx(Usuario usuario)
+	def boolean subsanasteCondicionesPreEx(Usuario usuario)
 	
 	
 }

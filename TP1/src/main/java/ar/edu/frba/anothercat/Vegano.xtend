@@ -14,7 +14,7 @@ class Vegano extends CondicionPreexistente {
 	}
 	
 	override dameCondicion(Usuario unUsuario){
-		if ( unUsuario.preferencias.exists [unaPre | unaPre.dameNombre() == "pollo" ||
+		if ( unUsuario.getPreferencias.exists [unaPre | unaPre.dameNombre() == "pollo" ||
          														 unaPre.dameNombre() == "carne" ||
          														 unaPre.dameNombre() == "chivito" ||
          														 unaPre.dameNombre() == "chori" ]) {

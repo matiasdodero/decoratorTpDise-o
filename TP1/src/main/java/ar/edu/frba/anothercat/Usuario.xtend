@@ -32,7 +32,12 @@ class Usuario {
 		{
 			return false
 		}
-		precondiciones.forall [precondicion | precondicion.dameCondicion(this)]
+		if (precondiciones.isEmpty() == false)
+		{if (precondiciones.forall [precondicion | precondicion.dameCondicion(this)] == false)
+			{return false}
+		}
+
+		
 //		 if (precondiciones.exists[condi | condi.dameCondicion() == "diabetico"  
 //		 	&& sexo == null ] == true
 //			)
