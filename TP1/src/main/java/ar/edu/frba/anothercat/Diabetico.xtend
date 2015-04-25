@@ -1,6 +1,7 @@
 package ar.edu.frba.anothercat
 
 import java.util.Collection
+import java.util.List
 
 class Diabetico extends CondicionPreexistente {
 	

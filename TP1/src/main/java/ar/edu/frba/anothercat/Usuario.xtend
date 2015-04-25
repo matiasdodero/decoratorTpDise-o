@@ -33,8 +33,9 @@ class Usuario {
 			return false
 		}
 		if (precondiciones.isEmpty() == false)
-		{if (precondiciones.forall [precondicion | precondicion.dameCondicion(this)] == false)
-			{return false}
+		{
+			if (precondiciones.forall [precondicion | precondicion.dameCondicion(this)] == false)
+			{return false} 		
 		}
 
 		

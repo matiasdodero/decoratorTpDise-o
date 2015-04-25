@@ -23,8 +23,8 @@ class TestUsuario {
 		//	agregarCondicion(hiperten) 
 		//	agregarCondicion(diabe)
 			agregarCondicion(vegano) 
-		//	agregarPrefer(manzana)
-		//	agregarPrefer(pollo)
+			agregarPrefer(manzana)
+			agregarPrefer(pollo)
 		] 
 
 	}
@@ -42,13 +42,13 @@ class TestUsuario {
 	]
 	
 	Ingrediente pollo = new Ingrediente => [
-		nombreIngrediente = "pollo"		
-				tipoIngrediente = "carne"	
+		setNombreIngrediente("pollo") 		
+		setTipoIngrediente("carne")	
 	]
 	
 	Ingrediente manzana = new Ingrediente => [
-		nombreIngrediente = "manzana"	
-		tipoIngrediente = "fruta"	
+		setNombreIngrediente("manzana")	
+		setTipoIngrediente("fruta")
 	]	
 	
 

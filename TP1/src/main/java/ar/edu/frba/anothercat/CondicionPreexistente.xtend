@@ -1,5 +1,7 @@
 package ar.edu.frba.anothercat
 
+import java.util.List
+
 abstract class CondicionPreexistente {
 //	String condicion_preexistente	
 	
