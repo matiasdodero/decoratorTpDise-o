@@ -31,8 +31,9 @@ class Receta {
 		totalCalorias += cal
 	}
 
-	def void validar() {
+	def boolean validar() {
 		if (ingredientes.size >= 1 && (totalCalorias >= 10 && totalCalorias <= 5000)) {
+			return true
 		} else {
 			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
 		}

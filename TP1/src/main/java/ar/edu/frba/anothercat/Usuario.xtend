@@ -18,6 +18,7 @@ class Usuario {
 	List<CondicionPreexistente> precondiciones = new ArrayList<CondicionPreexistente>	
 	List<Ingrediente> preferencias = new ArrayList<Ingrediente>
 	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
+	List<Receta> misRecetas = new ArrayList<Receta>
 //	String rutina
 	private tipoRutina rutinaE
 	
@@ -104,6 +105,15 @@ class Usuario {
 		 return precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
 		}
 	}
+	
+	def boolean puedoVerRecerta(Receta unaReceta){
+		
+		return (unaReceta.esPublica || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+		
+	}
+	 def boolean puedoModificarReceta(Receta unaReceta){
+	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) && this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+	 }
 	
     
  }

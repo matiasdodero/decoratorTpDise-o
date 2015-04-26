@@ -53,7 +53,7 @@ class TestReceta {
 		receta3 =>[
 			agregarIngrediente(ingrediente2)
 			agregarCondimento(condimento1)
-			verificarPlato()
+//			verificarPlato()
 		]
 		
 		
