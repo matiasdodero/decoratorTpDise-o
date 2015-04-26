@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 class Vegano implements CondicionPreexistente {
 
-	override dameCondicion(Usuario unUsuario) {
+	override cumpleValidacion(Usuario unUsuario) {
 		if (unUsuario.getPreferencias.exists[unaPre|
 			unaPre.dameNombre() == "pollo" || unaPre.dameNombre() == "carne" ||
 				unaPre.dameNombre() == "chivito" || unaPre.dameNombre() == "chori"]) {

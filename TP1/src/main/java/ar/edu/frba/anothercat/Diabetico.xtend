@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 class Diabetico implements CondicionPreexistente {
 
-	override dameCondicion(Usuario unUsuario) {
+	override cumpleValidacion(Usuario unUsuario) {
 		return (unUsuario.getSexo() != null && unUsuario.getPreferencias.size >= 1 )
 	}
 

@@ -5,7 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Hipertenso implements CondicionPreexistente {
 
-	override dameCondicion(Usuario unUsuario) {
+	override cumpleValidacion(Usuario unUsuario) {
 		return (unUsuario.getPreferencias.size >= 1 )
 	}
 

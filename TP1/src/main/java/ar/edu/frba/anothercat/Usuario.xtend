@@ -32,7 +32,7 @@ class Usuario {
 		}
 		if (precondiciones.isEmpty() == false)
 		{
-			if (precondiciones.forall [precondicion | precondicion.dameCondicion(this)] == false)
+			if (precondiciones.forall [precondicion | precondicion.cumpleValidacion(this)] == false)
 			{return false} 		
 		}
          

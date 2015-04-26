@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 public interface CondicionPreexistente {
 
-	def boolean dameCondicion(Usuario unUsuario)
+	def boolean cumpleValidacion(Usuario unUsuario)
 
 	def boolean subsanasteCondicionesPreEx(Usuario usuario)
 
