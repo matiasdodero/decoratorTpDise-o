@@ -9,8 +9,6 @@ class Condimento {
 	
 	int cantidad=0
 	
-	def int dameCantidad(){
-		cantidad
-	}
+	
 	
 }

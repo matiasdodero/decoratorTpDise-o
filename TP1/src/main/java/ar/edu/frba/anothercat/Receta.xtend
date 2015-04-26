@@ -42,7 +42,9 @@ class Receta {
 	
 	
 	def List<CondicionPreexistente> recetaInadecuadaPara (List<CondicionPreexistente> condiciones){
-		condiciones.filter [condicion | condicion.esInadecuadaPara(Receta unaReceta)]
+		condiciones.filter [condicion | condicion.esInadecuadaPara(this)].toList()
+	}
+	
 	}
 
 //	def void verificarPlato() {
