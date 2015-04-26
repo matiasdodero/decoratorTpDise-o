@@ -17,15 +17,16 @@ class TestUsuario {
 	    	fech = "05-29-1989"
 	    	rutina = "dsad"
 			peso=60
-			altura=1.71
+			altura=1.41
 			sexo = "m"
 			rutina = "INTENSIVO"
-		//	agregarCondicion(hiperten) 
-		//	agregarCondicion(diabe)
+			agregarCondicion(hiperten) 
+			agregarCondicion(diabe)
 			agregarCondicion(vegano) 
-		//	agregarPrefer(manzana)
+			agregarPrefer(manzana)
 		//	agregarPrefer(pollo)
 			agregarPrefer(lechuga)
+		//	agregarPrefer(carne)
 		] 
 
 	}
@@ -44,6 +45,11 @@ class TestUsuario {
 	
 	Ingrediente pollo = new Ingrediente => [
 		setNombreIngrediente("pollo") 		
+		setTipoIngrediente("carne")	
+	]
+	
+	Ingrediente carne = new Ingrediente => [
+		setNombreIngrediente("carne") 		
 		setTipoIngrediente("carne")	
 	]
 	

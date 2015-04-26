@@ -159,7 +159,7 @@ class Usuario {
 		} 
 		else
 		{
-		precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
+		 return precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
 //		 if (this.sosHipertensoNoSaludable()
 //		 	|| this.sosDiabeticoNoSaludable()
 //		    || this.sosVeganoNoSaludable())

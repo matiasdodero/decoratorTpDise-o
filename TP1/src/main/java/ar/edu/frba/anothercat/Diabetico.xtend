@@ -18,9 +18,7 @@ class Diabetico extends CondicionPreexistente {
 		
 	
 	override subsanasteCondicionesPreEx(Usuario usuario){
-		if(usuario.rutina != "INTENSIVO" && usuario.peso >= 70){
-			return false
-		}
-		
+		return ((usuario.rutina == "INTENSIVO" || usuario.rutina == "NO TAN INTENSIVO") || usuario.peso < 70)
+	
 	}
 }
