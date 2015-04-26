@@ -3,16 +3,11 @@ package ar.edu.frba.anothercat
 import java.util.Collection
 import java.util.List
 
-class Vegano extends CondicionPreexistente {
+class Vegano implements CondicionPreexistente {
 	
-	var Collection<String> ingredientesNoPermitidos
 	
-	def void cargarIngredientes(){
-		ingredientesNoPermitidos.add("carne")
-		ingredientesNoPermitidos.add("chori")
-		ingredientesNoPermitidos.add("pollo")
-		ingredientesNoPermitidos.add("chivito")
-	}
+	
+	
 	
 	override dameCondicion(Usuario unUsuario){
 	if ( unUsuario.getPreferencias.exists[unaPre | unaPre.dameNombre() == "pollo" ||
@@ -27,4 +22,11 @@ class Vegano extends CondicionPreexistente {
 	override subsanasteCondicionesPreEx(Usuario usuario){
 		return (usuario.preferencias.exists[unaPre | unaPre.dameTipo() == "fruta"] )
 	}
+	
+	
+	
+	override esInadecuadaPara(Receta unaReceta) {
+		
+	}
+	
 }

@@ -16,7 +16,8 @@ class Receta {
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
 	boolean esPublica
-
+	
+	
 	def void agregarIngrediente(Ingrediente unIngrediente) {
 
 		ingredientes.add(unIngrediente)
@@ -37,35 +38,41 @@ class Receta {
 			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
 		}
 	}
-
-	def void verificarPlato() {
-
-		if (noEsAptoParaVeganos) {
-			condiciones.add("vegano")
-		}
-
-		if (noEsAptoParaDiabeticos) {
-			condiciones.add("diabetico")
-		}
-
-		if (noEsAptoParaHipertensos) {
-			condiciones.add("hipertenso")
-		}
-
-	}
 	
-	def boolean noEsAptoParaVeganos(){
-		ingredientes.contains("carne") || ingredientes.contains("pollo") || ingredientes.contains("chivito") ||
-			ingredientes.contains("chori")
-	}
 	
-	def boolean noEsAptoParaDiabeticos(){
-		(condimentos.contains("azucar") &&
-			(condimentos.fold(0, [acum, condimento|acum + condimento.dameCantidad]) > 100))
-	}
 	
-	def boolean noEsAptoParaHipertensos(){
-		ingredientes.contains("sal") || ingredientes.contains("caldo")
+	def List<CondicionPreexistente> recetaInadecuadaPara (List<CondicionPreexistente> condiciones){
+		condiciones.filter [condicion | condicion.esInadecuadaPara(Receta unaReceta)]
 	}
 
-}
+//	def void verificarPlato() {
+//
+//		if (noEsAptoParaVeganos) {
+//			condiciones.add("vegano")
+//		}
+//
+//		if (noEsAptoParaDiabeticos) {
+//			condiciones.add("diabetico")
+//		}
+//
+//		if (noEsAptoParaHipertensos) {
+//			condiciones.add("hipertenso")
+//		}
+//
+//	}
+//	
+//	def boolean noEsAptoParaVeganos(){
+//		ingredientes.contains("carne") || ingredientes.contains("pollo") || ingredientes.contains("chivito") ||
+//			ingredientes.contains("chori")
+//	}
+//	
+//	def boolean noEsAptoParaDiabeticos(){
+//		(condimentos.contains("azucar") &&
+//			(condimentos.fold(0, [acum, condimento|acum + condimento.dameCantidad]) > 100))
+//	}
+//	
+//	def boolean noEsAptoParaHipertensos(){
+//		ingredientes.contains("sal") || ingredientes.contains("caldo")
+//	}
+//
+//}

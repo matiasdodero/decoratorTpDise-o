@@ -1,16 +1,12 @@
 package ar.edu.frba.anothercat
 
-import java.util.Collection
-import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
-class Hipertenso extends CondicionPreexistente {
+@Accessors
+class Hipertenso implements CondicionPreexistente {
 	
-	var Collection<String> ingredientesNoPermitidos
 	
-	def void cargarIngredientes(){	
-	ingredientesNoPermitidos.add("sal")
-	ingredientesNoPermitidos.add("caldo")
-		}
+		
 	
 	override dameCondicion(Usuario unUsuario){
 		return (unUsuario.getPreferencias.size >= 1 ) 
@@ -18,6 +14,18 @@ class Hipertenso extends CondicionPreexistente {
 
 	override subsanasteCondicionesPreEx(Usuario usuario){
 		return (usuario.rutina == "INTENSIVO" )
+		
+	}
+	
+	override esInadecuadaPara(Receta unaReceta){
+		
+		if(unaReceta.ingredientes.contains("sal") ||
+		unaReceta.ingredientes.contains("caldo")){
+			return true
+		}
+		else{
+			false
+		}		
 		
 	}
 }
