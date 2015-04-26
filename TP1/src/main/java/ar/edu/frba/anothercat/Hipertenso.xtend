@@ -10,7 +10,7 @@ class Hipertenso implements CondicionPreexistente {
 	}
 
 	override subsanasteCondicionesPreEx(Usuario usuario) {
-		return (usuario.rutina == "INTENSIVO" )
+		return (usuario.rutinaE.equals(tipoRutina.INTENSIVO) )
 
 	}
 

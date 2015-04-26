@@ -7,8 +7,8 @@ class Diabetico implements CondicionPreexistente {
 	}
 
 	override subsanasteCondicionesPreEx(Usuario usuario) {
-		return ((usuario.rutina == "INTENSIVO" || usuario.rutina == "NO TAN INTENSIVO") || usuario.peso < 70)
-
+//		return ((usuario.rutina == "INTENSIVO" || usuario.rutina == "NO TAN INTENSIVO") || usuario.peso < 70)
+		return ((usuario.rutinaE.equals(tipoRutina.INTENSIVO)  || usuario.rutinaE.equals(tipoRutina.PREINTENSIVO)) || usuario.peso < 70)
 	}
 
 	override esInadecuadaPara(Receta unaReceta) {

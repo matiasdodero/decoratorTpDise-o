@@ -15,11 +15,11 @@ class TestUsuario {
 	    matias = new Usuario => [
 	    	nombre = "mati"
 	    	fech = "05-29-1989"
-	    	rutina = "dsad"
+//	    	rutina = "dsad"
 			peso=60
 			altura=1.41
 			sexo = "m"
-			rutina = "INTENSIVO"
+//			rutina = "INTENSIVO"
 			agregarCondicion(hiperten) 
 			agregarCondicion(diabe)
 			agregarCondicion(vegano) 
@@ -27,6 +27,7 @@ class TestUsuario {
 		//	agregarPrefer(pollo)
 			agregarPrefer(lechuga)
 		//	agregarPrefer(carne)
+			rutinaE = tipoRutina.INTENSIVO
 		] 
 
 	}
