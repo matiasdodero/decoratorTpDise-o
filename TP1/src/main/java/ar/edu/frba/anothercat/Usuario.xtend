@@ -130,9 +130,16 @@ class Usuario {
 	}
 	
 	   def void modificarReceta(Receta unaReceta , Receta recetaNueva){
+
+
     	if(puedoModificarReceta(unaReceta) == true){
     		
+    		if (recetaNueva.getNombrePlato() == null)
+    		{recetaNueva.setNombrePlato(unaReceta.getNombrePlato())}
     		
+    		/*asi con toooodos los campos..y al final*/
+    		
+    		this.agregarReceta(recetaNueva)
     		
     	}
     	
