@@ -15,6 +15,8 @@ class TestUsuario {
 	Ingrediente ingrediente2
 	
 	Condimento condimento1
+	Condimento condimento2
+	Condimento condimento3
 
 	@Before
 	def void init(){
@@ -25,8 +27,8 @@ class TestUsuario {
 			peso=90
 			altura=1.41
 			sexo = "m"
-		//	agregarCondicion(hiperten) 
-			agregarCondicion(diabe)
+			agregarCondicion(hiperten) 
+		//	agregarCondicion(diabe)
 		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
 		//	agregarPrefer(pollo)
@@ -46,14 +48,25 @@ class TestUsuario {
 		
 		condimento1 = new Condimento => [
 			setNombre("azucar")
-			setCantidad(150)
+			setCantidad(200)
 		]
 		
+		condimento2 = new Condimento => [
+			setNombre("sal")
+			setCantidad(200)
+		]
+		
+		condimento3 = new Condimento => [
+			setNombre("caldo")
+			setCantidad(200)
+		]
 		receta1 = new Receta => [
 		nombrePlato = "unPlato"
 		sumarCalorias(100)
-		agregarIngrediente(ingrediente2)
+		agregarIngrediente(ingrediente1)
 		agregarCondimento(condimento1)
+		//agregarCondimento(condimento2)
+		//agregarCondimento(condimento3)
 	]	
 
 	}
@@ -91,7 +104,7 @@ class TestUsuario {
 	{
 		
 	matias.agregarReceta(receta1)
-	matias.misRecetas.forEach[unaRec | 
+	/*matias.misRecetas.forEach[unaRec | 
 			System.out.println(unaRec.getNombrePlato)
 			unaRec.ingredientes.forEach [unIngr | 
 			System.out.println(unIngr.getNombreIngrediente)
@@ -103,9 +116,9 @@ class TestUsuario {
 			]
 			matias.precondiciones.forEach[unaPre |
 				System.out.println(unaPre.esInadecuadaPara(unaRec))
-			]]
+			]]*/
 	//	Assert.assertEquals(true,matias.sosValido())
-		Assert.assertEquals(true,matias.seguisDietaSaludable())
+	//	Assert.assertEquals(true,matias.seguisDietaSaludable())
 	//	Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	
