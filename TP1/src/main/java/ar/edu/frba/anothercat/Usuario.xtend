@@ -121,6 +121,7 @@ class Usuario {
 			if (precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)]) 
 			{	throw new NoCumpleRequisitosException("No es apto")}
 			else{
+				unaReceta.esPublica = false
 				misRecetas.add(unaReceta)
 				
 			}
