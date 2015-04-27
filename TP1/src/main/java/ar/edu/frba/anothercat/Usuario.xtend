@@ -128,6 +128,20 @@ class Usuario {
 		}
 		
 	}
+	
+	   def void modificarReceta(Receta unaReceta , Receta recetaNueva){
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    		
+    		
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar la Receta ")
+    	}    	
+    	
+    }
     
  }
 
