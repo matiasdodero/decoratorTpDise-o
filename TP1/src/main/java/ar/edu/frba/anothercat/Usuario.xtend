@@ -129,13 +129,16 @@ class Usuario {
 		
 	}
 	
-	   def void modificarReceta(Receta unaReceta , Receta recetaNueva){
+	   def void modificarReceta(Receta unaReceta, String nombrePlatoAux){
 
-
+		var Receta recetaNueva = new Receta
+		
     	if(puedoModificarReceta(unaReceta) == true){
     		
-    		if (recetaNueva.getNombrePlato() == null)
+    		if (nombrePlatoAux == null)
     		{recetaNueva.setNombrePlato(unaReceta.getNombrePlato())}
+    		else
+    		{recetaNueva.setNombrePlato(nombrePlatoAux)}
     		
     		/*asi con toooodos los campos..y al final*/
     		
