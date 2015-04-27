@@ -12,11 +12,7 @@ class Diabetico implements CondicionPreexistente {
 	}
 
 	override esInadecuadaPara(Receta unaReceta) {
-		if (unaReceta.condimentos.contains("azucar") &&
-			(unaReceta.condimentos.fold(0, [acum, condimento|acum + condimento.getCantidad]) > 100)) {
-			true
-		} else {
-			false
-		}
+		return (unaReceta.condimentos.contains("azucar") &&
+			(unaReceta.condimentos.fold(0, [acum, condimento|acum + condimento.getCantidad]) > 100)) 
 	}
 }
