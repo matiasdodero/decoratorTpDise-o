@@ -113,8 +113,21 @@ class Usuario {
 	}
 	 def boolean puedoModificarReceta(Receta unaReceta){
 	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) && this.misRecetas.exists[unaRec| unaRec == unaReceta] )
-	 }
+	}
 	
+	def public agregarReceta(Receta unaReceta) {
+		if (unaReceta.validar())
+		{  
+			if (precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)]) 
+			{	throw new NoCumpleRequisitosException("No es apto")}
+			else{
+				misRecetas.add(unaReceta)
+				
+			}
+
+		}
+		
+	}
     
  }
 
