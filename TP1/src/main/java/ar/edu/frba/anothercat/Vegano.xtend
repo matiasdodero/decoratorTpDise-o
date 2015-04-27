@@ -17,8 +17,12 @@ class Vegano implements CondicionPreexistente {
 	}
 
 	override esInadecuadaPara(Receta unaReceta) {
-		return (unaReceta.ingredientes.contains("carne") || unaReceta.ingredientes.contains("pollo") ||
-			unaReceta.ingredientes.contains("chori") || unaReceta.ingredientes.contains("chivito")) 
+		return (unaReceta.ingredientes.exists[unI | unI.dameNombre() == "carne"] || 
+			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "pollo"] ||
+			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "chori"]|| 
+			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "chivito"]) 
+			
+			
 
 	}
 
