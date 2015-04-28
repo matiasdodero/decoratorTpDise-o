@@ -1,7 +1,9 @@
 package ar.edu.frba.anothercat
 
+import java.util.List
 import org.junit.Before
 import org.junit.Test
+import java.util.ArrayList
 
 class TestReceta {
 
@@ -13,6 +15,17 @@ class TestReceta {
 	Receta receta3
 	
 	Condimento condimento1
+	
+	
+	Hipertenso hiperten
+	Vegano vegano
+	Diabetico diab
+	
+	Condimento condimento2
+	
+	List<CondicionPreexistente> condiciones = new ArrayList<CondicionPreexistente>
+	
+	
 
 	@Before
 	def void init() {
@@ -31,8 +44,24 @@ class TestReceta {
 			setCantidad(120)
 		]
 		
+		condimento2 = new Condimento => [
+			setNombreCondimento("sal")
+			setCantidad(5)
+			
+		]
+		
+		
+		
+		hiperten = new Hipertenso
+		vegano = new Vegano
+		diab = new Diabetico
+		
 		receta1 = new Receta		
 		receta3 = new Receta
+		
+		condiciones.add(hiperten)
+		condiciones.add(vegano)
+		condiciones.add(diab)
 
 	}
 
@@ -52,8 +81,11 @@ class TestReceta {
 	def void otraReceta(){
 		receta3 =>[
 			agregarIngrediente(ingrediente2)
+			agregarIngrediente(ingrediente1)
 			agregarCondimento(condimento1)
-
+			agregarCondimento(condimento2)
+			recetaInadecuadaPara(condiciones)
+			
 		]
 		
 		
