@@ -154,6 +154,7 @@ class Usuario {
     	
     }
     
+   
  }
 
    public enum tipoRutina {
@@ -163,3 +164,7 @@ class Usuario {
 	INTENSIVO,
 	PREINTENSIVO;   	
    }
+   
+   
+   
+   

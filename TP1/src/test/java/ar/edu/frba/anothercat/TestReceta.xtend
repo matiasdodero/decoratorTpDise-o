@@ -10,9 +10,12 @@ class TestReceta {
 	Receta receta1
 	Ingrediente ingrediente1
 	Ingrediente ingrediente2
+	Ingrediente ingrediente3
 	
 	
 	Receta receta3
+	
+	RecetaSimple recetaPure
 	
 	Condimento condimento1
 	
@@ -48,6 +51,16 @@ class TestReceta {
 			setNombreCondimento("sal")
 			setCantidad(5)
 			
+		]
+		
+		ingrediente3 = new Ingrediente =>[
+			setNombreIngrediente("pure")
+			setCalorias(200)
+		]
+		
+		recetaPure = new RecetaSimple =>[
+			setNombrePlato("pure")
+			agregarIngrediente(ingrediente3)
 		]
 		
 		
@@ -91,6 +104,12 @@ class TestReceta {
 		
 	}
 	
+	@Test
+	def void agregarRecetaSimpleAOtraReceta(){
+		
+		receta1.agregarIngredientesDeRecetaSimple(recetaPure)
+		
+	}
 	
 
 }
