@@ -116,13 +116,18 @@ class Usuario {
 	}
 	
 	def public agregarReceta(Receta unaReceta) {
+		
+		var Receta unaNuevaR = new Receta
+		
+		unaNuevaR = unaReceta				
+			
 		if (unaReceta.validar())
 		{  
 			if (precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)]) 
 			{	throw new NoCumpleRequisitosException("No es apto")}
 			else{
-				unaReceta.esPublica = false
-				misRecetas.add(unaReceta)
+				unaNuevaR.esPublica = false
+				misRecetas.add(unaNuevaR)
 				
 			}
 
@@ -130,21 +135,12 @@ class Usuario {
 		
 	}
 	
-	   def void modificarReceta(Receta unaReceta, String nombrePlatoAux){
+	   def void modificarNombrePlato(Receta unaReceta, String nombrePlatoAux){
 
-		var Receta recetaNueva = new Receta
 		
     	if(puedoModificarReceta(unaReceta) == true){
     		
-    		if (nombrePlatoAux == null)
-    		{recetaNueva.setNombrePlato(unaReceta.getNombrePlato())}
-    		else
-    		{recetaNueva.setNombrePlato(nombrePlatoAux)}
-    		
-    		/*asi con toooodos los campos..y al final*/
-    		
-    		this.agregarReceta(recetaNueva)
-    		
+    			unaReceta.setNombrePlato(nombrePlatoAux)
     	}
     	
     	else 

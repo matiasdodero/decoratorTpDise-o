@@ -180,6 +180,15 @@ class TestUsuario {
 		]
 	}
 	
+	@Test
+	def void ModificoRecetaPrivada(){
+		matias.agregarReceta(receta1)
+		System.out.println(receta1.getNombrePlato)
+		matias.misRecetas.forEach[unaR | System.out.println(unaR.getNombrePlato)] 
+		matias.modificarNombrePlato(receta1,"elPlato")
+		System.out.println(receta1.getNombrePlato)
+		matias.misRecetas.forEach[unaR | System.out.println(unaR.getNombrePlato)] 
+	}
 	
 	
 	
