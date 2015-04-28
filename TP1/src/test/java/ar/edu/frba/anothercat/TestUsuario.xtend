@@ -47,17 +47,17 @@ class TestUsuario {
 		]
 		
 		condimento1 = new Condimento => [
-			setNombre("azucar")
+			setNombreCondimento("azucar")
 			setCantidad(200)
 		]
 		
 		condimento2 = new Condimento => [
-			setNombre("sal")
+			setNombreCondimento("sal")
 			setCantidad(200)
 		]
 		
 		condimento3 = new Condimento => [
-			setNombre("caldo")
+			setNombreCondimento("caldo")
 			setCantidad(200)
 		]
 		receta1 = new Receta => [
