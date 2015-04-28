@@ -17,18 +17,18 @@ class TestReceta {
 	@Before
 	def void init() {
 		ingrediente1 = new Ingrediente => [
-			nombreIngrediente = "carne"
-			calorias = 400
+			setNombreIngrediente("carne")
+			setCalorias(400)
 		]
 
 		ingrediente2 = new Ingrediente => [
-			nombreIngrediente = "agua"
-			calorias = 0
+			setNombreIngrediente("agua")
+			setCalorias(0)
 		]
 		
 		condimento1 = new Condimento => [
-			nombre = "azucar"
-			cantidad = 120
+			setNombreCondimento("azucar")
+			setCantidad(120)
 		]
 		
 		receta1 = new Receta		
@@ -53,7 +53,7 @@ class TestReceta {
 		receta3 =>[
 			agregarIngrediente(ingrediente2)
 			agregarCondimento(condimento1)
-//			verificarPlato()
+
 		]
 		
 		

@@ -5,7 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Condimento {
 
-	String nombre
+	String nombreCondimento
 
 	int cantidad = 0
 
