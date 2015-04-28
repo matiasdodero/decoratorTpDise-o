@@ -106,7 +106,7 @@ class Usuario {
 		}
 	}
 	
-	def boolean puedoVerRecerta(Receta unaReceta){
+	def boolean puedoVerReceta(Receta unaReceta){
 		
 		return (unaReceta.esPublica || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
 		

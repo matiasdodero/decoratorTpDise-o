@@ -10,13 +10,17 @@ class TestUsuario {
 	String nombreIngrediente
 	Usuario matias
 	
-	Receta receta1
+	
 	Ingrediente ingrediente1
 	Ingrediente ingrediente2
 	
 	Condimento condimento1
 	Condimento condimento2
 	Condimento condimento3
+	
+	Receta receta1
+	Receta receta2
+	Receta receta3
 
 	@Before
 	def void init(){
@@ -67,7 +71,16 @@ class TestUsuario {
 		agregarCondimento(condimento1)
 		//agregarCondimento(condimento2)
 		//agregarCondimento(condimento3)
-	]	
+		
+			]	
+			
+		receta2 = new Receta =>[
+			setEsPublica(true)
+		]
+		
+		receta3 = new Receta =>[
+			setEsPublica(false)
+		]
 
 	}
 	
@@ -95,7 +108,9 @@ class TestUsuario {
 	Ingrediente lechuga = new Ingrediente => [
 		setNombreIngrediente("lechuga")	
 		setTipoIngrediente("verdura")
-	]	
+	]
+	
+	
 	
 	
 
@@ -122,5 +137,49 @@ class TestUsuario {
 	//	Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	
-
+	@Test
+	def void validarUsuario(){
+		matias.sosValido()
+	}
+	
+	@Test
+	def void averiguarIMC(){
+		Assert.assertEquals(45.2,matias.calcularImc(),0.1)
+	}
+	
+	@Test
+	def void usuarioSigueRutinaSaludable(){
+		Assert.assertFalse(matias.seguisDietaSaludable())
+	}
+	
+	@Test
+	def void puedoVerRecetaPublica(){
+		matias=>[
+			Assert.assertTrue(puedoVerReceta(receta2))
+		]
+	}
+	
+	@Test
+	def void puedoModificarRecetaPublica(){
+		matias =>[
+			Assert.assertTrue(puedoModificarReceta(receta2))
+		]
+	}
+	
+	@Test
+	def void PuedoVerRecetaPrivada(){
+		matias =>[
+			Assert.assertFalse(puedoVerReceta(receta3))
+		]
+	}
+	
+	@Test
+	def void puedoModificarRecetaPrivada(){
+		matias =>[
+			Assert.assertFalse(puedoModificarReceta(receta3))
+		]
+	}
+	
+	
+	
 }
