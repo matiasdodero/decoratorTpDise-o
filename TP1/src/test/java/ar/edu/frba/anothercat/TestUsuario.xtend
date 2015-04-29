@@ -67,6 +67,7 @@ class TestUsuario {
 		receta1 = new Receta => [
 		nombrePlato = "unPlato"
 		sumarCalorias(100)
+		esPublica = true
 		agregarIngrediente(ingrediente1)
 		agregarCondimento(condimento1)
 		//agregarCondimento(condimento2)

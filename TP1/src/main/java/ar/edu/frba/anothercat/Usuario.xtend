@@ -113,7 +113,7 @@ class Usuario {
 	}
 	 def boolean puedoModificarReceta(Receta unaReceta){
 	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) 
-	 		//&& this.misRecetas.exists[unaRec| unaRec == unaReceta]
+	 		&& this.misRecetas.exists[unaRec| unaRec == unaReceta]
 	 	)
 	}
 	
