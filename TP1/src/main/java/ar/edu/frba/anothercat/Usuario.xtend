@@ -112,14 +112,24 @@ class Usuario {
 		
 	}
 	 def boolean puedoModificarReceta(Receta unaReceta){
-	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) && this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) 
+	 		//&& this.misRecetas.exists[unaRec| unaRec == unaReceta]
+	 	)
 	}
 	
 	def public agregarReceta(Receta unaReceta) {
 		
 		var Receta unaNuevaR = new Receta
 		
-		unaNuevaR = unaReceta				
+		unaNuevaR.setNombrePlato(unaReceta.getNombrePlato)
+		unaNuevaR.setIngredientes(unaReceta.getIngredientes)
+		unaNuevaR.setCondimentos(unaReceta.getCondimentos)
+		unaNuevaR.setPasos(unaReceta.getPasos)
+		unaNuevaR.setCondiciones(unaReceta.getCondiciones)
+		unaNuevaR.setTotalCalorias(unaReceta.getTotalCalorias)
+		unaNuevaR.setDificultad(unaReceta.getDificultad)
+		unaNuevaR.setTemporadas(unaReceta.getTemporadas)
+							
 			
 		if (unaReceta.validar())
 		{  
