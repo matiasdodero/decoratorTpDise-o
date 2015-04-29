@@ -155,11 +155,85 @@ class Usuario {
     	
     	else 
     	{
-    		throw new NoCumpleRequisitosException("No puede modificar la Receta ")
+    		throw new NoCumpleRequisitosException("No puede modificar el nombre del plato de la Receta")
     	}    	
     	
     }
     
+    def void modificarTotalCalorias(Receta unaReceta, int totalCaloriasAux){
+
+		
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    			unaReceta.setTotalCalorias(totalCaloriasAux)
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar el total de calorias de la Receta ")
+    	}    	
+    	
+    }
+    
+    def void modificarDificultad(Receta unaReceta, String dificultadAux){
+
+		
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    			unaReceta.setDificultad(dificultadAux)
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar la dificultad de la Receta ")
+    	}    	
+    	
+    }
+    
+    def void modificarIngredientesReceta(Receta unaReceta, Ingrediente unIngre){
+
+		
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    			unaReceta.agregarIngrediente(unIngre)
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar los ingredientes de la Receta ")
+    	}    	
+    	
+    }
+    
+    def void modificarCondimentosReceta(Receta unaReceta, Condimento unCond){
+
+		
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    			unaReceta.agregarCondimento(unCond)
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar los condimentos de la Receta ")
+    	}    	
+    	
+    }
+    
+    /*def void modificarTemporada(Receta unaReceta, Temporada unaTemporada){
+
+		
+    	if(puedoModificarReceta(unaReceta) == true){
+    		
+    			unaReceta.add(unaTemporada)
+    	}
+    	
+    	else 
+    	{
+    		throw new NoCumpleRequisitosException("No puede modificar los condimentos de la Receta ")
+    	}    	
+    	
+    }*/
    
  }
 
