@@ -185,10 +185,62 @@ class TestUsuario {
 	def void ModificoRecetaPrivada(){
 		matias.agregarReceta(receta1)
 		System.out.println(receta1.getNombrePlato)
-		matias.misRecetas.forEach[unaR | System.out.println(unaR.getNombrePlato)] 
+		System.out.println(receta1.getTotalCalorias)
+		System.out.println(receta1.getDificultad)
+		System.out.println(receta1.esPublica)
+		receta1.ingredientes.forEach [unIngr | 
+			System.out.println(unIngr.getNombreIngrediente)
+			System.out.println(unIngr.getTipoIngrediente)
+			]
+		receta1.condimentos.forEach [unCond | 
+			System.out.println(unCond.getNombreCondimento)
+			System.out.println(unCond.getCantidad)
+			]
+		matias.misRecetas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)
+	        System.out.println(unaR.getTotalCalorias)
+		    System.out.println(unaR.getDificultad)
+		    System.out.println(unaR.esPublica)
+		    unaR.ingredientes.forEach [unIngr | 
+			   System.out.println(unIngr.getNombreIngrediente)
+			   System.out.println(unIngr.getTipoIngrediente)
+			]
+		    unaR.condimentos.forEach [unCond | 
+		  	   System.out.println(unCond.getNombreCondimento)
+			   System.out.println(unCond.getCantidad)
+			]
+		] 
 		matias.modificarNombrePlato(receta1,"elPlato")
+		matias.modificarTotalCalorias(receta1,100)
+		matias.modificarDificultad(receta1,"facil")
+		matias.modificarIngredientesReceta(receta1,ingrediente2)
+		matias.modificarCondimentosReceta(receta1,condimento2)
 		System.out.println(receta1.getNombrePlato)
-		matias.misRecetas.forEach[unaR | System.out.println(unaR.getNombrePlato)] 
+		System.out.println(receta1.getTotalCalorias)
+		System.out.println(receta1.getDificultad)
+		System.out.println(receta1.esPublica)
+		receta1.ingredientes.forEach [unIngr | 
+			System.out.println(unIngr.getNombreIngrediente)
+			System.out.println(unIngr.getTipoIngrediente)
+			]
+		receta1.condimentos.forEach [unCond | 
+			System.out.println(unCond.getNombreCondimento)
+			System.out.println(unCond.getCantidad)
+			]
+		matias.misRecetas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)
+	        System.out.println(unaR.getTotalCalorias)
+		    System.out.println(unaR.getDificultad)
+		    System.out.println(unaR.esPublica)
+		    unaR.ingredientes.forEach [unIngr | 
+			   System.out.println(unIngr.getNombreIngrediente)
+			   System.out.println(unIngr.getTipoIngrediente)
+			]
+		    unaR.condimentos.forEach [unCond | 
+		  	   System.out.println(unCond.getNombreCondimento)
+			   System.out.println(unCond.getCantidad)
+			]
+		] 
 	}
 	
 	

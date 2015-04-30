@@ -43,6 +43,7 @@ class Receta {
 		condiciones.filter[condicion|condicion.esInadecuadaPara(this)].toList()
 	}
 	
+	 
 	def agregarIngredientesDeRecetaSimple(RecetaSimple recSimple){
 		var  listaAux = recSimple.ingredientes.clone()
 		listaAux.forEach[ingrediente | this.ingredientes.add(ingrediente)]
