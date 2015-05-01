@@ -18,6 +18,11 @@ class TestReceta {
 	Ingrediente ingrediente7	
 	
 	Receta receta3
+	Receta receta2
+	Receta receta4
+	Receta receta5
+	Receta receta6
+	
 	
 	//RecetaSimple recetaPure
 	
@@ -94,7 +99,11 @@ class TestReceta {
 		diab = new Diabetico
 		
 		receta1 = new Receta		
+		receta2 = new Receta
 		receta3 = new Receta
+		receta4 = new Receta
+		receta5 = new Receta
+		receta6 = new Receta
 		
 		condiciones.add(hiperten)
 		condiciones.add(vegano)
@@ -170,11 +179,19 @@ class TestReceta {
 		receta3  => [
 			agregarIngrediente(ingrediente3)
 			agregarIngrediente(ingrediente4)
-			sumarCalorias(ingrediente2.calorias)
+			sumarCalorias(ingrediente3.calorias)
 			validar()
 		]
 		
+		receta2  => [
+			agregarIngrediente(ingrediente5)
+			sumarCalorias(ingrediente5.calorias)
+			validar()
+		]
+
+		receta3.agregarmeReceta(receta2)		
 		receta1.agregarmeReceta(receta3)
+
 		receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
 		
 	}	
