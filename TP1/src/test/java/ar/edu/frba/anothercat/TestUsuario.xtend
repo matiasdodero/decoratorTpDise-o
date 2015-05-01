@@ -184,7 +184,7 @@ class TestUsuario {
 	@Test
 	def void ModificoRecetaPrivada(){
 		matias.agregarReceta(receta1)
-		System.out.println(receta1.getNombrePlato)
+		/*System.out.println(receta1.getNombrePlato)
 		System.out.println(receta1.getTotalCalorias)
 		System.out.println(receta1.getDificultad)
 		System.out.println(receta1.esPublica)
@@ -209,13 +209,13 @@ class TestUsuario {
 		  	   System.out.println(unCond.getNombreCondimento)
 			   System.out.println(unCond.getCantidad)
 			]
-		] 
+		] */
 		matias.modificarNombrePlato(receta1,"elPlato")
 		matias.modificarTotalCalorias(receta1,100)
 		matias.modificarDificultad(receta1,"facil")
 		matias.modificarIngredientesReceta(receta1,ingrediente2)
 		matias.modificarCondimentosReceta(receta1,condimento2)
-		System.out.println(receta1.getNombrePlato)
+		/*System.out.println(receta1.getNombrePlato)
 		System.out.println(receta1.getTotalCalorias)
 		System.out.println(receta1.getDificultad)
 		System.out.println(receta1.esPublica)
@@ -240,7 +240,7 @@ class TestUsuario {
 		  	   System.out.println(unCond.getNombreCondimento)
 			   System.out.println(unCond.getCantidad)
 			]
-		] 
+		] */
 	}
 	
 	
