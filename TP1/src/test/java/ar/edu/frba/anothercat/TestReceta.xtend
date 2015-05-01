@@ -27,13 +27,17 @@ class TestReceta {
 	//RecetaSimple recetaPure
 	
 	Condimento condimento1
-	
+	Condimento condimento2
+	Condimento condimento3
+	Condimento condimento4
+	Condimento condimento5
+	Condimento condimento6
 	
 	Hipertenso hiperten
 	Vegano vegano
 	Diabetico diab
 	
-	Condimento condimento2
+
 	
 	List<CondicionPreexistente> condiciones = new ArrayList<CondicionPreexistente>
 	
@@ -79,6 +83,24 @@ class TestReceta {
 		condimento2 = new Condimento => [
 			setNombreCondimento("sal")
 			setCantidad(15)
+			
+		]
+		
+		condimento3 = new Condimento => [
+			setNombreCondimento("aceite")
+			setCantidad(150)
+			
+		]
+		
+		condimento4 = new Condimento => [
+			setNombreCondimento("vinagre")
+			setCantidad(150)
+			
+		]
+		
+		condimento5 = new Condimento => [
+			setNombreCondimento("harina")
+			setCantidad(150)
 			
 		]
 		
@@ -193,6 +215,41 @@ class TestReceta {
 		receta1.agregarmeReceta(receta3)
 
 		receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
+		
+	}	
+	
+	@Test
+	def void decimeTusIngredientesTotales3(){
+		
+		receta1  => [
+			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			agregarCondimento(condimento1)
+			sumarCalorias(ingrediente1.calorias)
+			validar()
+		]
+		
+		receta3  => [
+			agregarIngrediente(ingrediente3)
+			agregarIngrediente(ingrediente4)
+			agregarCondimento(condimento2)
+			sumarCalorias(ingrediente3.calorias)
+			validar()
+		]
+		
+		receta2  => [
+			agregarIngrediente(ingrediente5)
+			agregarCondimento(condimento3)
+			agregarCondimento(condimento4)
+			sumarCalorias(ingrediente5.calorias)
+			validar()
+		]
+
+		receta3.agregarmeReceta(receta2)		
+		receta1.agregarmeReceta(receta3)
+
+		receta1.decimeTusCondimentosTotales.forEach[unI | System.out.println(unI.getNombreCondimento)]
+
 		
 	}	
 
