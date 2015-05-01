@@ -27,7 +27,7 @@ class Usuario {
 		if ((nombre == null) || (peso == 0) || (altura == 0) || (fech == null) || (rutinaE.equals(null))) {
 			return false
 		}
-		if (nombre.length() < 4)
+		if (nombre.length() <= 4)
 		{
 			return false
 		}
