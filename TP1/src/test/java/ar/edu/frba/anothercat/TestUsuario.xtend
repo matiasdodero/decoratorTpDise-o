@@ -40,6 +40,7 @@ class TestUsuario {
 		//	agregarPrefer(carne)
 			rutinaE = tipoRutina.PREINTENSIVO
 		] 
+		
 		ingrediente1 = new Ingrediente => [
 			setNombreIngrediente("carne")
 			setCalorias(400)

@@ -12,7 +12,10 @@ class TestReceta {
 	Ingrediente ingrediente1
 	Ingrediente ingrediente2
 	Ingrediente ingrediente3
-	
+	Ingrediente ingrediente4
+	Ingrediente ingrediente5
+	Ingrediente ingrediente6
+	Ingrediente ingrediente7	
 	
 	Receta receta3
 	
@@ -35,28 +38,48 @@ class TestReceta {
 	def void init() {
 		ingrediente1 = new Ingrediente => [
 			setNombreIngrediente("carne")
-			setCalorias(400)
+			setCalorias(10)
 		]
 
 		ingrediente2 = new Ingrediente => [
 			setNombreIngrediente("agua")
-			setCalorias(0)
+			setCalorias(10)
+		]
+		
+		ingrediente4 = new Ingrediente => [
+			setNombreIngrediente("pollo")
+			setCalorias(10)
+		]
+		
+		ingrediente5 = new Ingrediente => [
+			setNombreIngrediente("pescado")
+			setCalorias(10)
+		]
+		
+		ingrediente6 = new Ingrediente => [
+			setNombreIngrediente("berenjena")
+			setCalorias(10)
+		]
+		
+		ingrediente7 = new Ingrediente => [
+			setNombreIngrediente("pan")
+			setCalorias(10)
 		]
 		
 		condimento1 = new Condimento => [
 			setNombreCondimento("azucar")
-			setCantidad(120)
+			setCantidad(10)
 		]
 		
 		condimento2 = new Condimento => [
 			setNombreCondimento("sal")
-			setCantidad(5)
+			setCantidad(15)
 			
 		]
 		
 		ingrediente3 = new Ingrediente =>[
 			setNombreIngrediente("pure")
-			setCalorias(200)
+			setCalorias(20)
 		]
 		
 		/*recetaPure = new RecetaSimple =>[
@@ -120,5 +143,40 @@ class TestReceta {
 		
 	}
 	
+	@Test
+	def void decimeTusIngredientesTotales(){
+		
+		receta1  => [
+			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			sumarCalorias(ingrediente1.calorias)
+			validar()
+		]
+		
+		//receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
+		
+	}
+
+	@Test
+	def void decimeTusIngredientesTotales2(){
+		
+		receta1  => [
+			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			sumarCalorias(ingrediente1.calorias)
+			validar()
+		]
+		
+		receta3  => [
+			agregarIngrediente(ingrediente3)
+			agregarIngrediente(ingrediente4)
+			sumarCalorias(ingrediente2.calorias)
+			validar()
+		]
+		
+		receta1.agregarmeReceta(receta3)
+		receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
+		
+	}	
 
 }

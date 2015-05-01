@@ -58,9 +58,24 @@ class Receta {
 		return (compuestaDe.empty)
 	}
 	
-	
-	
-
-
-	
+	def List<Ingrediente> decimeTusIngredientesTotales()
+	{
+		var List<Ingrediente> ingreAux = new ArrayList<Ingrediente>
+		ingreAux = ingredientes
+		
+		if (compuestaDe.empty) {
+			return ingreAux
+		}
+		else
+		{
+		    for(item: compuestaDe.map[unaRec | unaRec.decimeTusIngredientesTotales()]) {
+		    	ingreAux.addAll(item)
+		    }
+		    return ingreAux	
+		    
+		}
+		
+		
+	}
+		
 }
