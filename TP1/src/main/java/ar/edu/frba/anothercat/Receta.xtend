@@ -16,7 +16,7 @@ class Receta {
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
 	boolean esPublica
-	//List<Receta> cumpuestaDe = new ArrayList<Receta>
+	List<Receta> cumpuestaDe = new ArrayList<Receta>
 
 	def void agregarIngrediente(Ingrediente unIngrediente) {
 

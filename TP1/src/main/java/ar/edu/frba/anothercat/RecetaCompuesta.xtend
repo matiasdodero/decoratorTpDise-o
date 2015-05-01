@@ -1,4 +1,4 @@
-package ar.edu.frba.anothercat
+/*package ar.edu.frba.anothercat
 
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -14,4 +14,4 @@ class RecetaCompuesta extends Receta {
 		listaAux.forEach[ingrediente | this.ingredientes.add(ingrediente)]
 	}
 	
-}
+}*/
