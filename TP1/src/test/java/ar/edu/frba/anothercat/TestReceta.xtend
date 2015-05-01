@@ -55,6 +55,11 @@ class TestReceta {
 			setCalorias(10)
 		]
 		
+		ingrediente3 = new Ingrediente =>[
+			setNombreIngrediente("pure")
+			setCalorias(20)
+		]
+		
 		ingrediente4 = new Ingrediente => [
 			setNombreIngrediente("pollo")
 			setCalorias(10)
@@ -104,15 +109,15 @@ class TestReceta {
 			
 		]
 		
-		ingrediente3 = new Ingrediente =>[
-			setNombreIngrediente("pure")
-			setCalorias(20)
+		condimento6 = new Condimento => [
+			setNombreCondimento("levadura")
+			setCantidad(150)
+			
 		]
 		
-		/*recetaPure = new RecetaSimple =>[
-			setNombrePlato("pure")
-			agregarIngrediente(ingrediente3)
-		]*/
+
+		
+
 		
 		
 		
@@ -130,6 +135,44 @@ class TestReceta {
 		condiciones.add(hiperten)
 		condiciones.add(vegano)
 		condiciones.add(diab)
+		
+		receta1  => [
+			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			agregarCondimento(condimento1)
+			sumarCalorias(ingrediente1.calorias)
+			validar()
+		]
+		
+		receta3  => [
+			agregarIngrediente(ingrediente3)
+			agregarIngrediente(ingrediente4)
+			agregarCondimento(condimento2)
+			sumarCalorias(ingrediente3.calorias)
+			validar()
+		]
+		
+		receta2  => [
+			agregarIngrediente(ingrediente5)
+			agregarCondimento(condimento3)
+			agregarCondimento(condimento4)
+			sumarCalorias(ingrediente5.calorias)
+			validar()
+		]
+		
+		receta4  => [
+			agregarIngrediente(ingrediente6)
+			agregarCondimento(condimento1)
+			sumarCalorias(ingrediente6.calorias)
+			validar()
+		]
+		
+		receta5  => [
+			agregarIngrediente(ingrediente7)
+			agregarCondimento(condimento6)
+			sumarCalorias(ingrediente7.calorias)
+			validar()
+		]
 
 	}
 
@@ -191,29 +234,10 @@ class TestReceta {
 	@Test
 	def void decimeTusIngredientesTotales2(){
 		
-		receta1  => [
-			agregarIngrediente(ingrediente1)
-			agregarIngrediente(ingrediente2)
-			sumarCalorias(ingrediente1.calorias)
-			validar()
-		]
-		
-		receta3  => [
-			agregarIngrediente(ingrediente3)
-			agregarIngrediente(ingrediente4)
-			sumarCalorias(ingrediente3.calorias)
-			validar()
-		]
-		
-		receta2  => [
-			agregarIngrediente(ingrediente5)
-			sumarCalorias(ingrediente5.calorias)
-			validar()
-		]
-
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta4)
 		receta3.agregarmeReceta(receta2)		
 		receta1.agregarmeReceta(receta3)
-
 		receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
 		
 	}	
@@ -221,33 +245,10 @@ class TestReceta {
 	@Test
 	def void decimeTusIngredientesTotales3(){
 		
-		receta1  => [
-			agregarIngrediente(ingrediente1)
-			agregarIngrediente(ingrediente2)
-			agregarCondimento(condimento1)
-			sumarCalorias(ingrediente1.calorias)
-			validar()
-		]
-		
-		receta3  => [
-			agregarIngrediente(ingrediente3)
-			agregarIngrediente(ingrediente4)
-			agregarCondimento(condimento2)
-			sumarCalorias(ingrediente3.calorias)
-			validar()
-		]
-		
-		receta2  => [
-			agregarIngrediente(ingrediente5)
-			agregarCondimento(condimento3)
-			agregarCondimento(condimento4)
-			sumarCalorias(ingrediente5.calorias)
-			validar()
-		]
-
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta4)
 		receta3.agregarmeReceta(receta2)		
 		receta1.agregarmeReceta(receta3)
-
 		receta1.decimeTusCondimentosTotales.forEach[unI | System.out.println(unI.getNombreCondimento)]
 
 		

@@ -74,8 +74,26 @@ class Receta {
 		    return ingreAux	
 		    
 		}
+			
+	}
+	
+	def List<Condimento> decimeTusCondimentosTotales()
+	{
+		var List<Condimento> condAux = new ArrayList<Condimento>
+		condAux = condimentos
 		
-		
+		if (compuestaDe.empty) {
+			return condAux
+		}
+		else
+		{
+		    for(item: compuestaDe.map[unaRec | unaRec.decimeTusCondimentosTotales()]) {
+		    	condAux.addAll(item)
+		    }
+		    return condAux	
+		    
+		}
+			
 	}
 		
 }
