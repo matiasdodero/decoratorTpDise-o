@@ -50,6 +50,16 @@ class Receta {
 		listaAux.forEach[ingrediente | this.ingredientes.add(ingrediente)]
 	}*/
 	
+	def agregarmeReceta(Receta unaReceta) {
+		cumpuestaDe.add(unaReceta)
+	}
+	
+	def sosSimple() {
+		return (cumpuestaDe.empty)
+	}
+	
+	
+	
 
 
 	

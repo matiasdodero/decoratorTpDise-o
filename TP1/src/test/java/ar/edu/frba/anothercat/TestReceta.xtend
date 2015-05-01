@@ -4,6 +4,7 @@ import java.util.List
 import org.junit.Before
 import org.junit.Test
 import java.util.ArrayList
+import org.junit.Assert
 
 class TestReceta {
 
@@ -15,7 +16,7 @@ class TestReceta {
 	
 	Receta receta3
 	
-	RecetaSimple recetaPure
+	//RecetaSimple recetaPure
 	
 	Condimento condimento1
 	
@@ -58,10 +59,10 @@ class TestReceta {
 			setCalorias(200)
 		]
 		
-		recetaPure = new RecetaSimple =>[
+		/*recetaPure = new RecetaSimple =>[
 			setNombrePlato("pure")
 			agregarIngrediente(ingrediente3)
-		]
+		]*/
 		
 		
 		
@@ -105,9 +106,17 @@ class TestReceta {
 	}
 	
 	@Test
-	def void agregarRecetaSimpleAOtraReceta(){
+	def void decimeSiSosSimple(){
 		
-		receta1.agregarIngredientesDeRecetaSimple(recetaPure)
+		Assert.assertTrue(receta1.sosSimple())
+		
+	}
+	
+	@Test
+	def void decimeSiSosCompuesta(){
+		
+		receta1.agregarmeReceta(receta3)
+		Assert.assertFalse(receta1.sosSimple())
 		
 	}
 	
