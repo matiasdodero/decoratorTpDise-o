@@ -226,17 +226,11 @@ class TestReceta {
 		
 	}
 	
-	@Test
+	/*@Test
 	def void decimeTusIngredientesTotales(){
 		
-		receta1  => [
-			agregarIngrediente(ingrediente1)
-			agregarIngrediente(ingrediente2)
-			sumarCalorias(ingrediente1.calorias)
-			validar()
-		]
 		
-		//receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
+		receta3.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
 		
 	}
 
@@ -250,17 +244,17 @@ class TestReceta {
 		receta1.agregarmeReceta(receta3)
 		receta1.decimeTusIngredientesTotales.forEach[unI | System.out.println(unI.getNombreIngrediente)]
 		
-	}	
+	}	*/
 	
 	@Test
 	def void decimeTusIngredientesTotales3(){
 		
-		receta2.agregarmeReceta(receta6)
+		/*receta2.agregarmeReceta(receta6)
 		receta2.agregarmeReceta(receta5)
 		receta3.agregarmeReceta(receta4)
-		receta3.agregarmeReceta(receta2)		
+		receta3.agregarmeReceta(receta2)*/		
 		receta1.agregarmeReceta(receta3)
-		receta1.decimeTusCondimentosTotales.forEach[unI | System.out.println(unI.getNombreCondimento)]
+		receta3.decimeTusCondimentosTotales.forEach[unI | System.out.println(unI.getNombreCondimento)]
 
 		
 	}	
@@ -300,6 +294,34 @@ class TestReceta {
 		receta3.agregarmeReceta(receta2)		
 		receta1.agregarmeReceta(receta3)
 		System.out.println(receta1.azucarTotal)
+		
+	}
+	
+	@Test
+	def void decimePorFavorSiTenesAzucar(){
+		
+		System.out.println("receta 1 " + receta1.tenesAzucar)
+		
+	}
+	
+	@Test
+	def void TenesAzucar2(){
+		
+		System.out.println("receta 3 " + receta3.tenesAzucar)
+		
+	}
+	
+	@Test
+	def void decimePorFavorSiTenesSal(){
+		
+		System.out.println("receta 1 " + receta1.tenesSal)
+		
+	}
+	
+	@Test
+	def void TenesSal2(){
+		
+		System.out.println("receta 3 " + receta3.tenesSal)
 		
 	}
 

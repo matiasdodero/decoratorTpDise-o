@@ -115,15 +115,13 @@ class Receta {
 	
 	def int azucarTotal(){
 		var int ingreAux = 0
-		var	Iterable<Condimento> condimentosAux = new ArrayList<Condimento>
+		//var	Iterable<Condimento> condimentosAux = new ArrayList<Condimento>
 		//condimentosAux = condimentos.filter[unC | unC.getNombreCondimento == "azucar"]
 		for(item: condimentos) {
 			if (item.getNombreCondimento == "azucar") {
 				ingreAux += item.getCantidad
 			}
 		}
-		//System.out.println(condimentosAux.size)
-		//ingreAux = (condimentosAux.fold(0, [acum, unCon | {acum + unCon.getCantidad}]))
 			
 		if (compuestaDe.empty) {
 			return ingreAux
@@ -136,6 +134,15 @@ class Receta {
 		    return ingreAux	
 		    
 		}
+	}
+	
+	def boolean tenesAzucar() {
+		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "azucar"] )
+	}
+	
+	def boolean tenesSal() {
+		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "sal"] )
+		
 	}
 		
 }
