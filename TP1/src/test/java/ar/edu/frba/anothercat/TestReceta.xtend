@@ -300,28 +300,54 @@ class TestReceta {
 	@Test
 	def void decimePorFavorSiTenesAzucar(){
 		
-		System.out.println("receta 1 " + receta1.tenesAzucar)
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta2)		
+		receta1.agregarmeReceta(receta3)
+		System.out.println("receta 1 azucar" + receta1.tenesAzucar)
 		
 	}
 	
 	@Test
 	def void TenesAzucar2(){
 		
-		System.out.println("receta 3 " + receta3.tenesAzucar)
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta2)	
+		System.out.println("receta 3 azucar" + receta3.tenesAzucar)
 		
 	}
 	
 	@Test
 	def void decimePorFavorSiTenesSal(){
 		
-		System.out.println("receta 1 " + receta1.tenesSal)
+		receta2.agregarmeReceta(receta5)
+		receta1.agregarmeReceta(receta2)
+		System.out.println("receta 1 sal" + receta1.tenesSal)
 		
 	}
 	
 	@Test
 	def void TenesSal2(){
 		
-		System.out.println("receta 3 " + receta3.tenesSal)
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta2)
+		System.out.println("receta 3 sal" + receta3.tenesSal)
+		
+	}
+	
+	@Test
+	def void decimePorFavorSiTenesAlgoDeEsto(){
+		
+		receta2.agregarmeReceta(receta5)
+		receta1.agregarmeReceta(receta2)		
+		System.out.println("receta 1 algo " + receta1.tenesPolloCarneChivitoChori)
+		
+	}
+	
+	@Test
+	def void decimePorFavorSiTenesAlgoDeEsto2(){
+		
+		receta2.agregarmeReceta(receta5)
+		System.out.println("receta 2 algo " + receta2.tenesPolloCarneChivitoChori)
 		
 	}
 
