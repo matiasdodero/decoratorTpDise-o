@@ -144,5 +144,14 @@ class Receta {
 		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "sal"] )
 		
 	}
+	
+	def boolean tenesPolloCarneChivitoChori() {
+		return (this.decimeTusIngredientesTotales.exists[unI | unI.getNombreIngrediente == "pollo"
+															|| unI.getNombreIngrediente == "carne"
+															|| unI.getNombreIngrediente == "chivito"
+															|| unI.getNombreIngrediente == "chori"
+		] )
+		
+	}
 		
 }
