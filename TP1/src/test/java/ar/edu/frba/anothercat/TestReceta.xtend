@@ -52,7 +52,7 @@ class TestReceta {
 
 		ingrediente2 = new Ingrediente => [
 			setNombreIngrediente("agua")
-			setCalorias(10)
+			setCalorias(15)
 		]
 		
 		ingrediente3 = new Ingrediente =>[
@@ -62,22 +62,22 @@ class TestReceta {
 		
 		ingrediente4 = new Ingrediente => [
 			setNombreIngrediente("pollo")
-			setCalorias(10)
+			setCalorias(25)
 		]
 		
 		ingrediente5 = new Ingrediente => [
 			setNombreIngrediente("pescado")
-			setCalorias(10)
+			setCalorias(30)
 		]
 		
 		ingrediente6 = new Ingrediente => [
 			setNombreIngrediente("berenjena")
-			setCalorias(10)
+			setCalorias(35)
 		]
 		
 		ingrediente7 = new Ingrediente => [
 			setNombreIngrediente("pan")
-			setCalorias(10)
+			setCalorias(40)
 		]
 		
 		condimento1 = new Condimento => [
@@ -173,6 +173,15 @@ class TestReceta {
 			sumarCalorias(ingrediente7.calorias)
 			validar()
 		]
+		
+		receta6  => [
+			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			agregarCondimento(condimento4)
+			agregarCondimento(condimento5)
+			sumarCalorias(ingrediente7.calorias)
+			validar()
+		]
 
 	}
 
@@ -234,6 +243,7 @@ class TestReceta {
 	@Test
 	def void decimeTusIngredientesTotales2(){
 		
+		receta2.agregarmeReceta(receta6)
 		receta2.agregarmeReceta(receta5)
 		receta3.agregarmeReceta(receta4)
 		receta3.agregarmeReceta(receta2)		
@@ -245,6 +255,7 @@ class TestReceta {
 	@Test
 	def void decimeTusIngredientesTotales3(){
 		
+		receta2.agregarmeReceta(receta6)
 		receta2.agregarmeReceta(receta5)
 		receta3.agregarmeReceta(receta4)
 		receta3.agregarmeReceta(receta2)		
@@ -253,5 +264,24 @@ class TestReceta {
 
 		
 	}	
+	
+	@Test
+	def void decimeTusCaloriasFinales1(){
+		
+		System.out.println(receta1.caloriasFinales)
+		
+	}	
+	
+	@Test
+	def void decimeTusCaloriasFinales2(){
+		
+		receta2.agregarmeReceta(receta6)
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta4)
+		receta3.agregarmeReceta(receta2)		
+		receta1.agregarmeReceta(receta3)
+		System.out.println(receta1.caloriasFinales)
+		
+	}
 
 }

@@ -95,5 +95,22 @@ class Receta {
 		}
 			
 	}
+	
+	def int caloriasFinales(){
+		var int ingreAux = 0
+		ingreAux = (ingredientes.fold(0, [acum, unIn |acum + unIn.getCalorias]))
+		
+		if (compuestaDe.empty) {
+			return ingreAux
+		}
+		else
+		{
+		    for(item: compuestaDe.map[unaRec | unaRec.caloriasFinales()]) {
+		    	ingreAux += item
+		    }
+		    return ingreAux	
+		    
+		}
+	}
 		
 }
