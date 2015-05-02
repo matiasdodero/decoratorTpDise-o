@@ -112,5 +112,30 @@ class Receta {
 		    
 		}
 	}
+	
+	def int azucarTotal(){
+		var int ingreAux = 0
+		var	Iterable<Condimento> condimentosAux = new ArrayList<Condimento>
+		//condimentosAux = condimentos.filter[unC | unC.getNombreCondimento == "azucar"]
+		for(item: condimentos) {
+			if (item.getNombreCondimento == "azucar") {
+				ingreAux += item.getCantidad
+			}
+		}
+		//System.out.println(condimentosAux.size)
+		//ingreAux = (condimentosAux.fold(0, [acum, unCon | {acum + unCon.getCantidad}]))
+			
+		if (compuestaDe.empty) {
+			return ingreAux
+		}
+		else
+		{
+		    for(item: compuestaDe.map[unaRec | unaRec.azucarTotal()]) {
+		    	ingreAux += item
+		    }
+		    return ingreAux	
+		    
+		}
+	}
 		
 }

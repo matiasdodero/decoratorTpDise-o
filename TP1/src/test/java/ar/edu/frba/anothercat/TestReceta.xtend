@@ -283,5 +283,24 @@ class TestReceta {
 		System.out.println(receta1.caloriasFinales)
 		
 	}
+	
+	@Test
+	def void dameTuAzucarTotal1(){
+		
+		System.out.println(receta1.azucarTotal)
+		
+	}
+	
+	@Test
+	def void dameTuAzucarTotal2(){
+		
+		receta2.agregarmeReceta(receta6)
+		receta2.agregarmeReceta(receta5)
+		receta3.agregarmeReceta(receta4)
+		receta3.agregarmeReceta(receta2)		
+		receta1.agregarmeReceta(receta3)
+		System.out.println(receta1.azucarTotal)
+		
+	}
 
 }
