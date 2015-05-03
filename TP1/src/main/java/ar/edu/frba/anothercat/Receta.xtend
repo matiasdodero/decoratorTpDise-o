@@ -141,8 +141,11 @@ class Receta {
 	}
 	
 	def boolean tenesSal() {
-		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "sal"] )
-		
+		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "sal"] )	
+	}
+	
+	def boolean tenesCaldo() {
+		return (this.decimeTusCondimentosTotales.exists[unC | unC.getNombreCondimento == "caldo"] )	
 	}
 	
 	def boolean tenesPolloCarneChivitoChori() {

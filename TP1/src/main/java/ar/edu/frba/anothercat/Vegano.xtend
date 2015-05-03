@@ -16,14 +16,15 @@ class Vegano implements CondicionPreexistente {
 		return (usuario.preferencias.exists[unaPre|unaPre.dameTipo() == "fruta"] )
 	}
 
-	override esInadecuadaPara(Receta unaReceta) {
+	/*override esInadecuadaPara(Receta unaReceta) {
 		return (unaReceta.ingredientes.exists[unI | unI.dameNombre() == "carne"] || 
 			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "pollo"] ||
 			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "chori"]|| 
 			unaReceta.ingredientes.exists[unI | unI.dameNombre() == "chivito"]) 
-			
-			
-
+	}*/
+	
+	override esInadecuadaPara(Receta unaReceta) {
+		return (unaReceta.tenesPolloCarneChivitoChori()) 
 	}
 
 }

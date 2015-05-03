@@ -11,8 +11,13 @@ class Diabetico implements CondicionPreexistente {
 		return ((usuario.rutinaE.equals(tipoRutina.INTENSIVO)  || usuario.rutinaE.equals(tipoRutina.PREINTENSIVO)) || usuario.peso < 70)
 	}
 
-	override esInadecuadaPara(Receta unaReceta) {
+	/*override esInadecuadaPara(Receta unaReceta) {
 		return (unaReceta.condimentos.exists[unC | unC.getNombreCondimento == "azucar"] &&
 			(unaReceta.condimentos.fold(0, [acum, condimento|acum + condimento.getCantidad]) > 100)) 
+	}*/
+	
+	override esInadecuadaPara(Receta unaReceta) {
+		return (unaReceta.tenesAzucar() &&
+			(unaReceta.azucarTotal() > 100)) 
 	}
 }

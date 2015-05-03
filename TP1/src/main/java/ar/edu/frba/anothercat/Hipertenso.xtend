@@ -14,11 +14,18 @@ class Hipertenso implements CondicionPreexistente {
 
 	}
 
-	override esInadecuadaPara(Receta unaReceta) {
+	/*override esInadecuadaPara(Receta unaReceta) {
 
 		return (unaReceta.condimentos.exists[unC | unC.getNombreCondimento == "sal"] || 
 			unaReceta.condimentos.exists[unC | unC.getNombreCondimento == "caldo"]
 		) 
+
+	}*/
+	
+	override esInadecuadaPara(Receta unaReceta) {
+
+		return (unaReceta.tenesSal() || 
+			unaReceta.tenesCaldo()) 
 
 	}
 }
