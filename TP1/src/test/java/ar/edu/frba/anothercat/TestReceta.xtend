@@ -373,6 +373,7 @@ class TestReceta {
 		receta3.agregarmeReceta(receta5)
 		receta1.agregarmeReceta(receta3)
 		receta2.agregarmeReceta(receta4)
+		receta4.agregarmeReceta(receta3)
 		receta4.agregarmeReceta(receta6)
 	}
 

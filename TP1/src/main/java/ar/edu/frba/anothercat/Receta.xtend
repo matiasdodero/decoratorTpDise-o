@@ -61,7 +61,7 @@ class Receta {
 		
 	}
 	
-	def boolean NoloopDeRecetas(Receta unaReceta, Receta otraReceta) {
+	private def boolean NoloopDeRecetas(Receta unaReceta, Receta otraReceta) {
 		if (otraReceta.compuestaDe.empty) 
 		{return true}
 		else {
