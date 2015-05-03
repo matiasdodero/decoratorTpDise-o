@@ -44,6 +44,8 @@ class Receta {
 		condiciones.filter[condicion|condicion.esInadecuadaPara(this)].toList()
 	}
 	
+	
+	
 	 
 	/*def agregarIngredientesDeRecetaSimple(RecetaSimple recSimple){
 		var  listaAux = recSimple.getIngredientes
@@ -51,7 +53,26 @@ class Receta {
 	}*/
 	
 	def agregarmeReceta(Receta unaReceta) {
-		compuestaDe.add(unaReceta)
+		if (unaReceta != this && NoloopDeRecetas(this,unaReceta)) 
+		{compuestaDe.add(unaReceta)}
+		else {
+			throw new NoCumpleRequisitosException("Receta agregandose a ella misma")
+		}
+		
+	}
+	
+	def boolean NoloopDeRecetas(Receta unaReceta, Receta otraReceta) {
+		if (otraReceta.compuestaDe.empty) 
+		{return true}
+		else {
+			for(item: otraReceta.compuestaDe) {
+		    	if (item == unaReceta) {throw new NoCumpleRequisitosException("Receta en loop agregandose")}
+		    	else
+		    	{NoloopDeRecetas(unaReceta,item) }
+		    }
+		    return true
+		}
+		
 	}
 	
 	def sosSimple() {

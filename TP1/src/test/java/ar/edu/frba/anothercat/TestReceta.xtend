@@ -82,7 +82,7 @@ class TestReceta {
 		
 		condimento1 = new Condimento => [
 			setNombreCondimento("azucar")
-			setCantidad(10)
+			setCantidad(110)
 		]
 		
 		condimento2 = new Condimento => [
@@ -350,5 +350,49 @@ class TestReceta {
 		System.out.println("receta 2 algo " + receta2.tenesPolloCarneChivitoChori)
 		
 	}
+	
+	/*@Test
+	def void noPodesAgregarteAVosMisma(){
+		receta5.agregarmeReceta(receta5)	
+	}*/
+	
+	@Test
+	def void noPodesAgregarteAUnaRecetaQueYaTeTenga(){
+		//receta3.agregarmeReceta(receta1)
+		receta5.agregarmeReceta(receta3)
+		receta5.agregarmeReceta(receta2)
+		receta1.agregarmeReceta(receta5)
+		receta2.agregarmeReceta(receta4)
+		receta4.agregarmeReceta(receta5)
+	}
+	
+	@Test
+	def void noPodesAgregarteAUnaRecetaQueYaTeTenga2(){
+		//receta3.agregarmeReceta(receta1)
+		receta3.agregarmeReceta(receta6)
+		receta3.agregarmeReceta(receta5)
+		receta1.agregarmeReceta(receta3)
+		receta2.agregarmeReceta(receta4)
+		receta4.agregarmeReceta(receta6)
+	}
+
+	@Test
+	def void paraQuienSosInadecuada(){
+		
+		receta5.agregarmeReceta(receta6)
+		receta2.agregarmeReceta(receta5)
+		receta1.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 1 inad " + unaP)]
+		receta2.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 2 inad " + unaP)]
+		receta3.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 3 inad " + unaP)]
+		receta4.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 4 inad " + unaP)]
+		receta5.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 5 inad " + unaP)]
+		receta6.recetaInadecuadaPara(condiciones).forEach[unaP | System.out.println("receta 6 inad " + unaP)]
+		
+	}
+	
+	
+	
+	
+	
 
 }
