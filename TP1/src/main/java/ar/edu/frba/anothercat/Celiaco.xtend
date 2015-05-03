@@ -2,14 +2,14 @@ package ar.edu.frba.anothercat
 
 class Celiaco implements CondicionPreexistente {
 	override cumpleValidacion(Usuario unUsuario){
-		true
+		return true
 	}
 
 	override subsanasteCondicionesPreEx(Usuario unUsuario){
-		true
+		return true
 	}
 
 	override esInadecuadaPara(Receta unaReceta){
-		true
+		return false
 	}
 }
