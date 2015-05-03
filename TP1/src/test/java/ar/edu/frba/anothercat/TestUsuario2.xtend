@@ -114,6 +114,67 @@ class TestUsuario2{
 		//Le agregamos una preferencia
 		pepe.agregarPrefer(new Ingrediente => [nombreIngrediente = "Manzana" tipoIngrediente = "Fruta" calorias = 2])
 		
+		//Ahora que ya tiene preferencia, debe dar válido
 		Assert.assertTrue(pepe.sosValido())
+	}
+	
+	@Test
+	def usuarioVeganoConPreferenciaCarnivora(){
+		//El usuario inicialmente es válido
+		Assert.assertTrue(pepe.sosValido())
+		
+		//Le decimos que es vegano
+		pepe.agregarCondicion(new Vegano)
+		
+		//Debe dar verdadero, todavía no tiene la preferencia
+		Assert.assertTrue(pepe.sosValido())
+		
+		//Le agregamos una preferencia
+		pepe.agregarPrefer(new Ingrediente => [nombreIngrediente = "chivito" tipoIngrediente = "carne" calorias = 40])
+		
+		//Como la preferencia es Carne, debe dar inválido
+		Assert.assertFalse(pepe.sosValido())
+	}
+	
+	@Test
+	def usuarioNacioEnElFuturo(){
+		//El usuario inicialmente es válido
+		Assert.assertTrue(pepe.sosValido())
+		
+		//Le cambiamos la fecha de nacimiento por una del futuro
+		pepe.fech = "05-23-2015"
+		
+		//Ahora debe ser inválido
+		Assert.assertFalse(pepe.sosValido())
+	}
+	
+	@Test
+	def usuarioCeliacoConRutinaSaludable(){
+		//El usuario inicialmente sigue una rutina saludable, porque tiene el imc entre 18 y 30 y no tiene enfermedades
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+		
+		//Le decimos a pepe que es celíaco
+		pepe.agregarCondicion(new Celiaco)
+		
+		//Como los celíacos no cumplen condiciones, debería ser válido
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	}
+	
+	@Test
+	def usuarioVeganoConRutinaSaludable(){
+		//El usuario inicialmente sigue una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+		
+		//Le decimos a pepe que es vegano
+		pepe.agregarCondicion(new Vegano())
+
+		//Es vegano, pero no subsana su condición todavía
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+		
+		//Ahora le decimos que le gusta la fruta, y tiene que seguir una rutina saludable
+		pepe.agregarPrefer(new Ingrediente => [nombreIngrediente = "Manzana" tipoIngrediente = "fruta" calorias = 2])
+		
+		//Ahora debe seguir una dieta saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
 	}
 }
