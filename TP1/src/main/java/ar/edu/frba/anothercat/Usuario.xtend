@@ -70,6 +70,7 @@ class Usuario {
 		return fecha
 	}
 	def public boolean validaFechNacim() {
+
           if (this.convertirFecha(fech).before(dameElDiaDeHoy())) {
           	return true
           }

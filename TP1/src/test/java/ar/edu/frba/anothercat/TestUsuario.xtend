@@ -25,7 +25,7 @@ class TestUsuario {
 	@Before
 	def void init(){
 	    matias = new Usuario => [
-	    	nombre = "mati"
+	    	nombre = "matias"
 	    	fech = "05-29-1989"
 //	    	rutina = "dsad"
 			peso=90
@@ -144,10 +144,6 @@ class TestUsuario {
 	//	Assert.assertEquals(20.5,matias.calcularImc(),1)
 	}
 	
-	@Test
-	def void validarUsuario(){
-		matias.sosValido()
-	}
 	
 	@Test
 	def void averiguarIMC(){
@@ -251,7 +247,11 @@ class TestUsuario {
 	}
 	
 
-	
+	@Test
+	def void validarUsuario(){
+
+		matias.sosValido()
+	}
 	
 	
 }
