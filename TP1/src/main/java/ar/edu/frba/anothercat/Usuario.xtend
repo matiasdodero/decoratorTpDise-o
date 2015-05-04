@@ -145,7 +145,20 @@ class Usuario {
 		
 	}
 	
-	   def void modificarNombrePlato(Receta unaReceta, String nombrePlatoAux){
+	def public eliminarReceta(Receta unaReceta) {
+									
+		if (misRecetas.exists[unaR | unaR == unaReceta])
+		{  
+				misRecetas.remove(unaReceta)	
+		}
+		else 
+    	{
+    		throw new NoCumpleRequisitosException("La receta no está contenida")
+    	}   	
+		
+	}
+	
+	def void modificarNombrePlato(Receta unaReceta, String nombrePlatoAux){
 
 		
     	if(puedoModificarReceta(unaReceta) == true){

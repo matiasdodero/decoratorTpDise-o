@@ -36,7 +36,7 @@ class Receta {
 		if (ingredientes.size >= 1 && (totalCalorias >= 10 && totalCalorias <= 5000)) {
 			return true
 		} else {
-			throw new NoCumpleRequisitosException("No cumple con los requisitos minimos")
+			throw new NoCumpleRequisitosException("La Receta no cumple con los requisitos minimos para que sea valida")
 		}
 	}
 

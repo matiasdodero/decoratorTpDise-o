@@ -31,7 +31,7 @@ class TestUsuario {
 			peso=90
 			altura=1.41
 			sexo = "m"
-			agregarCondicion(hiperten) 
+		//	agregarCondicion(hiperten) 
 		//	agregarCondicion(diabe)
 		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
@@ -66,7 +66,7 @@ class TestUsuario {
 			setCantidad(200)
 		]
 		receta1 = new Receta => [
-		nombrePlato = "unPlato"
+		nombrePlato = "plato de receta 1"
 		sumarCalorias(100)
 		esPublica = true
 		agregarIngrediente(ingrediente1)
@@ -77,7 +77,12 @@ class TestUsuario {
 			]	
 			
 		receta2 = new Receta =>[
+		    nombrePlato = "plato de receta 2"
 			setEsPublica(true)
+			sumarCalorias(100)
+			esPublica = true
+			agregarIngrediente(ingrediente1)
+			agregarCondimento(condimento1)
 		]
 		
 		receta3 = new Receta =>[
@@ -151,7 +156,7 @@ class TestUsuario {
 	
 	@Test
 	def void usuarioSigueRutinaSaludable(){
-		Assert.assertFalse(matias.seguisDietaSaludable())
+		Assert.assertTrue(matias.seguisDietaSaludable())
 	}
 	
 	@Test
@@ -242,8 +247,10 @@ class TestUsuario {
 			   System.out.println(unCond.getCantidad)
 			]
 		] */
+		
 	}
 	
+
 	
 	
 	
