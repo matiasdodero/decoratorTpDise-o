@@ -27,7 +27,7 @@ class TestUsuario2{
 		pepe.nombre = null
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioSinPeso(){
 		//El usuario inicialmente es válido
@@ -57,7 +57,7 @@ class TestUsuario2{
 		pepe.altura = 0
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioConNombreCorto(){
 		//El usuario inicialmente es válido
@@ -67,7 +67,7 @@ class TestUsuario2{
 		pepe.nombre = "Any"
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioDiabeticoSinSexoConPreferencia(){
 		//El usuario inicialmente es válido
@@ -82,7 +82,7 @@ class TestUsuario2{
 		pepe.sexo = null
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioDiabeticoConSexoSinPreferencias(){
 		//El usuario inicialmente es válido
@@ -99,7 +99,7 @@ class TestUsuario2{
 		
 		Assert.assertTrue(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioHipertensoSinPreferencia(){
 		//El usuario inicialmente es válido
@@ -117,7 +117,7 @@ class TestUsuario2{
 		//Ahora que ya tiene preferencia, debe dar válido
 		Assert.assertTrue(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioVeganoConPreferenciaCarnivora(){
 		//El usuario inicialmente es válido
@@ -135,7 +135,7 @@ class TestUsuario2{
 		//Como la preferencia es Carne, debe dar inválido
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
 	@Test
 	def usuarioNacioEnElFuturo(){
 		//El usuario inicialmente es válido
@@ -147,7 +147,31 @@ class TestUsuario2{
 		//Ahora debe ser inválido
 		Assert.assertFalse(pepe.sosValido())
 	}
-	
+
+	@Test
+	def usuarioConImcDebajoDe18(){
+		pepe.altura = 1.7
+		pepe.peso = 50
+		
+		//El IMC = 17.3, debe dar no saludable
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+	}
+
+	@Test
+	def usuarioConImcPorEncimaDe30(){
+		pepe.altura = 1.6
+		pepe.peso = 77
+
+		//El IMC = 30.07, debe dar no saludable
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+	}
+
+	@Test
+	def usuarioConImcEnRango18a30(){
+		//El IMC = 24.61, sin precondiciones, es saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	}
+
 	@Test
 	def usuarioCeliacoConRutinaSaludable(){
 		//El usuario inicialmente sigue una rutina saludable, porque tiene el imc entre 18 y 30 y no tiene enfermedades
@@ -159,7 +183,7 @@ class TestUsuario2{
 		//Como los celíacos no cumplen condiciones, debería ser válido
 		Assert.assertTrue(pepe.seguisDietaSaludable())
 	}
-	
+
 	@Test
 	def usuarioVeganoConRutinaSaludable(){
 		//El usuario inicialmente sigue una rutina saludable
@@ -174,7 +198,61 @@ class TestUsuario2{
 		//Ahora le decimos que le gusta la fruta, y tiene que seguir una rutina saludable
 		pepe.agregarPrefer(new Ingrediente => [nombreIngrediente = "Manzana" tipoIngrediente = "fruta" calorias = 2])
 		
-		//Ahora debe seguir una dieta saludable
+		//Ahora debe seguir una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	}
+	
+	@Test
+	def usuarioHipertensoConRutinaSaludable(){
+		//El usuario inicialmente sigue una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+
+		//Le decimos a pepe que es Hipertenso
+		pepe.agregarCondicion(new Hipertenso())
+
+		//Es hipertenso, pero no subsana su condición todavía
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+
+		//Ahora le decimos a pepe que sigue una rutina activa intensiva con ejercicio adicional
+		pepe.rutinaE = tipoRutina.INTENSIVO
+
+		//Ahora debe seguir una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	}
+	
+	@Test
+	def usuarioDiabeticoConEjercicioYConRutinaSaludable(){
+		//El usuario inicialmente sigue una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	
+		//Le decimos a pepe que es Diabetico
+		pepe.agregarCondicion(new Diabetico())
+
+		//Es Diabético, pero no subsana su condición todavía
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+
+		//Ahora le decimos a pepe que sigue una rutina activa
+		pepe.rutinaE = tipoRutina.PREINTENSIVO
+
+		//Ahora debe seguir una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	}
+
+	@Test
+	def usuarioDiabeticoConBajoPesoYConRutinaSaludable(){
+		//El usuario inicialmente sigue una rutina saludable
+		Assert.assertTrue(pepe.seguisDietaSaludable())
+	
+		//Le decimos a pepe que es Diabetico
+		pepe.agregarCondicion(new Diabetico())
+
+		//Es Diabético, pero no subsana su condición todavía
+		Assert.assertFalse(pepe.seguisDietaSaludable())
+
+		//Ahora le decimos a pepe que es delgado
+		pepe.peso = 69
+
+		//Ahora debe seguir una rutina saludable
 		Assert.assertTrue(pepe.seguisDietaSaludable())
 	}
 }

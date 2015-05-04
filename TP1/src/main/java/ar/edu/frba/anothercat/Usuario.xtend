@@ -98,12 +98,12 @@ class Usuario {
 	}
 	
 	def public boolean seguisDietaSaludable(){
-		if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1) {
+		if (this.calcularImc <= 18 || this.calcularImc >= 30){
+			return false
+		}else if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1){
 			return true
-		} 
-		else
-		{
-		 return precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
+		}else{
+		 	return precondiciones.forall [precondicion | precondicion.subsanasteCondicionesPreEx(this)]
 		}
 	}
 	
