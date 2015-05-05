@@ -21,6 +21,8 @@ class TestUsuario {
 	Receta receta1
 	Receta receta2
 	Receta receta3
+	
+	Grupo PinPalls
 
 	@Before
 	def void init(){
@@ -32,7 +34,7 @@ class TestUsuario {
 			altura=1.41
 			sexo = "m"
 		//	agregarCondicion(hiperten) 
-		//	agregarCondicion(diabe)
+			agregarCondicion(diabe)
 		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
 		//	agregarPrefer(pollo)
@@ -82,12 +84,13 @@ class TestUsuario {
 			sumarCalorias(100)
 			esPublica = true
 			agregarIngrediente(ingrediente1)
-			agregarCondimento(condimento1)
 		]
 		
 		receta3 = new Receta =>[
 			setEsPublica(false)
 		]
+		
+		PinPalls = new Grupo
 
 	}
 	
@@ -251,6 +254,45 @@ class TestUsuario {
 	def void validarUsuario(){
 
 		matias.sosValido()
+	}
+	
+	@Test
+	def void validameAlGrupitoConUnaReceta(){
+
+	PinPalls.agregarReceta(receta1)
+	}
+	
+	@Test
+	def void validameAlGrupitoConUnaUsuario(){
+
+	PinPalls.agregarUsuario(matias)
+	}
+	
+	@Test
+	def void validameAlGrupitoenGral(){
+
+	PinPalls.agregarReceta(receta1)
+	PinPalls.agregarUsuario(matias)
+	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	}
+	
+	@Test
+	def void validameAlGrupitoenGral2(){
+
+	PinPalls.agregarUsuario(matias)
+	PinPalls.agregarReceta(receta1)
+	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	}
+	
+	@Test
+	def void validameAlGrupitoenGral3(){
+
+	PinPalls.agregarUsuario(matias)
+	PinPalls.agregarReceta(receta2)
+	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	

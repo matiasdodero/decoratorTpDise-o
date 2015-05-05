@@ -98,7 +98,7 @@ class Usuario {
 	}
 	
 	def public boolean seguisDietaSaludable(){
-		if (this.calcularImc <= 18 || this.calcularImc >= 30){
+		if (this.calcularImc <= 18 || this.calcularImc >= 30 && precondiciones.size < 1){
 			return false
 		}else if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1){
 			return true
