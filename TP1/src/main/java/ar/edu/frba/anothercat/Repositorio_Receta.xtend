@@ -6,12 +6,20 @@ import java.util.ArrayList
 class Repositorio_Receta {
 	List<Receta> Recetas_Publicas = new ArrayList<Receta>
 	
-	def boolean sugerirRecetaA(Usuario unUsu){
-		true
+	def List<Receta> sugerirRecetaA(Usuario unUsu){
+		var List<Receta> Recetas_Pu = new ArrayList<Receta>
+		for (item: Recetas_Publicas) {
+			if (item.sugerimeAlUsuario(unUsu) == true) {Recetas_Pu.add(item)}
+		}
+		return Recetas_Pu
 	}
 	
-	def boolean sugerirRecetaGrupo(Usuario unUsu){
-		true
+	def List<Receta> sugerirRecetaGrupo(Grupo unGru){
+		var List<Receta> Recetas_Pu = new ArrayList<Receta>
+		for (item: Recetas_Publicas) {
+			if (item.sugerimeAlGrupo(unGru) == true) {Recetas_Pu.add(item)}
+		}
+		return Recetas_Pu
 	}
 	
 	def boolean sosValido(){
