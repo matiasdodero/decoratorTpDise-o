@@ -177,5 +177,30 @@ class Receta {
 		] )
 		
 	}
+	
+	def boolean sugerimeAlUsuario(Usuario unUsuario){
+		for (item: this.decimeTusIngredientesTotales()){
+			if (unUsuario.disgustos.exists[unD | unD == item])
+			{return false}
+		}
+		return !(unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+ 
+	}
+	
+	def boolean sugerimeAlGrupo(Grupo unGrupo){
+		var boolean encontro = false
+		
+		for (item: this.decimeTusIngredientesTotales()){
+			if (unGrupo.preferencias.exists[unaP | unaP == item])
+			{encontro = true}
+		}
+		if (encontro == false){return false}
+		
+		for (item: unGrupo.misUsuarios){
+			if (item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+			{return false}
+		}
+ 
+	}
 		
 }
