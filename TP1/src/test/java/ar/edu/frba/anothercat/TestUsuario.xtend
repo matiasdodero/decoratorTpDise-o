@@ -22,6 +22,8 @@ class TestUsuario {
 	Condimento condimento2
 	Condimento condimento3
 	
+	Repositorio_Receta Repo1
+	
 	Receta receta1
 	Receta receta2
 	Receta receta3
@@ -99,11 +101,13 @@ class TestUsuario {
 		]
 		
 		receta3 = new Receta =>[
+			nombrePlato = "plato de receta 3"
 			setEsPublica(false)
 			agregarIngrediente(ingrediente1)
 		]
 		
 		receta4 = new Receta =>[
+			nombrePlato = "plato de receta 4"
 			setEsPublica(true)
 			agregarIngrediente(ingrediente3)
 		]
@@ -112,6 +116,7 @@ class TestUsuario {
 			agregarPreferencias(ingrediente3)
 			agregarPreferencias(ingrediente1)
 		]
+		Repo1 = new Repositorio_Receta
 
 	}
 	
@@ -368,7 +373,22 @@ class TestUsuario {
 	
 	@Test
 	def void sugerimeRecetasGrupos(){
-	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	Repo1.agregarRecetasPublicas(receta1)
+	Repo1.agregarRecetasPublicas(receta2)
+	Repo1.agregarRecetasPublicas(receta3)
+	Repo1.agregarRecetasPublicas(receta4)
+	//Repo1.sugerirRecetaA(matias)
+	Repo1.sugerirRecetaGrupo(PinPalls).forEach[unI | System.out.println(unI.getNombrePlato)]
+	}
+	
+	@Test
+	def void sugerimeRecetasUsuarios(){
+	Repo1.agregarRecetasPublicas(receta1)
+	Repo1.agregarRecetasPublicas(receta2)
+	Repo1.agregarRecetasPublicas(receta3)
+	Repo1.agregarRecetasPublicas(receta4)
+	//Repo1.sugerirRecetaA(matias)
+	Repo1.sugerirRecetaA(matias).forEach[unI | System.out.println(unI.getNombrePlato)]
 	}
 	
 	

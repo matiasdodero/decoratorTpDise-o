@@ -2,7 +2,9 @@ package ar.edu.frba.anothercat
 
 import java.util.List
 import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Repositorio_Receta {
 	List<Receta> Recetas_Publicas = new ArrayList<Receta>
 	
@@ -27,9 +29,7 @@ class Repositorio_Receta {
 	}
 	
 	def public void agregarRecetasPublicas(Receta unaR) {
-
 		Recetas_Publicas.add(unaR)
-
 	}
 		
 	
