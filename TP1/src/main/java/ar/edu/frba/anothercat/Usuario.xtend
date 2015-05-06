@@ -92,6 +92,12 @@ class Usuario {
 
 	}	
 	
+	def public void agregarDisgusto(Ingrediente unDisgusto) {
+
+		disgustos.add(unDisgusto)
+
+	}	
+	
 	def double calcularImc()
 	{
 		return peso/(altura*altura)

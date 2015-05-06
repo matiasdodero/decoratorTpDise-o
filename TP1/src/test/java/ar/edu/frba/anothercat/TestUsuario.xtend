@@ -13,6 +13,10 @@ class TestUsuario {
 	
 	Ingrediente ingrediente1
 	Ingrediente ingrediente2
+	Ingrediente ingrediente3
+	Ingrediente ingrediente4
+	Ingrediente ingrediente5
+	Ingrediente ingrediente6
 	
 	Condimento condimento1
 	Condimento condimento2
@@ -21,13 +25,14 @@ class TestUsuario {
 	Receta receta1
 	Receta receta2
 	Receta receta3
+	Receta receta4
 	
 	Grupo PinPalls
 
 	@Before
 	def void init(){
 	    matias = new Usuario => [
-	    	nombre = "matias"
+	    	setNombre("matias")
 	    	fech = "05-29-1989"
 //	    	rutina = "dsad"
 			peso=90
@@ -40,6 +45,7 @@ class TestUsuario {
 		//	agregarPrefer(pollo)
 			agregarPrefer(lechuga)
 		//	agregarPrefer(carne)
+			agregarDisgusto(ingrediente3)
 			rutinaE = tipoRutina.PREINTENSIVO
 		] 
 		
@@ -50,6 +56,11 @@ class TestUsuario {
 
 		ingrediente2 = new Ingrediente => [
 			setNombreIngrediente("agua")
+			setCalorias(20)
+		]
+		
+		ingrediente3 = new Ingrediente => [
+			setNombreIngrediente("polenta")
 			setCalorias(20)
 		]
 		
@@ -83,14 +94,24 @@ class TestUsuario {
 			setEsPublica(true)
 			sumarCalorias(100)
 			esPublica = true
-			agregarIngrediente(ingrediente1)
+			agregarIngrediente(ingrediente2)
+			agregarCondimento(condimento2)
 		]
 		
 		receta3 = new Receta =>[
 			setEsPublica(false)
+			agregarIngrediente(ingrediente1)
 		]
 		
-		PinPalls = new Grupo
+		receta4 = new Receta =>[
+			setEsPublica(true)
+			agregarIngrediente(ingrediente3)
+		]
+		
+		PinPalls = new Grupo =>[
+			agregarPreferencias(ingrediente3)
+			agregarPreferencias(ingrediente1)
+		]
 
 	}
 	
@@ -273,8 +294,8 @@ class TestUsuario {
 
 	PinPalls.agregarReceta(receta1)
 	PinPalls.agregarUsuario(matias)
-	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	@Test
@@ -282,8 +303,8 @@ class TestUsuario {
 
 	PinPalls.agregarUsuario(matias)
 	PinPalls.agregarReceta(receta1)
-	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	@Test
@@ -291,9 +312,58 @@ class TestUsuario {
 
 	PinPalls.agregarUsuario(matias)
 	PinPalls.agregarReceta(receta2)
-	PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
+	@Test
+	def void sugerimeUnaRecAlUsuario(){
+	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertFalse(receta1.sugerimeAlUsuario(matias))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlUsuario2(){
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertTrue(receta2.sugerimeAlUsuario(matias))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlUsuario3(){
+	//receta4.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertFalse(receta4.sugerimeAlUsuario(matias))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlGrupo(){
+	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPalls))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlGrupo2(){
+	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertFalse(receta2.sugerimeAlGrupo(PinPalls))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlGrupo3(){
+	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	PinPalls.agregarUsuario(matias)
+	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	}
+	
+	@Test
+	def void sugerimeUnaRecAlGrupo4(){
+	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
+	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPalls))
+	PinPalls.agregarUsuario(matias)
+	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	}
 	
 }

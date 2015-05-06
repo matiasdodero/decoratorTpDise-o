@@ -44,4 +44,10 @@ class Grupo {
 		
 	}
 	
+	def public void agregarPreferencias(Ingrediente unaP) {
+
+		preferencias.add(unaP)
+
+	}
+	
 }

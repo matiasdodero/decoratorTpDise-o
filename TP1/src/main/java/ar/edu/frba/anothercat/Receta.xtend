@@ -179,27 +179,43 @@ class Receta {
 	}
 	
 	def boolean sugerimeAlUsuario(Usuario unUsuario){
-		for (item: this.decimeTusIngredientesTotales()){
+		
+		var List<Ingrediente> auxIng = new ArrayList<Ingrediente>
+		auxIng = this.decimeTusIngredientesTotales()
+		for (item: auxIng){
+			//System.out.println(item.getNombreIngrediente)
 			if (unUsuario.disgustos.exists[unD | unD == item])
-			{return false}
+			{  
+				return false
+			}
 		}
 		return !(unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
  
 	}
 	
 	def boolean sugerimeAlGrupo(Grupo unGrupo){
-		var boolean encontro = false
 		
-		for (item: this.decimeTusIngredientesTotales()){
+		var boolean encontro = false
+		var List<Ingrediente> auxIng = new ArrayList<Ingrediente>
+		auxIng = this.decimeTusIngredientesTotales()
+		
+		for (item: auxIng){
 			if (unGrupo.preferencias.exists[unaP | unaP == item])
 			{encontro = true}
 		}
-		if (encontro == false){return false}
+		if (encontro == false){
+			//System.out.println("no encontro nada 1")
+			return false
+		}
 		
 		for (item: unGrupo.misUsuarios){
 			if (item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
-			{return false}
+			{
+				//System.out.println("no encontro nada 2")
+				return false
+			}
 		}
+		return true
  
 	}
 		
