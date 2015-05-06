@@ -366,4 +366,10 @@ class TestUsuario {
 	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
 	}
 	
+	@Test
+	def void sugerimeRecetasGrupos(){
+	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	}
+	
+	
 }

@@ -25,6 +25,12 @@ class Repositorio_Receta {
 	def boolean sosValido(){
 		true
 	}
+	
+	def public void agregarRecetasPublicas(Receta unaR) {
+
+		Recetas_Publicas.add(unaR)
+
+	}
 		
 	
 	}
