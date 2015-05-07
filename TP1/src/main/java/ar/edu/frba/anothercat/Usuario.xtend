@@ -19,6 +19,7 @@ class Usuario {
 	List<Ingrediente> preferencias = new ArrayList<Ingrediente>
 	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	List<Receta> misRecetas = new ArrayList<Receta>
+	List<Receta> favoritas = new ArrayList<Receta>
 //	String rutina
 	private tipoRutina rutinaE
 	
@@ -151,6 +152,22 @@ class Usuario {
 		}
 		
 	}
+	
+	
+	def public agregarRecetaFavorita(Receta unaReceta) {
+			
+		if (unaReceta.validar())
+		{  
+			if (precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)]) 
+			{	throw new NoCumpleRequisitosException("No es apto")}
+			else{
+				favoritas.add(unaReceta)	
+			}
+
+		}
+		
+	}
+	
 	
 	def public eliminarReceta(Receta unaReceta) {
 									

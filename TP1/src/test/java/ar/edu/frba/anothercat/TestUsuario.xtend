@@ -40,7 +40,7 @@ class TestUsuario {
 			peso=90
 			altura=1.41
 			sexo = "m"
-			agregarCondicion(hiperten) 
+		//	agregarCondicion(hiperten) 
 			agregarCondicion(diabe)
 		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
@@ -102,7 +102,7 @@ class TestUsuario {
 		
 		receta3 = new Receta =>[
 			nombrePlato = "plato de receta 3"
-			setEsPublica(false)
+			setEsPublica(true)
 			agregarIngrediente(ingrediente1)
 		]
 		
@@ -378,7 +378,7 @@ class TestUsuario {
 	Repo1.agregarRecetasPublicas(receta2)
 	Repo1.agregarRecetasPublicas(receta3)
 	Repo1.agregarRecetasPublicas(receta4)
-	Repo1.sugerirRecetaGrupo(PinPalls).forEach[unI | System.out.println(unI.getNombrePlato)]
+	//Repo1.sugerirRecetaGrupo(PinPalls).forEach[unI | System.out.println(unI.getNombrePlato)]
 	}
 	
 	@Test
@@ -389,6 +389,20 @@ class TestUsuario {
 	Repo1.agregarRecetasPublicas(receta4)
 	//Repo1.sugerirRecetaA(matias)
 	//Repo1.sugerirRecetaA(matias).forEach[unI | System.out.println(unI.getNombrePlato)]
+	}
+	
+	@Test
+	def void agregameFavorita1(){
+	matias.agregarRecetaFavorita(receta1)
+	matias.favoritas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)]
+	}
+	
+	@Test
+	def void agregameFavorita2(){
+	matias.agregarRecetaFavorita(receta2)
+	matias.favoritas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)]
 	}
 	
 	
