@@ -182,6 +182,9 @@ class Receta {
 		
 		var List<Ingrediente> auxIng = new ArrayList<Ingrediente>
 		auxIng = this.decimeTusIngredientesTotales()
+		
+		if (unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+		 {return false}
 		for (item: auxIng){
 			//System.out.println(item.getNombreIngrediente)
 			if (unUsuario.disgustos.exists[unD | unD == item])
@@ -189,7 +192,8 @@ class Receta {
 				return false
 			}
 		}
-		return !(unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+		return true
+		
  
 	}
 	

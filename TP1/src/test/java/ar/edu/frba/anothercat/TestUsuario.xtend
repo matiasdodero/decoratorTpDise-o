@@ -40,7 +40,7 @@ class TestUsuario {
 			peso=90
 			altura=1.41
 			sexo = "m"
-		//	agregarCondicion(hiperten) 
+			agregarCondicion(hiperten) 
 			agregarCondicion(diabe)
 		//	agregarCondicion(vegano) 
 			agregarPrefer(manzana)
@@ -373,11 +373,11 @@ class TestUsuario {
 	
 	@Test
 	def void sugerimeRecetasGrupos(){
+	PinPalls.agregarUsuario(matias)
 	Repo1.agregarRecetasPublicas(receta1)
 	Repo1.agregarRecetasPublicas(receta2)
 	Repo1.agregarRecetasPublicas(receta3)
 	Repo1.agregarRecetasPublicas(receta4)
-	//Repo1.sugerirRecetaA(matias)
 	Repo1.sugerirRecetaGrupo(PinPalls).forEach[unI | System.out.println(unI.getNombrePlato)]
 	}
 	
@@ -388,7 +388,7 @@ class TestUsuario {
 	Repo1.agregarRecetasPublicas(receta3)
 	Repo1.agregarRecetasPublicas(receta4)
 	//Repo1.sugerirRecetaA(matias)
-	Repo1.sugerirRecetaA(matias).forEach[unI | System.out.println(unI.getNombrePlato)]
+	//Repo1.sugerirRecetaA(matias).forEach[unI | System.out.println(unI.getNombrePlato)]
 	}
 	
 	
