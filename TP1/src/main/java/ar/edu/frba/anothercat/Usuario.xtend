@@ -261,6 +261,21 @@ class Usuario {
     def void solicitarAgregarmeAlGrupo(Grupo unGrupo){
     	unGrupo.agregarUsuario(this)
     }
+    
+    
+    def List<Receta> decimeTodasTusRecetas(Repositorio_Receta unRepo){
+    var List<Receta> Rece = new ArrayList<Receta>
+    for (item: unRepo.getRecetas_Publicas){Rece.add(item)}
+    for (itGru: this.getMisGrupos ) {
+    	for (itGruRe: itGru.getMisRecetas) {
+    		Rece.add(itGruRe)
+    	}
+    }
+    for (misR: this.getMisRecetas){
+    	Rece.add(misR)
+    }
+    return Rece
+    }
    
  }
 

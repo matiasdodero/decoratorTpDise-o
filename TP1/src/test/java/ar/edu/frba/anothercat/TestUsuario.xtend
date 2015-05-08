@@ -407,5 +407,24 @@ class TestUsuario {
  	//	    System.out.println(unaR.getNombrePlato)]
 	}
 	
+	@Test
+	def void puedoVerTodas(){
+	matias.agregarReceta(receta2)
+	Repo1.agregarRecetasPublicas(receta1)
+	Repo1.agregarRecetasPublicas(receta2)
+	Repo1.agregarRecetasPublicas(receta3)
+	Repo1.agregarRecetasPublicas(receta4)
+	PinPals.agregarUsuario(matias)
+	PinPals.agregarReceta(receta2)
+	matias.decimeTodasTusRecetas(Repo1).forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)]
+    /*PinPals.misRecetas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)]
+ 	matias.misRecetas.forEach[unaR | 
+ 		    System.out.println(unaR.getNombrePlato)]
+ 	System.out.println(matias.getMisRecetas.size)*/
+	}
+	
+	
 	
 }
