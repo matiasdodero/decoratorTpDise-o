@@ -29,7 +29,7 @@ class TestUsuario {
 	Receta receta3
 	Receta receta4
 	
-	Grupo PinPalls
+	Grupo PinPals
 
 	@Before
 	def void init(){
@@ -112,7 +112,8 @@ class TestUsuario {
 			agregarIngrediente(ingrediente3)
 		]
 		
-		PinPalls = new Grupo =>[
+		PinPals = new Grupo =>[
+			setNombre("PinPals")
 			agregarPreferencias(ingrediente3)
 			agregarPreferencias(ingrediente1)
 		]
@@ -285,40 +286,41 @@ class TestUsuario {
 	@Test
 	def void validameAlGrupitoConUnaReceta(){
 
-	PinPalls.agregarReceta(receta1)
+	PinPals.agregarReceta(receta1)
 	}
 	
 	@Test
 	def void validameAlGrupitoConUnaUsuario(){
 
-	PinPalls.agregarUsuario(matias)
+	PinPals.agregarUsuario(matias)
 	}
 	
 	@Test
 	def void validameAlGrupitoenGral(){
 
-	PinPalls.agregarReceta(receta1)
-	PinPalls.agregarUsuario(matias)
-	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	PinPals.agregarReceta(receta1)
+	PinPals.agregarUsuario(matias)
+	//PinPals.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	//PinPals.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	@Test
 	def void validameAlGrupitoenGral2(){
 
-	PinPalls.agregarUsuario(matias)
-	PinPalls.agregarReceta(receta1)
-	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	PinPals.agregarUsuario(matias)
+	PinPals.agregarReceta(receta1)
+	PinPals.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	PinPals.misUsuarios.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	@Test
 	def void validameAlGrupitoenGral3(){
 
-	PinPalls.agregarUsuario(matias)
-	PinPalls.agregarReceta(receta2)
-	//PinPalls.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
-	//PinPalls.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	PinPals.agregarUsuario(matias)
+	PinPals.agregarReceta(receta2)
+	PinPals.misRecetas.forEach[u | System.out.println(u.getNombrePlato)]
+	PinPals.misUsuarios.forEach[u | System.out.println(u.getNombre)]
+	matias.misGrupos.forEach[u | System.out.println(u.getNombre)]
 	}
 	
 	@Test
@@ -344,41 +346,41 @@ class TestUsuario {
 	def void sugerimeUnaRecAlGrupo(){
 	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
 	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
-	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPalls))
+	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPals))
 	}
 	
 	@Test
 	def void sugerimeUnaRecAlGrupo2(){
 	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
 	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
-	Assert.assertFalse(receta2.sugerimeAlGrupo(PinPalls))
+	Assert.assertFalse(receta2.sugerimeAlGrupo(PinPals))
 	}
 	
 	@Test
 	def void sugerimeUnaRecAlGrupo3(){
 	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
 	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
-	PinPalls.agregarUsuario(matias)
-	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	PinPals.agregarUsuario(matias)
+	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPals))
 	}
 	
 	@Test
 	def void sugerimeUnaRecAlGrupo4(){
 	//receta1.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
 	//receta2.decimeTusIngredientesTotales().forEach[unI | System.out.println(unI.getNombreIngrediente)]
-	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPalls))
-	PinPalls.agregarUsuario(matias)
-	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPalls))
+	Assert.assertTrue(receta1.sugerimeAlGrupo(PinPals))
+	PinPals.agregarUsuario(matias)
+	Assert.assertFalse(receta1.sugerimeAlGrupo(PinPals))
 	}
 	
 	@Test
 	def void sugerimeRecetasGrupos(){
-	PinPalls.agregarUsuario(matias)
+	PinPals.agregarUsuario(matias)
 	Repo1.agregarRecetasPublicas(receta1)
 	Repo1.agregarRecetasPublicas(receta2)
 	Repo1.agregarRecetasPublicas(receta3)
 	Repo1.agregarRecetasPublicas(receta4)
-	//Repo1.sugerirRecetaGrupo(PinPalls).forEach[unI | System.out.println(unI.getNombrePlato)]
+	//Repo1.sugerirRecetaGrupo(PinPals).forEach[unI | System.out.println(unI.getNombrePlato)]
 	}
 	
 	@Test
@@ -394,15 +396,15 @@ class TestUsuario {
 	@Test
 	def void agregameFavorita1(){
 	matias.agregarRecetaFavorita(receta1)
-	matias.favoritas.forEach[unaR | 
- 		    System.out.println(unaR.getNombrePlato)]
+	//matias.favoritas.forEach[unaR | 
+ 	//	    System.out.println(unaR.getNombrePlato)]
 	}
 	
 	@Test
 	def void agregameFavorita2(){
 	matias.agregarRecetaFavorita(receta2)
-	matias.favoritas.forEach[unaR | 
- 		    System.out.println(unaR.getNombrePlato)]
+	//matias.favoritas.forEach[unaR | 
+ 	//	    System.out.println(unaR.getNombrePlato)]
 	}
 	
 	

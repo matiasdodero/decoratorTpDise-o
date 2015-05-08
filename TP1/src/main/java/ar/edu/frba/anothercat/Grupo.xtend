@@ -21,7 +21,8 @@ class Grupo {
 			if ( unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(item)])
 			{apto = false}
 		}
-		if (apto == true) {misUsuarios.add(unUsuario)}
+		if (apto == true) {misUsuarios.add(unUsuario)
+						   unUsuario.misGrupos.add(this)}
 		else 
     	{
     		throw new NoCumpleRequisitosException("No puede agregar el usuario por alguna receta o preferencia")

@@ -19,6 +19,7 @@ class Usuario {
 	List<Ingrediente> preferencias = new ArrayList<Ingrediente>
 	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	List<Receta> misRecetas = new ArrayList<Receta>
+	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> favoritas = new ArrayList<Receta>
 //	String rutina
 	private tipoRutina rutinaE
@@ -257,20 +258,9 @@ class Usuario {
     	
     }
     
-    /*def void modificarTemporada(Receta unaReceta, Temporada unaTemporada){
-
-		
-    	if(puedoModificarReceta(unaReceta) == true){
-    		
-    			unaReceta.add(unaTemporada)
-    	}
-    	
-    	else 
-    	{
-    		throw new NoCumpleRequisitosException("No puede modificar los condimentos de la Receta ")
-    	}    	
-    	
-    }*/
+    def void solicitarAgregarmeAlGrupo(Grupo unGrupo){
+    	unGrupo.agregarUsuario(this)
+    }
    
  }
 
