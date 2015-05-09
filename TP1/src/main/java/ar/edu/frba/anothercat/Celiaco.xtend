@@ -13,3 +13,5 @@ class Celiaco implements CondicionPreexistente {
 		return false
 	}
 }
+
+//El celíaco está mas solo pobre...

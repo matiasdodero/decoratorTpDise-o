@@ -224,7 +224,7 @@ class Receta {
 	}
 		
 }
-
+// Comentario en el branch de decorador
 public enum estadoReceta {
    	Publica,
    	Privada,
