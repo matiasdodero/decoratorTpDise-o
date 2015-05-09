@@ -117,11 +117,11 @@ class Usuario {
 	
 	def boolean puedoVerReceta(Receta unaReceta){
 		
-		return (unaReceta.esPublica || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+		return (unaReceta.getEstado == 1 || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
 		
 	}
 	 def boolean puedoModificarReceta(Receta unaReceta){
-	 	return ( unaReceta.esPublica || !(unaReceta.esPublica) 
+	 	return ( unaReceta.getEstado == estadoReceta.Publica || !(unaReceta.getEstado == estadoReceta.Publica) 
 	 		&& this.misRecetas.exists[unaRec| unaRec == unaReceta]
 	 	)
 	}
@@ -144,8 +144,8 @@ class Usuario {
 		{  
 			if (precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)]) 
 			{	throw new NoCumpleRequisitosException("No es apto")}
-			else{
-				unaNuevaR.esPublica = false
+			else{ 
+				unaNuevaR.setEstado(estadoReceta.Privada)
 				misRecetas.add(unaNuevaR)
 				
 			}

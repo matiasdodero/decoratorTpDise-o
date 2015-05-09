@@ -83,7 +83,7 @@ class TestUsuario {
 		receta1 = new Receta => [
 		nombrePlato = "plato de receta 1"
 		sumarCalorias(100)
-		esPublica = true
+		estado = estadoReceta.Publica
 		agregarIngrediente(ingrediente1)
 		agregarCondimento(condimento1)
 		//agregarCondimento(condimento2)
@@ -93,22 +93,21 @@ class TestUsuario {
 			
 		receta2 = new Receta =>[
 		    nombrePlato = "plato de receta 2"
-			setEsPublica(true)
 			sumarCalorias(100)
-			esPublica = true
+			estado = estadoReceta.Publica
 			agregarIngrediente(ingrediente2)
 			agregarCondimento(condimento2)
 		]
 		
 		receta3 = new Receta =>[
 			nombrePlato = "plato de receta 3"
-			setEsPublica(true)
+			estado = estadoReceta.Publica
 			agregarIngrediente(ingrediente1)
 		]
 		
 		receta4 = new Receta =>[
 			nombrePlato = "plato de receta 4"
-			setEsPublica(true)
+			estado = estadoReceta.Publica
 			agregarIngrediente(ingrediente3)
 		]
 		

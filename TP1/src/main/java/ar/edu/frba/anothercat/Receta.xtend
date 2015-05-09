@@ -15,7 +15,7 @@ class Receta {
 	int totalCalorias = 0
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
-	boolean esPublica
+	estadoReceta estado
 	List<Receta> compuestaDe = new ArrayList<Receta>
 
 	def void agregarIngrediente(Ingrediente unIngrediente) {
@@ -224,3 +224,9 @@ class Receta {
 	}
 		
 }
+
+public enum estadoReceta {
+   	Publica,
+   	Privada,
+   	Compartida;   	
+   }

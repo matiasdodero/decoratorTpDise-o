@@ -32,11 +32,26 @@ class Grupo {
 	
 	def agregarReceta(Receta unaReceta){
 		var boolean apto = true
+		
+		var Receta unaNuevaR = new Receta
+		
+		unaNuevaR.setNombrePlato(unaReceta.getNombrePlato)
+		unaNuevaR.setIngredientes(unaReceta.getIngredientes)
+		unaNuevaR.setCondimentos(unaReceta.getCondimentos)
+		unaNuevaR.setPasos(unaReceta.getPasos)
+		unaNuevaR.setCondiciones(unaReceta.getCondiciones)
+		unaNuevaR.setTotalCalorias(unaReceta.getTotalCalorias)
+		unaNuevaR.setDificultad(unaReceta.getDificultad)
+		unaNuevaR.setTemporadas(unaReceta.getTemporadas)
+		
 		for (item: misUsuarios){
 			if ( item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)])
 			{apto = false}
 		}
-		if (apto == true) {misRecetas.add(unaReceta)}
+		if (apto == true) {
+			unaNuevaR.setEstado(estadoReceta.Compartida)
+			misRecetas.add(unaNuevaR)
+		}
 		else 
     	{
     		throw new NoCumpleRequisitosException("No puede agregar la receta por algun usuario ")
