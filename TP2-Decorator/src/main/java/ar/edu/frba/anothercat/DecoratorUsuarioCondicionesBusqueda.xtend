@@ -1,5 +1,10 @@
 package ar.edu.frba.anothercat
 
-class DecoratorUsuarioCondicionesBusqueda implements Usuario{
+import java.util.List
+
+abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 	
+	override List<Receta> filtro1 (List<Receta> recetas, UsuarioPosta usuario)
+	
+	override boolean filtro2 (Receta recetas, UsuarioPosta usuario)
 }
