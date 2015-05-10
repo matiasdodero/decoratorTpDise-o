@@ -1,8 +1,6 @@
 package ar.edu.frba.anothercat
 
-import java.text.SimpleDateFormat
 import java.util.ArrayList
-import java.util.Calendar
 import java.util.Date
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -15,7 +13,8 @@ class UsuarioPosta implements Usuario{
 	
 	String nombre
 	String sexo
-	String fech
+	//String fech
+	Date fechaDeNacimiento
 	double altura
 	int peso
 	List<CondicionPreexistente> precondiciones = new ArrayList<CondicionPreexistente>	
@@ -29,7 +28,8 @@ class UsuarioPosta implements Usuario{
 	
 	def boolean sosValido() {
 
-		if ((nombre == null) || (peso == 0) || (altura == 0) || (fech == null) || (rutinaE.equals(null))) {
+		//if ((nombre == null) || (peso == 0) || (altura == 0) || (fech == null) || (rutinaE.equals(null))) {
+		if ((nombre == null) || (peso == 0) || (altura == 0) || (fechaDeNacimiento == null) || (rutinaE.equals(null))) {
 			return false
 		}
 		if (nombre.length() <= 4)
@@ -42,7 +42,9 @@ class UsuarioPosta implements Usuario{
 			{return false} 		
 		}
          
-         if (validaFechNacim() == false )  
+        // if (validaFechNacim() == false )
+        
+         if(!validaFechaNacimiento())  
          
          {  System.out.println("dio en 4")
          	return false
@@ -51,37 +53,41 @@ class UsuarioPosta implements Usuario{
 		return true	
 	}
 	
-	    def Date convertirFecha(String unafech) {
-		var SimpleDateFormat formatoDelTexto
-		
-		formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
-		var Date fecha
-        
-		fecha = formatoDelTexto.parse(unafech);
-		
-		return fecha
+	def validaFechaNacimiento() {
+		fechaDeNacimiento < new Date()
 	}
 	
-		def Date dameElDiaDeHoy() {
-
-		var SimpleDateFormat formatoDelTexto
-		var Calendar cal  = Calendar.getInstance();
+	  //  def Date convertirFecha(String unafech) {
+	//	var SimpleDateFormat formatoDelTexto
+	//	
+	//	formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
+	//	var Date fecha
+        
+	//	fecha = formatoDelTexto.parse(unafech);
 		
-		formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
+		//return fecha
+	//}
+	
+	//	def Date dameElDiaDeHoy() {
+//
+	//	var SimpleDateFormat formatoDelTexto
+	//	var Calendar cal  = Calendar.getInstance();
+	//	
+	//	formatoDelTexto = new SimpleDateFormat("MM-dd-yyyy");
         
-		var Date fecha
+	//	var Date fecha
         
-		fecha = formatoDelTexto.parse(formatoDelTexto.format(cal.getTime()));
-		return fecha
-	}
-	def public boolean validaFechNacim() {
+	//	fecha = formatoDelTexto.parse(formatoDelTexto.format(cal.getTime()));
+	//	return fecha
+	//}
+	//def public boolean validaFechNacim() {
 
-          if (this.convertirFecha(fech).before(dameElDiaDeHoy())) {
-          	return true
-          }
-          else {return false}
+     //     if (this.convertirFecha(fech).before(dameElDiaDeHoy())) {
+      //    	return true
+     //     }
+      //    else {return false}
 
-	    }
+	  //  }
 
 	
 	def public void agregarCondicion(CondicionPreexistente unaCond) {
