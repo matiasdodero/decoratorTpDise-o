@@ -7,7 +7,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-abstract class UsuarioPosta implements Usuario {
+abstract class UsuarioPosta extends Usuario {
 
 	String nombre
 	String sexo

@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 import java.util.List
 
-public interface Usuario {
+public abstract class Usuario {
 	
 	def List<Receta> filtro1 (List<Receta> recetas, UsuarioPosta usuario)
 	
