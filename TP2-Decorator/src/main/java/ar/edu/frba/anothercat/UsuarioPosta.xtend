@@ -7,7 +7,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class UsuarioPosta  {
+class UsuarioPosta {
 
 	String nombre
 	String sexo
@@ -258,6 +258,13 @@ class UsuarioPosta  {
 		recetas = listaDeRecetas
 		recetas = filtro.filtro1(listaDeRecetas, this)
 		return recetas
+	}
+
+	def Iterable<Receta> ordenarRecetasPorProcesoPosterior(Iterable<Receta> recetas, DecoratorProcesamientoPosterior proceso) {
+		var Iterable<Receta> recetasFiltradas = new ArrayList<Receta>
+		recetasFiltradas = recetas
+		recetasFiltradas = proceso.procesar(recetas)
+		return recetasFiltradas.toList()
 	}
 
 }
