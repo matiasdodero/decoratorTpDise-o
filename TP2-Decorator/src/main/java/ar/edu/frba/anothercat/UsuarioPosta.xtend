@@ -24,6 +24,7 @@ class UsuarioPosta  {
 	List<Receta> favoritas = new ArrayList<Receta>
 	private tipoRutina rutinaE
 	List<DecoratorUsuarioCondicionesBusqueda> filtros = new ArrayList<DecoratorUsuarioCondicionesBusqueda>
+	List<DecoratorProcesamientoPosterior> procesamientos = new ArrayList<DecoratorProcesamientoPosterior>
 
 	def boolean sosValido() {
 
