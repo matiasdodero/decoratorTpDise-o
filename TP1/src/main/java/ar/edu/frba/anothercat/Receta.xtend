@@ -203,6 +203,8 @@ class Receta {
 		var List<Ingrediente> auxIng = new ArrayList<Ingrediente>
 		auxIng = this.decimeTusIngredientesTotales()
 		
+		if (!(unGrupo.getPreferencias.empty))
+		{
 		for (item: auxIng){
 			if (unGrupo.preferencias.exists[unaP | unaP == item])
 			{encontro = true}
@@ -210,7 +212,7 @@ class Receta {
 		if (encontro == false){
 			//System.out.println("no encontro nada 1")
 			return false
-		}
+		}}
 		
 		for (item: unGrupo.misUsuarios){
 			if (item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
