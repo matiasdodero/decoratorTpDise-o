@@ -2,9 +2,9 @@ package ar.edu.frba.anothercat
 
 import java.util.List
 
-public abstract class DecoratorUsuarioCondicionesBusqueda extends Usuario{
+public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 	
-	override List<Receta> filtrarRecetasSegunCriterio1 (List<Receta> recetas, UsuarioPosta usuario)
+	def List<Receta> filtrarRecetasSegunCriterio1 (List<Receta> recetas, UsuarioPosta usuario)
 	
-	override boolean filtrarRecetasSegunCriterio2 (Receta recetas, UsuarioPosta usuario)
+	def boolean filtrarRecetasSegunCriterio2 (Receta recetas, UsuarioPosta usuario)
 }

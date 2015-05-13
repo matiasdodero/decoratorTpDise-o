@@ -4,7 +4,7 @@ import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
 
-abstract class OrdenarPorPares extends DecoratorProcesamientoPosterior {
+class OrdenarPorPares extends DecoratorProcesamientoPosterior {
 
 	override procesar(Iterable<Receta> recetas) {
 

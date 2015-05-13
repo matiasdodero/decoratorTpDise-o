@@ -2,7 +2,7 @@ package ar.edu.frba.anothercat
 
 import java.util.HashSet
 
-abstract class OrdenarAlfabeticamente extends DecoratorProcesamientoPosterior {
+class OrdenarAlfabeticamente extends DecoratorProcesamientoPosterior {
 	
 	override procesar (Iterable<Receta> recetas){
 		
