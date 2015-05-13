@@ -1,5 +1,5 @@
 package ar.edu.frba.anothercat
 
-class TestUsuario {
+class TestUsuarioPosta {
 	
 }
