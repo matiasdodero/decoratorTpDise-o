@@ -411,7 +411,7 @@ class TestUsuarioPosta {
 
 	@Test
 	def void sugerirRecetaAlUsuario3() {
-		receta4.decimeTusIngredientesTotales().forEach[unI|System.out.println(unI.getNombreIngrediente)]
+		
 		Assert.assertFalse(receta4.sugerimeAlUsuario(matias))
 	}
 
