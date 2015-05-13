@@ -5,7 +5,7 @@ import java.util.List
 
 class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
 	
-	override List<Receta> filtro1 (List<Receta> recetas, UsuarioPosta usuario){
+	override List<Receta> filtrarRecetasSegunCriterio1 (List<Receta> recetas, UsuarioPosta usuario){
 		
 		var List<Receta> recetasCaras = new ArrayList<Receta>
 		return recetasCaras = recetas.filter[ receta | receta.getIngredientes.forall(ingrediente | !ingrediente.ingredienteCaro())].toList()
@@ -13,7 +13,7 @@ class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
 				
 	}
 	
-	override filtro2 (Receta receta, UsuarioPosta usuario){
+	override filtrarRecetasSegunCriterio2 (Receta receta, UsuarioPosta usuario){
 		return receta.getIngredientes.forall(ingrediente | !ingrediente.ingredienteCaro() )
 	}
 	

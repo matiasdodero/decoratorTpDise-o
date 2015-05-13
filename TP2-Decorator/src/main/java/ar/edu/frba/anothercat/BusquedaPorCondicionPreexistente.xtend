@@ -5,7 +5,7 @@ import java.util.List
 
 class BusquedaPorCondicionPreexistente extends DecoratorUsuarioCondicionesBusqueda {
 	
-		override filtro1 (List<Receta> recetas, UsuarioPosta usuario){
+		override filtrarRecetasSegunCriterio1 (List<Receta> recetas, UsuarioPosta usuario){
 		
 		var List<Receta> recetaCondiciones = new ArrayList<Receta>
 		
@@ -14,8 +14,10 @@ class BusquedaPorCondicionPreexistente extends DecoratorUsuarioCondicionesBusque
 		
 	}
 	
-	override filtro2 (Receta recetas, UsuarioPosta usuario){
+	override filtrarRecetasSegunCriterio2 (Receta recetas, UsuarioPosta usuario){
 		return !( usuario.precondiciones.exists[ precond | precond.esInadecuadaPara(recetas) ] )
 	}
+	
+	
 	
 }

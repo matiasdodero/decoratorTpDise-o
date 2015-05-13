@@ -222,7 +222,7 @@ class UsuarioPosta {
 		return Rece
 	}
 
-	def List<Receta> filtro3(Repositorio_Receta repositorio) {
+	def List<Receta> filtrarRepositorioDeRecetas(Repositorio_Receta repositorio) {
 
 		var List<Receta> todasLasRecetas = new ArrayList<Receta>
 		var List<Receta> recetasFiltradas = new ArrayList<Receta>
@@ -230,7 +230,7 @@ class UsuarioPosta {
 		todasLasRecetas = this.decimeTodasTusRecetas(repositorio).toList()
 
 		recetasFiltradas = (todasLasRecetas.filter[receta|
-			!(this.getFiltros.exists[filtro|filtro.filtro2(receta, this)])] ).toList()
+			!(this.getFiltros.exists[filtro|filtro.filtrarRecetasSegunCriterio2(receta, this)])] ).toList()
 		return (recetasFiltradas)
 
 	}
@@ -256,7 +256,7 @@ class UsuarioPosta {
 	def List<Receta> filtroRec(List<Receta> listaDeRecetas, DecoratorUsuarioCondicionesBusqueda filtro) {
 		var List<Receta> recetas = new ArrayList<Receta>
 		recetas = listaDeRecetas
-		recetas = filtro.filtro1(listaDeRecetas, this)
+		recetas = filtro.filtrarRecetasSegunCriterio1(listaDeRecetas, this)
 		return recetas
 	}
 
