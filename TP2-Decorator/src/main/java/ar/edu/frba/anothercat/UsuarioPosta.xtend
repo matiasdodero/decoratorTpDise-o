@@ -123,6 +123,17 @@ class UsuarioPosta {
 		}
 
 	}
+	
+	def public void agregarFiltro(DecoratorUsuarioCondicionesBusqueda filtro) {
+
+		filtros.add(filtro)
+
+	}	
+	
+	def public void agregarProcesamientoPosterior(DecoratorProcesamientoPosterior procesamiento) {
+
+		procesamientos.add(procesamiento)
+	}	
 
 	def public agregarRecetaFavorita(Receta unaReceta) {
 
