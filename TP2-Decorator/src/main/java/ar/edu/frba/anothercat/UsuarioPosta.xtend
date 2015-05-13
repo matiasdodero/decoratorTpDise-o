@@ -271,12 +271,29 @@ class UsuarioPosta {
 		return recetas
 	}
 
-	def Iterable<Receta> ordenarRecetasPorProcesoPosterior(Iterable<Receta> recetas, DecoratorProcesamientoPosterior proceso) {
-		var Iterable<Receta> recetasFiltradas = new ArrayList<Receta>
+	 def Iterable<Receta> ordenarRecetasPorProcesoPosterior(List<Receta> recetas){
+    	
+    var Iterable<Receta> recetasFiltradas = new ArrayList<Receta>
+    
+	for(item:recetas)
+		{
 		recetasFiltradas = recetas
-		recetasFiltradas = proceso.procesar(recetas)
-		return recetasFiltradas.toList()
-	}
+		}
+	
+    for (item: getProcesamientos){
+     recetasFiltradas = this.procesoRecursivo(recetasFiltradas,item)
+     }
+    
+ 
+    return recetasFiltradas
+    }
+	
+	 private def Iterable<Receta> procesoRecursivo(Iterable<Receta> listaRecetas,DecoratorProcesamientoPosterior proceso) {
+    	var Iterable<Receta> Rece = new ArrayList<Receta>
+    	Rece = listaRecetas
+    	Rece = proceso.procesar(listaRecetas)
+    	return Rece.toList()
+    }
 
 }
 
