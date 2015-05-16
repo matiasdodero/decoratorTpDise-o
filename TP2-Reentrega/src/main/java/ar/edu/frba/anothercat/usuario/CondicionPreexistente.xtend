@@ -1,6 +1,6 @@
-package ar.edu.frba.anothercat.tp1
+package ar.edu.frba.anothercat.usuario
 
-import ar.edu.frba.anothercat.tp2.UsuarioPosta
+import ar.edu.frba.anothercat.receta.Receta
 
 public interface CondicionPreexistente {
 

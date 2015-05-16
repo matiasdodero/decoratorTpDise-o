@@ -1,10 +1,12 @@
-package ar.edu.frba.anothercat.tp1
+package ar.edu.frba.anothercat.receta
 
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.anothercat.tp2.UsuarioPosta
-import ar.edu.frba.anothercat.tp2.Grupo
+import ar.edu.frba.anothercat.usuario.CondicionPreexistente
+import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
+import ar.edu.frba.anothercat.usuario.UsuarioPosta
+import ar.edu.frba.anothercat.usuario.Grupo
 
 @Accessors
 class Receta {

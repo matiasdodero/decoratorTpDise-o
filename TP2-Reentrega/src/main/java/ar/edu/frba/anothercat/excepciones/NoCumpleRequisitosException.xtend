@@ -1,4 +1,4 @@
-package ar.edu.frba.anothercat.tp1
+package ar.edu.frba.anothercat.excepciones
 
 class NoCumpleRequisitosException extends Exception{
 	

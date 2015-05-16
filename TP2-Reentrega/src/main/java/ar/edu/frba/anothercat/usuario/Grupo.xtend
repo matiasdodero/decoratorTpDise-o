@@ -1,11 +1,11 @@
-package ar.edu.frba.anothercat.tp2
+package ar.edu.frba.anothercat.usuario
 
 import java.util.List
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.anothercat.tp1.Receta
-import ar.edu.frba.anothercat.tp1.Ingrediente
-import ar.edu.frba.anothercat.tp1.NoCumpleRequisitosException
+import ar.edu.frba.anothercat.receta.Ingrediente
+import ar.edu.frba.anothercat.receta.Receta
+import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
 
 @Accessors
 class Grupo {

@@ -1,4 +1,4 @@
-package ar.edu.frba.anothercat.tp1
+package ar.edu.frba.anothercat.receta
 
 import org.eclipse.xtend.lib.annotations.Accessors
 

@@ -1,15 +1,15 @@
-package ar.edu.frba.anothercat.tp2
+package ar.edu.frba.anothercat.usuario
 
 import java.util.ArrayList
 import java.util.Date
 import java.util.HashSet
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.anothercat.tp1.CondicionPreexistente
-import ar.edu.frba.anothercat.tp1.Ingrediente
-import ar.edu.frba.anothercat.tp1.Receta
-import ar.edu.frba.anothercat.tp1.NoCumpleRequisitosException
-import ar.edu.frba.anothercat.tp1.Condimento
+import ar.edu.frba.anothercat.receta.Ingrediente
+import ar.edu.frba.anothercat.receta.Receta
+import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
+import ar.edu.frba.anothercat.receta.Condimento
+import ar.edu.frba.anothercat.receta.Repositorio_Receta
 
 @Accessors
 class UsuarioPosta implements Usuario {
@@ -28,6 +28,7 @@ class UsuarioPosta implements Usuario {
 	private tipoRutina rutinaE
 	List<DecoratorUsuarioCondicionesBusqueda> filtros = new ArrayList<DecoratorUsuarioCondicionesBusqueda>
 	List<DecoratorProcesamientoPosterior> procesamientos = new ArrayList<DecoratorProcesamientoPosterior>
+	
 
 	def boolean sosValido() {
 

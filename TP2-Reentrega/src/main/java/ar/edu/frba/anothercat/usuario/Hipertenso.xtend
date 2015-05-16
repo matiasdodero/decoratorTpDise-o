@@ -1,7 +1,7 @@
-package ar.edu.frba.anothercat.tp1
+package ar.edu.frba.anothercat.usuario
 
 import org.eclipse.xtend.lib.annotations.Accessors
-import ar.edu.frba.anothercat.tp2.UsuarioPosta
+import ar.edu.frba.anothercat.receta.Receta
 
 @Accessors
 class Hipertenso implements CondicionPreexistente {

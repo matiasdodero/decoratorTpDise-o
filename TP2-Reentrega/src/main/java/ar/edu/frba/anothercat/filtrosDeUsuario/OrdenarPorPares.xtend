@@ -1,9 +1,10 @@
-package ar.edu.frba.anothercat.tp2
+package ar.edu.frba.anothercat.filtrosDeUsuario
 
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
-import ar.edu.frba.anothercat.tp1.Receta
+import ar.edu.frba.anothercat.usuario.DecoratorProcesamientoPosterior
+import ar.edu.frba.anothercat.receta.Receta
 
 class OrdenarPorPares extends DecoratorProcesamientoPosterior {
 
