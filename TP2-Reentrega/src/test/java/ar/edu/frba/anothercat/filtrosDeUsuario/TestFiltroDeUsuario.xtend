@@ -307,4 +307,12 @@ class TestFiltroDeUsuario {
 		//de las 8 recetas solo 1 contiene sal y esa no la puede comer, por lo tanto las otras 7 si
 	}
 	
+	@Test
+	def void filtrarRecetasUsandoTodosLosFiltros(){
+		
+		Assert.assertEquals(0,filtroIngredientesCaros.filtrarRecetas(filtroGustosUsuario.filtrarRecetas(filtroPorCalorias.filtrarRecetas(filtroCondicionPreexistente.filtrarRecetas(recetas,pedro),pedro),pedro),pedro).size())
+						
+					
+	}
+	
 }
