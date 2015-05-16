@@ -20,14 +20,13 @@ class UsuarioPosta implements Usuario {
 	double altura
 	int peso
 	List<CondicionPreexistente> precondiciones = new ArrayList<CondicionPreexistente>
-	List<Ingrediente> preferencias = new ArrayList<Ingrediente>
-	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
+	List<Ingrediente> ingredientesPreferidos = new ArrayList<Ingrediente>
+	//List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	List<Receta> misRecetas = new ArrayList<Receta>
 	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> favoritas = new ArrayList<Receta>
 	private tipoRutina rutinaE
-	List<DecoratorUsuarioCondicionesBusqueda> filtros = new ArrayList<DecoratorUsuarioCondicionesBusqueda>
-	List<DecoratorProcesamientoPosterior> procesamientos = new ArrayList<DecoratorProcesamientoPosterior>
+	
 	
 
 	def boolean sosValido() {
@@ -61,18 +60,16 @@ class UsuarioPosta implements Usuario {
 		precondiciones.add(unaCond)
 
 	}
+	
+	
 
-	def public void agregarPrefer(Ingrediente unaPreferencia) {
+	def public void agregarIngredientePreferido(Ingrediente ingrediente) {
 
-		preferencias.add(unaPreferencia)
-
-	}
-
-	def public void agregarDisgusto(Ingrediente unDisgusto) {
-
-		disgustos.add(unDisgusto)
+		ingredientesPreferidos.add(ingrediente)
 
 	}
+
+	
 
 	def double calcularImc() {
 		return peso / (altura * altura)
@@ -296,6 +293,8 @@ class UsuarioPosta implements Usuario {
     	Rece = proceso.procesar(listaRecetas)
     	return Rece.toList()
     }
+				
+				
 
 }
 

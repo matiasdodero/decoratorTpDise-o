@@ -8,18 +8,13 @@ import ar.edu.frba.anothercat.receta.Receta
 
 class BusquedaPorCondicionPreexistente extends DecoratorUsuarioCondicionesBusqueda {
 	
-		override filtrarRecetasSegunCriterio1 (List<Receta> recetas, UsuarioPosta usuario){
-		
-		var List<Receta> recetaCondiciones = new ArrayList<Receta>
-		
-		return recetaCondiciones =  (recetas.filter[ receta| !( usuario.precondiciones.exists[ precond | precond.esInadecuadaPara(receta) ] ) ]  ).toList()
-		
-		
+	override filtrarRecetas(List<Receta> recetas, UsuarioPosta usuario) {
+		recetas.filter[receta | usuario.precondiciones.exists[precond | !(precond.esInadecuadaPara(receta))]].toList()
 	}
 	
-	override filtrarRecetasSegunCriterio2 (Receta recetas, UsuarioPosta usuario){
-		return !( usuario.precondiciones.exists[ precond | precond.esInadecuadaPara(recetas) ] )
-	}
+	// muestra las recetas que no sean inadecuadas, las que pueda comer
+	
+
 	
 	
 	

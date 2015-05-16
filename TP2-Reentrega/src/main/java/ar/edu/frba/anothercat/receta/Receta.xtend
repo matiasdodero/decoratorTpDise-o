@@ -226,6 +226,10 @@ class Receta {
 		return true
  
 	}
+	
+	def noSuperaCalorias() {
+		totalCalorias<500
+	}
 		
 }
 // Comentario en el branch de decorador
