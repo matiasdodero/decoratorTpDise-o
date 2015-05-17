@@ -19,8 +19,9 @@ class Receta {
 	int totalCalorias = 0
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
-	estadoReceta estado
+	public estadoReceta estado
 	List<Receta> compuestaDe = new ArrayList<Receta>
+	
 
 	def void agregarIngrediente(Ingrediente unIngrediente) {
 
@@ -187,7 +188,7 @@ class Receta {
 		var List<Ingrediente> auxIng = new ArrayList<Ingrediente>
 		auxIng = this.decimeTusIngredientesTotales()
 		
-		if (unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+		if (unUsuario.condicionesPreexistentes.exists[unaPre | unaPre.esInadecuadaPara(this)])
 		 {return false}
 		for (item: auxIng){
 			//System.out.println(item.getNombreIngrediente)
@@ -217,7 +218,7 @@ class Receta {
 		}
 		
 		for (item: unGrupo.misUsuarios){
-			if (item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(this)])
+			if (item.condicionesPreexistentes.exists[unaPre | unaPre.esInadecuadaPara(this)])
 			{
 				//System.out.println("no encontro nada 2")
 				return false

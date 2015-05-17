@@ -309,25 +309,21 @@ class TestFiltroDeUsuario {
 	
 	@Test 
 	def void filtrarRecetasConTodosLosFiltros(){
-		userPedro = new BusquedaPorCondicionPreexistente(pedro)
-		userPedro.filtrarRecetas(recetas,userPedro)
 		
-		userAux = new ExcesoDeCalorias(userPedro)
-		userAux.filtrarRecetas(recetas,userAux)
+		
+		userPedro = new BusquedaPorCondicionPreexistente(pedro)		
+		
+		userAux = new ExcesoDeCalorias(userPedro)		
 				
 		
 		userAux2 = new IngredientesCaros(userAux)
-		userAux2.filtrarRecetas(recetas,userAux2)
+		
 		
 		userAux3 = new GustoDelUsuario(userAux2)	
-		userAux3.filtrarRecetas(recetas,userAux3)	
 		
 		
 		
-		
-		
-		
-		
+		Assert.assertEquals(0,userAux3.filtrarRecetas(userAux2.filtrarRecetas((userAux.filtrarRecetas(userPedro.filtrarRecetas(recetas,userPedro),userAux)),userAux2),userAux3).size())		
 		
 		
 		

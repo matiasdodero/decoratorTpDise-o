@@ -2,7 +2,6 @@ package ar.edu.frba.anothercat.usuario
 
 import java.util.ArrayList
 import java.util.Date
-import java.util.HashSet
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.anothercat.receta.Ingrediente
@@ -10,6 +9,8 @@ import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
 import ar.edu.frba.anothercat.receta.Condimento
 import ar.edu.frba.anothercat.receta.Repositorio_Receta
+
+
 
 @Accessors
 class UsuarioPosta implements Usuario {
@@ -21,7 +22,7 @@ class UsuarioPosta implements Usuario {
 	int peso
 	List<CondicionPreexistente> condicionesPreexistentes = new ArrayList<CondicionPreexistente>
 	List<Ingrediente> ingredientesPreferidos = new ArrayList<Ingrediente>
-	//List<Ingrediente> disgustos = new ArrayList<Ingrediente>
+	List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	List<Receta> misRecetas = new ArrayList<Receta>
 	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> favoritas = new ArrayList<Receta>
@@ -73,8 +74,8 @@ class UsuarioPosta implements Usuario {
 		if (nombre.length() <= 4) {
 			return false
 		}
-		if (precondiciones.isEmpty() == false) {
-			if (precondiciones.forall[precondicion|precondicion.cumpleValidacion(this)] == false) {
+		if (condicionesPreexistentes.isEmpty() == false) {
+			if (condicionesPreexistentes.forall[precondicion|precondicion.cumpleValidacion(this)] == false) {
 				return false
 			}
 		}
@@ -112,23 +113,23 @@ class UsuarioPosta implements Usuario {
 	}
 
 	def public boolean seguisDietaSaludable() {
-		if (this.calcularImc <= 18 || this.calcularImc >= 30 && precondiciones.size < 1) {
+		if (this.calcularImc <= 18 || this.calcularImc >= 30 && condicionesPreexistentes.size < 1) {
 			return false
-		} else if (this.calcularImc > 18 && this.calcularImc < 30 && precondiciones.size < 1) {
+		} else if (this.calcularImc > 18 && this.calcularImc < 30 && condicionesPreexistentes.size < 1) {
 			return true
 		} else {
-			return precondiciones.forall[precondicion|precondicion.subsanasteCondicionesPreEx(this)]
+			return condicionesPreexistentes.forall[precondicion|precondicion.subsanasteCondicionesPreEx(this)]
 		}
 	}
 
-	def boolean puedoVerReceta(Receta unaReceta) {
-
-		return (unaReceta.getEstado == 1 || this.misRecetas.exists[unaRec|unaRec == unaReceta] )
-
+	def boolean puedoVerReceta(Receta unaReceta){
+		
+		return (unaReceta.getEstado == estadoReceta.Publica || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+		
 	}
 
 	def boolean puedoModificarReceta(Receta unaReceta) {
-		return ( unaReceta.getEstado == estadoReceta.Publica || !(unaReceta.getEstado == estadoReceta.Publica) &&
+		return ( unaReceta.getEstado == 1 || !(unaReceta.getEstado == 1) &&
 			this.misRecetas.exists[unaRec|unaRec == unaReceta]
 	 	)
 	}
@@ -147,7 +148,7 @@ class UsuarioPosta implements Usuario {
 		unaNuevaR.setTemporadas(unaReceta.getTemporadas)
 
 		if (unaReceta.validar()) {
-			if (precondiciones.exists[unaPre|unaPre.esInadecuadaPara(unaReceta)]) {
+			if (condicionesPreexistentes.exists[unaPre|unaPre.esInadecuadaPara(unaReceta)]) {
 				throw new NoCumpleRequisitosException("No es apto")
 			} else {
 				unaNuevaR.setEstado(estadoReceta.Privada)
@@ -159,21 +160,14 @@ class UsuarioPosta implements Usuario {
 
 	}
 	
-	def public void agregarFiltro(DecoratorUsuarioCondicionesBusqueda filtro) {
-
-		filtros.add(filtro)
-
-	}	
+		
 	
-	def public void agregarProcesamientoPosterior(DecoratorProcesamientoPosterior procesamiento) {
-
-		procesamientos.add(procesamiento)
-	}	
+	
 
 	def public agregarRecetaFavorita(Receta unaReceta) {
 
 		if (unaReceta.validar()) {
-			if (precondiciones.exists[unaPre|unaPre.esInadecuadaPara(unaReceta)]) {
+			if (condicionesPreexistentes.exists[unaPre|unaPre.esInadecuadaPara(unaReceta)]) {
 				throw new NoCumpleRequisitosException("No es apto")
 			} else {
 				favoritas.add(unaReceta)
@@ -268,67 +262,9 @@ class UsuarioPosta implements Usuario {
 		return Rece
 	}
 
-	def List<Receta> filtrarRepositorioDeRecetas(Repositorio_Receta repositorio) {
-
-		var List<Receta> todasLasRecetas = new ArrayList<Receta>
-		var List<Receta> recetasFiltradas = new ArrayList<Receta>
-
-		todasLasRecetas = this.decimeTodasTusRecetas(repositorio).toList()
-
-		recetasFiltradas = (todasLasRecetas.filter[receta|
-			!(this.getFiltros.exists[filtro|filtro.filtrarRecetasSegunCriterio2(receta, this)])] ).toList()
-		return (recetasFiltradas)
-
-	}
-
-	def HashSet<Receta> puedeVer(Repositorio_Receta repositorio) {
-
-		var List<Receta> recetas = new ArrayList<Receta>
-		var HashSet<Receta> setRecetas = new HashSet<Receta>
-
-		recetas = this.decimeTodasTusRecetas(repositorio)
-
-		for (item : getFiltros) {
-			recetas = this.filtroRec(recetas, item)
-		}
-
-		for (item : recetas) {
-			setRecetas.add(item)
-		}
-
-		return setRecetas
-	}
-
-	def List<Receta> filtroRec(List<Receta> listaDeRecetas, DecoratorUsuarioCondicionesBusqueda filtro) {
-		var List<Receta> recetas = new ArrayList<Receta>
-		recetas = listaDeRecetas
-		recetas = filtro.filtrarRecetasSegunCriterio1(listaDeRecetas, this)
-		return recetas
-	}
-
-	 def Iterable<Receta> ordenarRecetasPorProcesoPosterior(List<Receta> recetas){
-    	
-    var Iterable<Receta> recetasFiltradas = new ArrayList<Receta>
-    
-	for(item:recetas)
-		{
-		recetasFiltradas = recetas
-		}
 	
-    for (item: getProcesamientos){
-     recetasFiltradas = this.procesoRecursivo(recetasFiltradas,item)
-     }
-    
- 
-    return recetasFiltradas
-    }
-	
-	 private def Iterable<Receta> procesoRecursivo(Iterable<Receta> listaRecetas,DecoratorProcesamientoPosterior proceso) {
-    	var Iterable<Receta> Rece = new ArrayList<Receta>
-    	Rece = listaRecetas
-    	Rece = proceso.procesar(listaRecetas)
-    	return Rece.toList()
-    }
+
+
 				
 				
 

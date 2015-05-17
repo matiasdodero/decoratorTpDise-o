@@ -18,9 +18,7 @@ class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 		recetas.filter[receta | receta.caloriasFinales<500 && decorado.imc>25].toList()
 	}
 	
-	override getIngredientesPreferidos() {
-		
-	}
+	
 	
 	//si el usuario tiene sobrepeso(imc > 25) deberia ver recetas con calorias < 500	
 	

@@ -13,9 +13,7 @@ public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 		decorado=usuario
 	}
 	
-//	override filtrarRecetas(List<Receta> recetas,Usuario usuario){
-//		usuario.filtrarRecetas(recetas)
-//	}
+
 	
 	override getImc(){
 		decorado.imc
