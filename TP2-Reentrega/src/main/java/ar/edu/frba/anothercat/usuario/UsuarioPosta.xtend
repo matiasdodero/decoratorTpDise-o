@@ -9,8 +9,7 @@ import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
 import ar.edu.frba.anothercat.receta.Condimento
 import ar.edu.frba.anothercat.receta.Repositorio_Receta
-
-
+import ar.edu.frba.anothercat.receta.EstadoReceta
 
 @Accessors
 class UsuarioPosta implements Usuario {
@@ -124,17 +123,18 @@ class UsuarioPosta implements Usuario {
 
 	def boolean puedoVerReceta(Receta unaReceta){
 		
-		return (unaReceta.getEstado == estadoReceta.Publica || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
+		return (unaReceta.getEstado == EstadoReceta.PUBLICA || this.misRecetas.exists[unaRec| unaRec == unaReceta] )
 		
 	}
 
 	def boolean puedoModificarReceta(Receta unaReceta) {
-		return ( unaReceta.getEstado == 1 || !(unaReceta.getEstado == 1) &&
+		return ( unaReceta.getEstado == EstadoReceta.PUBLICA || !(unaReceta.getEstado == EstadoReceta.PUBLICA) &&
 			this.misRecetas.exists[unaRec|unaRec == unaReceta]
 	 	)
 	}
 
 	def public agregarReceta(Receta unaReceta) {
+		
 
 		var Receta unaNuevaR = new Receta
 
@@ -151,7 +151,8 @@ class UsuarioPosta implements Usuario {
 			if (condicionesPreexistentes.exists[unaPre|unaPre.esInadecuadaPara(unaReceta)]) {
 				throw new NoCumpleRequisitosException("No es apto")
 			} else {
-				unaNuevaR.setEstado(estadoReceta.Privada)
+				
+				unaNuevaR.setEstadoReceta(EstadoReceta.PRIVADA)
 				misRecetas.add(unaNuevaR)
 
 			}
@@ -260,6 +261,10 @@ class UsuarioPosta implements Usuario {
 			Rece.add(misR)
 		}
 		return Rece
+	}
+	
+	override filtrarRecetas(List<Receta> recetas, Usuario usuario) {
+		
 	}
 
 	

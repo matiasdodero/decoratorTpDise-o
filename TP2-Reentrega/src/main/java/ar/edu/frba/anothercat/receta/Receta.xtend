@@ -19,7 +19,7 @@ class Receta {
 	int totalCalorias = 0
 	String dificultad
 	List<Temporada> temporadas = new ArrayList<Temporada>
-	public estadoReceta estado
+	public EstadoReceta estado
 	List<Receta> compuestaDe = new ArrayList<Receta>
 	
 
@@ -231,11 +231,16 @@ class Receta {
 	def noSuperaCalorias() {
 		totalCalorias<500
 	}
+	
+	public def setEstadoReceta(EstadoReceta unEstado){
+		estado=unEstado
+	}
 		
 }
-// Comentario en el branch de decorador
-public enum estadoReceta {
-   	Publica,
-   	Privada,
-   	Compartida;   	
+
+public enum EstadoReceta {
+   	PUBLICA,
+   	PRIVADA,
+   	COMPARTIDA   	
    }
+// Comentario en el branch de decorador
