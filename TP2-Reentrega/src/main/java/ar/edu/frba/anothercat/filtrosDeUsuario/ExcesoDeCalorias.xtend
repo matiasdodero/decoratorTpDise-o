@@ -1,12 +1,12 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
-
-import java.util.List
-import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
 import ar.edu.frba.anothercat.receta.Receta
-import ar.edu.frba.anothercat.usuario.UsuarioPosta
+import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
 import ar.edu.frba.anothercat.usuario.Usuario
+import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 	
 	new (Usuario decorado){

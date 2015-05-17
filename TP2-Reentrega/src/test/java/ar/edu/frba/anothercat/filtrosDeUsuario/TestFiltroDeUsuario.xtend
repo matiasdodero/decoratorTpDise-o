@@ -17,7 +17,10 @@ class TestFiltroDeUsuario {
 	
 	UsuarioPosta pedro
 	Usuario userPedro
-	ExcesoDeCalorias pedroExcesoCalorias
+	Usuario userAux
+	Usuario userAux2
+	Usuario userAux3
+	
 	
 	
 	
@@ -53,9 +56,7 @@ class TestFiltroDeUsuario {
 
 	List<Receta> recetas = new ArrayList<Receta>
 	
-	
-	
-	
+		
 	
 	
 	
@@ -286,7 +287,9 @@ class TestFiltroDeUsuario {
 	@Test
 	def void filtrarRecetasPorIngredientesPreferidos(){
 		userPedro = new GustoDelUsuario(pedro)
-		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas,userPedro).size())
+		Assert.assertEquals(2,userPedro.filtrarRecetas(recetas,userPedro).size())
+		
+		// hay 2 recetas que contienen pollo
 	}
 	
 	@Test 
@@ -301,6 +304,34 @@ class TestFiltroDeUsuario {
 	def void filtrarRecetasSegunCondicionPreexistente(){
 		userPedro = new BusquedaPorCondicionPreexistente(pedro)
 		Assert.assertEquals(7,userPedro.filtrarRecetas(recetas,userPedro).size())
+		
+	}
+	
+	@Test 
+	def void filtrarRecetasConTodosLosFiltros(){
+		userPedro = new BusquedaPorCondicionPreexistente(pedro)
+		userPedro.filtrarRecetas(recetas,userPedro)
+		
+		userAux = new ExcesoDeCalorias(userPedro)
+		userAux.filtrarRecetas(recetas,userAux)
+				
+		
+		userAux2 = new IngredientesCaros(userAux)
+		userAux2.filtrarRecetas(recetas,userAux2)
+		
+		userAux3 = new GustoDelUsuario(userAux2)	
+		userAux3.filtrarRecetas(recetas,userAux3)	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	

@@ -1,8 +1,8 @@
 package ar.edu.frba.anothercat.usuario
 
-import java.util.List
-import ar.edu.frba.anothercat.receta.Receta
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 	
 

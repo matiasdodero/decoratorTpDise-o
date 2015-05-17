@@ -1,12 +1,12 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
-
-import java.util.List
-import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
-import ar.edu.frba.anothercat.usuario.UsuarioPosta
 import ar.edu.frba.anothercat.receta.Receta
+import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
 import ar.edu.frba.anothercat.usuario.Usuario
+import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class GustoDelUsuario extends DecoratorUsuarioCondicionesBusqueda {
 	
 	
@@ -15,7 +15,7 @@ class GustoDelUsuario extends DecoratorUsuarioCondicionesBusqueda {
 	}
 	
 	override filtrarRecetas(List<Receta> recetas, Usuario decorado) {
-		(recetas.filter[ receta | receta.getIngredientes.forall(ingrediente | decorado.getIngredientesPreferidos.contains(ingrediente))]).toList()
+		(recetas.filter[ receta | receta.getIngredientes.exists(ingrediente | decorado.getIngredientesPreferidos.exists[pref | ingrediente == pref])]).toList()
 	}
 	
 	// devuelve recetas que contengan solamente ingredientes que le gusten al usuario
