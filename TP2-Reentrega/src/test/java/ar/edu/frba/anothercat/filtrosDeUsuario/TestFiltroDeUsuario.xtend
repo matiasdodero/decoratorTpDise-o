@@ -10,11 +10,14 @@ import java.util.List
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import ar.edu.frba.anothercat.usuario.Usuario
 
 class TestFiltroDeUsuario {
 	
 	
 	UsuarioPosta pedro
+	Usuario userPedro
+	ExcesoDeCalorias pedroExcesoCalorias
 	
 	
 	
@@ -52,10 +55,7 @@ class TestFiltroDeUsuario {
 	
 	
 	
-	ExcesoDeCalorias filtroPorCalorias
-	IngredientesCaros filtroIngredientesCaros	
-	GustoDelUsuario filtroGustosUsuario	
-	BusquedaPorCondicionPreexistente filtroCondicionPreexistente
+	
 	
 	
 	
@@ -156,10 +156,7 @@ class TestFiltroDeUsuario {
 		recetaCara = new Receta
 		recetaPollo = new Receta
 		
-		filtroPorCalorias = new ExcesoDeCalorias
-		filtroIngredientesCaros = new IngredientesCaros
-		filtroGustosUsuario = new GustoDelUsuario
-		filtroCondicionPreexistente = new BusquedaPorCondicionPreexistente
+		
 		
 		hipertenso = new Hipertenso
 		
@@ -233,19 +230,20 @@ class TestFiltroDeUsuario {
 			add(recetaPollo)
 		]
 		
-		pedro = new UsuarioPosta =>[
-			setPeso(120)
-			setAltura(1.9)
-			agregarIngredientePreferido(pollo)
-			agregarCondicion(hipertenso)
-			
-		]
+		
+		pedro= new UsuarioPosta
+		pedro.altura=1.7
+		pedro.peso=120		
+		pedro.agregarIngredientePreferido(pollo)
+		pedro.agregarCondicionPreexistente(hipertenso)
+		
+		
 
 	}
 	
 	@Test
 	def void imcUsuarioPedro(){
-		Assert.assertEquals(33.24,(pedro.calcularImc()),0.1)
+		Assert.assertEquals(41.5,(pedro.calcularImc()),0.1)
 	}
 	
 	
@@ -278,41 +276,37 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals(120,(recetaCara.caloriasFinales))
 	}
 	
-	
-	
-	
 	@Test
-	def void filtrarRecetasPorExcesoDeCalorias(){
-		Assert.assertEquals(6,filtroPorCalorias.filtrarRecetas(recetas,pedro).size())
+	def void filtrarRecetasExcesoDeCalorias(){
 		
-		//podra ver recetas con calorias totales < 500 ya que tiene sobrepeso
+		userPedro = new ExcesoDeCalorias(pedro)
+		Assert.assertEquals(6,userPedro.filtrarRecetas(recetas,userPedro).size())
 	}
 	
 	@Test
-	def void filtrarRecetasConIngredientesCaros(){
-		Assert.assertEquals(1,filtroIngredientesCaros.filtrarRecetas(recetas,pedro).size())
-		// solo 1 tiene ingredientes caros
+	def void filtrarRecetasPorIngredientesPreferidos(){
+		userPedro = new GustoDelUsuario(pedro)
+		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas,userPedro).size())
 	}
 	
-	@Test
-	def void filtrarRecetasSegunGustosUsuario(){
-		Assert.assertEquals(1,filtroGustosUsuario.filtrarRecetas(recetas,pedro).size())
-		/* hay una receta con pollo solamente, si tiene pollo y mas ingredientes
-		  y el usuario no aclara si le gustan todos los ingredientes de la receta, no la devolvera*/
+	@Test 
+	def void filtrarRecetasPorIngredientesCaros(){
+		userPedro = new IngredientesCaros(pedro)
+		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas,userPedro).size())
+		
+		
 	}
 	
 	@Test
 	def void filtrarRecetasSegunCondicionPreexistente(){
-		Assert.assertEquals(7,filtroCondicionPreexistente.filtrarRecetas(recetas,pedro).size())
-		//de las 8 recetas solo 1 contiene sal y esa no la puede comer, por lo tanto las otras 7 si
+		userPedro = new BusquedaPorCondicionPreexistente(pedro)
+		Assert.assertEquals(7,userPedro.filtrarRecetas(recetas,userPedro).size())
+		
 	}
 	
-	@Test
-	def void filtrarRecetasUsandoTodosLosFiltros(){
-		
-		Assert.assertEquals(0,filtroIngredientesCaros.filtrarRecetas(filtroGustosUsuario.filtrarRecetas(filtroPorCalorias.filtrarRecetas(filtroCondicionPreexistente.filtrarRecetas(recetas,pedro),pedro),pedro),pedro).size())
-						
-					
-	}
+	
+	
+	
+	
 	
 }

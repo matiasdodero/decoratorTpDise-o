@@ -19,13 +19,49 @@ class UsuarioPosta implements Usuario {
 	Date fechaDeNacimiento
 	double altura
 	int peso
-	List<CondicionPreexistente> precondiciones = new ArrayList<CondicionPreexistente>
+	List<CondicionPreexistente> condicionesPreexistentes = new ArrayList<CondicionPreexistente>
 	List<Ingrediente> ingredientesPreferidos = new ArrayList<Ingrediente>
 	//List<Ingrediente> disgustos = new ArrayList<Ingrediente>
 	List<Receta> misRecetas = new ArrayList<Receta>
 	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> favoritas = new ArrayList<Receta>
 	private tipoRutina rutinaE
+	double imc
+	
+	new(){
+		altura=0
+		peso=0
+		imc=0
+	}
+	
+	new(int unPeso){
+		peso=unPeso
+	}
+	
+	new (double unaAltura){
+		altura=unaAltura
+	}
+	
+	override getImc(){
+		peso/(altura*altura)
+	}
+	
+	override getPeso(){
+		peso
+	}
+	override getAltura(){
+		altura
+	}
+	
+	override getIngredientesPreferidos(){
+		ingredientesPreferidos
+	}
+	
+	override getCondicionesPreexistentes(){
+		condicionesPreexistentes
+	}
+	
+	
 	
 	
 
@@ -55,9 +91,9 @@ class UsuarioPosta implements Usuario {
 		fechaDeNacimiento < new Date()
 	}
 
-	def public void agregarCondicion(CondicionPreexistente unaCond) {
+	def public void agregarCondicionPreexistente(CondicionPreexistente unaCond) {
 
-		precondiciones.add(unaCond)
+		condicionesPreexistentes.add(unaCond)
 
 	}
 	
