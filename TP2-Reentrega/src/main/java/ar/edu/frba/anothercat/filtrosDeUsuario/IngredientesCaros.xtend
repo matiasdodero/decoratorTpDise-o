@@ -14,11 +14,11 @@ class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
 		super(decorado)
 	}
 	
-	override filtrarRecetas(List<Receta> recetas) {
+	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas) {
 		
 		var List<Receta> recetasFiltradas
 		
-		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		recetasFiltradas = decorado.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas)
 		
 		if (recetasFiltradas.isEmpty()){
 			throw new ExceptionFiltro("No hay elementos para filtrar")

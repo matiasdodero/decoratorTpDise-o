@@ -5,6 +5,7 @@ import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
 import ar.edu.frba.anothercat.usuario.Usuario
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 
 @Accessors
 class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
@@ -14,11 +15,11 @@ class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 	}
 	
 	
-	override filtrarRecetas(List<Receta> recetas) {
+	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas) {
 		
 		var List<Receta> recetasFiltradas
 		
-		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		recetasFiltradas = decorado.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas)
 		
 		if(recetasFiltradas.isEmpty()){
 			throw new ExceptionFiltro("Lista Vacia")

@@ -263,7 +263,7 @@ class UsuarioPosta implements Usuario {
 		return Rece
 	}
 	
-	override filtrarRecetas(List<Receta> recetas, Usuario usuario) {
+	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas, Usuario usuario) {
 		
 	}
 

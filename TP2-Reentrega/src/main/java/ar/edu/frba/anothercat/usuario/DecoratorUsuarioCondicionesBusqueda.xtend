@@ -12,9 +12,7 @@ public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 	new (Usuario usuario){
 		decorado=usuario
 	}
-	
-
-	
+		
 	override getImc(){
 		decorado.imc
 	}
@@ -35,6 +33,4 @@ public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 		decorado.condicionesPreexistentes
 	}
 	
-	
-
 }
