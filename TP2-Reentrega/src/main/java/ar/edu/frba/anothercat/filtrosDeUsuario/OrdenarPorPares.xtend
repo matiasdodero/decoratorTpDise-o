@@ -3,12 +3,12 @@ package ar.edu.frba.anothercat.filtrosDeUsuario
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
-import ar.edu.frba.anothercat.usuario.DecoratorProcesamientoPosterior
 import ar.edu.frba.anothercat.receta.Receta
+import ar.edu.frba.anothercat.usuario.DecoratorOrdenamientoPostCondicionesDeBusqueda
 
-class OrdenarPorPares extends DecoratorProcesamientoPosterior {
+class OrdenarPorPares extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 
-	override procesar(Iterable<Receta> recetas) {
+	override ordenamientoDeRecetas(Iterable<Receta> recetas) {
 
 		var Iterable<Receta> recetasFiltro = new HashSet<Receta>
 		var HashSet<Receta> setRecetas = new HashSet<Receta>
@@ -29,4 +29,5 @@ class OrdenarPorPares extends DecoratorProcesamientoPosterior {
 		return recetasFiltro
 
 	}
+	
 }

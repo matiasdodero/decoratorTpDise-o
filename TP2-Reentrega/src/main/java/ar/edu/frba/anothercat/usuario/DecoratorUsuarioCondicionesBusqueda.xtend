@@ -5,9 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 public abstract class DecoratorUsuarioCondicionesBusqueda implements Usuario{
 	
-
-
-	Usuario decorado
+Usuario decorado
 	
 	new (Usuario usuario){
 		decorado=usuario

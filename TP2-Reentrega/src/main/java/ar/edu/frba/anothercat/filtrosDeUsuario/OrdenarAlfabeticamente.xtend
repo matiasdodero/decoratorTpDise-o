@@ -1,12 +1,12 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
 import java.util.HashSet
-import ar.edu.frba.anothercat.usuario.DecoratorProcesamientoPosterior
 import ar.edu.frba.anothercat.receta.Receta
+import ar.edu.frba.anothercat.usuario.DecoratorOrdenamientoPostCondicionesDeBusqueda
 
-class OrdenarAlfabeticamente extends DecoratorProcesamientoPosterior {
+class OrdenarAlfabeticamente extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 	
-	override procesar (Iterable<Receta> recetas){
+	override ordenamientoDeRecetas (Iterable<Receta> recetas){
 		
 		var Iterable<Receta> recetasFiltradas = new HashSet<Receta>
         var HashSet<Receta> setRecetas = new HashSet<Receta>
@@ -20,7 +20,5 @@ class OrdenarAlfabeticamente extends DecoratorProcesamientoPosterior {
     	return recetasFiltradas.sortBy[ nombrePlato]
 		
 	}
-	
-	
 	
 }

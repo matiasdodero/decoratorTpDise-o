@@ -11,7 +11,7 @@ import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 	
 	new (Usuario decorado){
-		super(decorado)
+	super(decorado)
 	}
 	
 	
@@ -31,8 +31,6 @@ class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 		
 		}
 	}
-	
-	
 	
 	//si el usuario tiene sobrepeso(imc > 25) deberia ver recetas con calorias < 500	
 	

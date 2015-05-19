@@ -10,9 +10,10 @@ import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
 import ar.edu.frba.anothercat.receta.Condimento
 import ar.edu.frba.anothercat.receta.Repositorio_Receta
 import ar.edu.frba.anothercat.receta.EstadoReceta
+import ar.edu.frba.anothercat.filtrosDeUsuario.Ordenamiento
 
 @Accessors
-class UsuarioPosta implements Usuario {
+class UsuarioPosta implements Usuario, Ordenamiento {
 
 	String nombre
 	String sexo
@@ -27,7 +28,7 @@ class UsuarioPosta implements Usuario {
 	List<Receta> favoritas = new ArrayList<Receta>
 	private tipoRutina rutinaE
 	double imc
-	
+		
 	new(){
 		altura=0
 		peso=0
@@ -263,12 +264,14 @@ class UsuarioPosta implements Usuario {
 		return Rece
 	}
 	
-	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas, Usuario usuario) {
+	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas) {
 		
 	}
 
 	
-
+	override Iterable<Receta> ordenamientoDeRecetas (Iterable<Receta> recetas){
+		
+	}
 
 				
 				

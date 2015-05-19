@@ -5,7 +5,7 @@ import ar.edu.frba.anothercat.receta.Receta
 class Diabetico implements CondicionPreexistente {
 
 	override cumpleValidacion(UsuarioPosta unUsuario) {
-		return (unUsuario.getSexo() != null && unUsuario.getPreferencias.size >= 1 )
+		return (unUsuario.getSexo() != null && unUsuario.ingredientesPreferidos.size >= 1 )
 	}
 
 	override subsanasteCondicionesPreEx(UsuarioPosta usuario) {

@@ -7,7 +7,7 @@ import ar.edu.frba.anothercat.receta.Receta
 class Hipertenso implements CondicionPreexistente {
 
 	override cumpleValidacion(UsuarioPosta unUsuario) {
-		return (unUsuario.getPreferencias.size >= 1 )
+		return (unUsuario.ingredientesPreferidos.size >= 1 )
 	}
 
 	override subsanasteCondicionesPreEx(UsuarioPosta usuario) {

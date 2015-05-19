@@ -6,6 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.frba.anothercat.receta.Ingrediente
 import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.excepciones.NoCumpleRequisitosException
+import ar.edu.frba.anothercat.receta.EstadoReceta
 
 @Accessors
 class Grupo {
@@ -21,7 +22,7 @@ class Grupo {
 			{apto = false}
 		}
 		for (item: misRecetas){
-			if ( unUsuario.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(item)])
+			if ( unUsuario.condicionesPreexistentes.exists[unaPrecondicion|unaPrecondicion.esInadecuadaPara(item)])
 			{apto = false}
 		}
 		if (apto == true) {misUsuarios.add(unUsuario)
@@ -36,24 +37,24 @@ class Grupo {
 	def agregarReceta(Receta unaReceta){
 		var boolean apto = true
 		
-		var Receta unaNuevaR = new Receta
+		var Receta unaNuevaReceta = new Receta
 		
-		unaNuevaR.setNombrePlato(unaReceta.getNombrePlato)
-		unaNuevaR.setIngredientes(unaReceta.getIngredientes)
-		unaNuevaR.setCondimentos(unaReceta.getCondimentos)
-		unaNuevaR.setPasos(unaReceta.getPasos)
-		unaNuevaR.setCondiciones(unaReceta.getCondiciones)
-		unaNuevaR.setTotalCalorias(unaReceta.getTotalCalorias)
-		unaNuevaR.setDificultad(unaReceta.getDificultad)
-		unaNuevaR.setTemporadas(unaReceta.getTemporadas)
+		unaNuevaReceta.setNombrePlato(unaReceta.getNombrePlato)
+		unaNuevaReceta.setIngredientes(unaReceta.getIngredientes)
+		unaNuevaReceta.setCondimentos(unaReceta.getCondimentos)
+		unaNuevaReceta.setPasos(unaReceta.getPasos)
+		unaNuevaReceta.setCondiciones(unaReceta.getCondiciones)
+		unaNuevaReceta.setTotalCalorias(unaReceta.getTotalCalorias)
+		unaNuevaReceta.setDificultad(unaReceta.getDificultad)
+		unaNuevaReceta.setTemporadas(unaReceta.getTemporadas)
 		
 		for (item: misUsuarios){
-			if ( item.precondiciones.exists[unaPre | unaPre.esInadecuadaPara(unaReceta)])
+			if ( item.condicionesPreexistentes.exists[unaPrecondicion|unaPrecondicion.esInadecuadaPara(unaReceta)])
 			{apto = false}
 		}
 		if (apto == true) {
-			unaNuevaR.setEstado(estadoReceta.Compartida)
-			misRecetas.add(unaNuevaR)
+			unaNuevaReceta.estadoReceta = EstadoReceta.COMPARTIDA
+			misRecetas.add(unaNuevaReceta)
 		}
 		else 
     	{

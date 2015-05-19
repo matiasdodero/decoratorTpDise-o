@@ -11,7 +11,7 @@ import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 class BusquedaPorCondicionPreexistente extends DecoratorUsuarioCondicionesBusqueda {
 	
 	
-			new (Usuario decorado){
+		new (Usuario decorado){
 		super(decorado)
 	}
 	

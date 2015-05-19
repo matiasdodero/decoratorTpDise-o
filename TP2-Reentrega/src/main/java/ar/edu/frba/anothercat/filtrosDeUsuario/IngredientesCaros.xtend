@@ -32,12 +32,6 @@ class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
 		
 		}
 		
-	}
-	
-				
-
-	
-	
-	
+	}	
 	
 }
