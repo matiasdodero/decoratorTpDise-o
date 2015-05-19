@@ -5,6 +5,7 @@ import ar.edu.frba.anothercat.usuario.DecoratorUsuarioCondicionesBusqueda
 import ar.edu.frba.anothercat.usuario.Usuario
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 
 @Accessors
 class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
