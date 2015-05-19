@@ -14,8 +14,21 @@ class ExcesoDeCalorias extends DecoratorUsuarioCondicionesBusqueda {
 	}
 	
 	
-	override filtrarRecetas(List<Receta> recetas,Usuario decorado) {
-		recetas.filter[receta | receta.caloriasFinales<500 && decorado.imc>25].toList()
+	override filtrarRecetas(List<Receta> recetas) {
+		
+		var List<Receta> recetasFiltradas
+		
+		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		
+		if(recetasFiltradas.isEmpty()){
+			throw new ExceptionFiltro("Lista Vacia")
+		}
+		else
+		{
+			var List<Receta> recetasFiltroFinal
+		return recetasFiltroFinal = (recetasFiltradas.filter[receta | receta.caloriasFinales<500 && decorado.imc>25].toList())
+		
+		}
 	}
 	
 	

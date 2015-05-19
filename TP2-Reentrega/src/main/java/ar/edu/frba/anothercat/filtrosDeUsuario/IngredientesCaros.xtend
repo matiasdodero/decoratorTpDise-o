@@ -13,10 +13,24 @@ class IngredientesCaros extends DecoratorUsuarioCondicionesBusqueda{
 		super(decorado)
 	}
 	
-	override filtrarRecetas(List<Receta> recetas, Usuario decorado) {
-		recetas.filter[receta | receta.getIngredientes.forall(ingrediente|ingrediente.ingredienteCaro())].toList()
+	override filtrarRecetas(List<Receta> recetas) {
 		
-		// devuelve recetas que contengan ingredientes caros
+		var List<Receta> recetasFiltradas
+		
+		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		
+		if (recetasFiltradas.isEmpty()){
+			throw new ExceptionFiltro("No hay elementos para filtrar")
+		}
+		
+		else{
+			
+			var List <Receta> recetasFiltroFinal
+		return recetasFiltroFinal = recetasFiltradas.filter[receta | receta.getIngredientes.forall(ingrediente|ingrediente.ingredienteCaro())].toList()
+		
+		
+		}
+		
 	}
 	
 				

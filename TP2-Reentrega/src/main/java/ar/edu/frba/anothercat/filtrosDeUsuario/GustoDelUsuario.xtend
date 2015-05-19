@@ -14,8 +14,23 @@ class GustoDelUsuario extends DecoratorUsuarioCondicionesBusqueda {
 		super(decorado)
 	}
 	
-	override filtrarRecetas(List<Receta> recetas, Usuario decorado) {
-		(recetas.filter[ receta | receta.getIngredientes.exists(ingrediente | decorado.getIngredientesPreferidos.exists[pref | ingrediente == pref])]).toList()
+	
+	
+	override filtrarRecetas(List<Receta> recetas) {
+		
+		var List<Receta> recetasFiltradas
+		
+		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		
+		if(recetasFiltradas.isEmpty()){
+			throw new ExceptionFiltro("Lista vacia")
+		}
+		else{
+			
+		var List<Receta> recetasFiltroFinal
+		return recetasFiltroFinal = (recetasFiltradas.filter[ receta | receta.getIngredientes.exists(ingrediente | decorado.getIngredientesPreferidos.exists[pref | ingrediente == pref])]).toList()
+	}
+	
 	}
 	
 	// devuelve recetas que contengan solamente ingredientes que le gusten al usuario

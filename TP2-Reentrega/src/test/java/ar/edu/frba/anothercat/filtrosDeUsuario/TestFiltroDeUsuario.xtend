@@ -281,13 +281,13 @@ class TestFiltroDeUsuario {
 	def void filtrarRecetasExcesoDeCalorias(){
 		
 		userPedro = new ExcesoDeCalorias(pedro)
-		Assert.assertEquals(6,userPedro.filtrarRecetas(recetas,userPedro).size())
+		Assert.assertEquals(6,userPedro.filtrarRecetas(recetas).size())
 	}
 	
 	@Test
 	def void filtrarRecetasPorIngredientesPreferidos(){
 		userPedro = new GustoDelUsuario(pedro)
-		Assert.assertEquals(2,userPedro.filtrarRecetas(recetas,userPedro).size())
+		Assert.assertEquals(2,userPedro.filtrarRecetas(recetas).size())
 		
 		// hay 2 recetas que contienen pollo
 	}
@@ -295,7 +295,7 @@ class TestFiltroDeUsuario {
 	@Test 
 	def void filtrarRecetasPorIngredientesCaros(){
 		userPedro = new IngredientesCaros(pedro)
-		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas,userPedro).size())
+		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas).size())
 		
 		
 	}
@@ -303,7 +303,7 @@ class TestFiltroDeUsuario {
 	@Test
 	def void filtrarRecetasSegunCondicionPreexistente(){
 		userPedro = new BusquedaPorCondicionPreexistente(pedro)
-		Assert.assertEquals(7,userPedro.filtrarRecetas(recetas,userPedro).size())
+		Assert.assertEquals(7,userPedro.filtrarRecetas(recetas).size())
 		
 	}
 	
@@ -321,9 +321,9 @@ class TestFiltroDeUsuario {
 		
 		userAux3 = new GustoDelUsuario(userAux2)	
 		
+					
 		
-		
-		Assert.assertEquals(0,userAux3.filtrarRecetas(userAux2.filtrarRecetas((userAux.filtrarRecetas(userPedro.filtrarRecetas(recetas,userPedro),userAux)),userAux2),userAux3).size())		
+		Assert.assertEquals(0,userAux3.filtrarRecetas(userAux2.filtrarRecetas((userAux.filtrarRecetas(userPedro.filtrarRecetas(recetas))))).size())		
 		
 		
 		

@@ -7,7 +7,7 @@ import ar.edu.frba.anothercat.receta.Ingrediente
 public interface Usuario {
 	
 		
-	def List<Receta> filtrarRecetas(List<Receta> recetas,Usuario usuario)
+	def List<Receta> filtrarRecetas(List<Receta> recetas)
 	def double getImc()
 	def double getAltura()
 	def int getPeso()

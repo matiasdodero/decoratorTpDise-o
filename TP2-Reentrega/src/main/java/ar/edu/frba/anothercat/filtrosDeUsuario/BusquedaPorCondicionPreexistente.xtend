@@ -15,10 +15,23 @@ class BusquedaPorCondicionPreexistente extends DecoratorUsuarioCondicionesBusque
 	}
 	
 	
-	override filtrarRecetas(List<Receta> recetas, Usuario decorado) {
+	override filtrarRecetas(List<Receta> recetas) {
 		
+		var List<Receta> recetasFiltradas
 		
-		recetas.filter[receta | decorado.condicionesPreexistentes.exists[precond | !(precond.esInadecuadaPara(receta))]].toList()
+		recetasFiltradas = decorado.filtrarRecetas(recetas)
+		
+		if(recetasFiltradas.isEmpty()){
+			throw new ExceptionFiltro("Lista Vacia") 
+		}
+		else
+		{
+		
+			var List<Receta> recetasFiltroFinal
+			
+		return recetasFiltroFinal = (recetasFiltradas.filter[receta | decorado.condicionesPreexistentes.exists[precond | !(precond.esInadecuadaPara(receta))]].toList())
+	}
+	
 	}
 	
 	// muestra las recetas que no sean inadecuadas, las que pueda comer
