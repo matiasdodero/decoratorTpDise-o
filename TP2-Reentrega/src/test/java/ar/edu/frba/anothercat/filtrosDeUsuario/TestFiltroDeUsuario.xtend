@@ -371,7 +371,15 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals("berenjenasAlAzucar",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(recetas).get(0).getNombrePlato))
 		Assert.assertEquals("polloConPure",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(recetas).get(7).getNombrePlato))
 		
+				
+	}
+	
+	@Test
+	def void filtrarPorIngredientePreferidoYOrdenarAlfabeticamente(){
+		(Assert.assertEquals("pollo",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(userPedroConGustos.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas))).get(0).nombrePlato))
+		(Assert.assertEquals("polloConPure",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(userPedroConGustos.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas))).get(1).nombrePlato))
 		
+		// primero filtra las 2 recetas que contienen pollo y luego las ordena alfabeticamente, siendo primera pollo y luego polloConPure
 		
 	}
 
