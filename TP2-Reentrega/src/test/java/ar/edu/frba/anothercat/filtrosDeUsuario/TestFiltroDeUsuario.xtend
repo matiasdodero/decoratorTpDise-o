@@ -16,7 +16,7 @@ class TestFiltroDeUsuario {
 
 	UsuarioPosta pedro
 
-	IngredientesCaros userPedro
+	IngredientesCaros userPedroConIngredientesCaros
 	ExcesoDeCalorias userPedroConExcesoCalorias
 	GustoDelUsuario userPedroConGustos
 	BusquedaPorCondicionPreexistente userPedroConPrecondicion
@@ -66,7 +66,7 @@ class TestFiltroDeUsuario {
 		pedro.agregarIngredientePreferido(pollo)
 		pedro.agregarCondicionPreexistente(hipertenso)
 
-		userPedro = new IngredientesCaros(pedro)
+		userPedroConIngredientesCaros = new IngredientesCaros(pedro)
 		userPedroConExcesoCalorias = new ExcesoDeCalorias(pedro)
 		userPedroConGustos = new GustoDelUsuario(pedro)
 		userPedroConPrecondicion = new BusquedaPorCondicionPreexistente(pedro)
@@ -276,7 +276,7 @@ class TestFiltroDeUsuario {
 	@Test
 	def void filtrarRecetasPorIngredientesCaros() {
 
-		Assert.assertEquals(1, userPedro.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
+		Assert.assertEquals(1, userPedroConIngredientesCaros.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
 
 	// 1 sola receta con ingrediente caro//
 	}
@@ -297,7 +297,7 @@ class TestFiltroDeUsuario {
 			userPedroConGustos.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(
 				userPedroConGustos.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(
 					userPedroConPrecondicion.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(
-							userPedro.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas)))).size())
+							userPedroConIngredientesCaros.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas)))).size())
 
 	// se queda sin elementos para filtrar dando 0 finalmente
 	}
