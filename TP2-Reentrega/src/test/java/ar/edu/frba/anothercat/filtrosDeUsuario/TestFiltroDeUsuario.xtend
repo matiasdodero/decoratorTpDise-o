@@ -23,6 +23,7 @@ class TestFiltroDeUsuario {
 	
 	PrimerosN userPedroTraerPrimeros10
 	OrdenarPorPares userPedroConOrdenPar
+	OrdenarPorCalorias userPedroConOrdenCalorias
 	
 
 	Ingrediente carne
@@ -81,6 +82,7 @@ class TestFiltroDeUsuario {
 		
 		userPedroTraerPrimeros10 = new PrimerosN(pedro)
 		userPedroConOrdenPar = new OrdenarPorPares(pedro)
+		userPedroConOrdenCalorias = new OrdenarPorCalorias(pedro)
 
 		carne = new Ingrediente => [
 			setNombreIngrediente("carne")
@@ -343,6 +345,14 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals(6,userPedroConOrdenPar.ordenamientoDeRecetas(recetasTestOrden).size())
 		
 		// trae la de la posicion 0,2,4,6,8,10 ( 6 en total)
+	}
+	
+	@Test
+	def void ordenarRecetasPorCalorias(){
+		Assert.assertEquals(25,(userPedroConOrdenCalorias.ordenamientoDeRecetas(recetas).get(0).caloriasFinales))
+		Assert.assertEquals(615,(userPedroConOrdenCalorias.ordenamientoDeRecetas(recetas).get(7).caloriasFinales))
+		// la primera tiene 25 calorias y la ultima 615
+	
 	}
 
 }

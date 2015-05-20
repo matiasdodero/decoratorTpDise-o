@@ -1,10 +1,9 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
-
+import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.usuario.DecoratorOrdenamientoPostCondicionesDeBusqueda
 import java.util.List
-import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 
 class OrdenarPorCalorias extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 	
@@ -25,10 +24,18 @@ class OrdenarPorCalorias extends DecoratorOrdenamientoPostCondicionesDeBusqueda 
 		{
 			var List<Receta> recetasOrdenFinal
 			
-			return recetasOrdenFinal = recetasOrdenadas.sortBy[-totalCalorias]
+							
+			
+			recetasOrdenFinal = recetasOrdenadas
+			
+			return (recetasOrdenFinal.sortBy[caloriasFinales])
 		}
 		
 	}
+	
+	
+
+
 	
 	
 	
