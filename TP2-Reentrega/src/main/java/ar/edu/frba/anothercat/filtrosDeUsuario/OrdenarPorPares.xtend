@@ -14,11 +14,11 @@ class OrdenarPorPares extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 	
 	override ordenamientoDeRecetas(List<Receta> recetas) {
 		
-		var List<Receta> recetasFiltradas
-		recetasFiltradas = decorado.ordenamientoDeRecetas(recetas)
+		var List<Receta> recetasOrdenadas
+		recetasOrdenadas = decorado.ordenamientoDeRecetas(recetas)
 		var List<Receta> setRecetas
 		var List<Receta> recetasAux
-		var List<Receta> recetasFiltroFinal
+		var List<Receta> recetasOrdenFinal
 		
 		if(recetas.isEmpty()){
 			throw new ExceptionFiltro("lista vacia")
@@ -27,7 +27,7 @@ class OrdenarPorPares extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 		else{
 			
 			
-			for (var int i = 0; i < recetasFiltradas.size; i++) {
+			for (var int i = 0; i < recetasOrdenadas.size; i++) {
 			if (i % 2 == 0) {
 				recetasAux.add(recetas.get(i))
 			}
@@ -36,9 +36,9 @@ class OrdenarPorPares extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 		for (item : recetasAux) {
 			setRecetas.add(item)
 		}
-		recetasFiltroFinal = recetasAux
+		recetasOrdenFinal = recetasAux
 
-		return recetasFiltroFinal
+		return recetasOrdenFinal
 			
 			
 		}

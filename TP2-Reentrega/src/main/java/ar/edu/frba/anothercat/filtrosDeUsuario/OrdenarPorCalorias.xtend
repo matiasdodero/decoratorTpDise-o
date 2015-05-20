@@ -13,9 +13,9 @@ class OrdenarPorCalorias extends DecoratorOrdenamientoPostCondicionesDeBusqueda 
 	}
 	
 	override ordenamientoDeRecetas(List<Receta>  recetas) {
-		var List<Receta>  recetasFiltradas 
+		var List<Receta>  recetasOrdenadas
 		
-		recetasFiltradas = decorado.ordenamientoDeRecetas(recetas)
+		recetasOrdenadas = decorado.ordenamientoDeRecetas(recetas)
 		
 		if(recetas.isEmpty()){
 			throw new ExceptionFiltro("lista vacia")
@@ -23,9 +23,9 @@ class OrdenarPorCalorias extends DecoratorOrdenamientoPostCondicionesDeBusqueda 
 		
 		else
 		{
-			var List<Receta> recetasFiltroFinal
+			var List<Receta> recetasOrdenFinal
 			
-			return recetasFiltroFinal = recetasFiltradas.sortBy[-totalCalorias]
+			return recetasOrdenFinal = recetasOrdenadas.sortBy[-totalCalorias]
 		}
 		
 	}
