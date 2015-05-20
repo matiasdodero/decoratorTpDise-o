@@ -20,6 +20,8 @@ class TestFiltroDeUsuario {
 	ExcesoDeCalorias userPedroConExcesoCalorias
 	GustoDelUsuario userPedroConGustos
 	BusquedaPorCondicionPreexistente userPedroConPrecondicion
+	
+	PrimerosN userPedroTraerPrimeros10
 
 	Ingrediente carne
 	Ingrediente agua
@@ -38,6 +40,9 @@ class TestFiltroDeUsuario {
 	Receta receta6
 	Receta recetaCara
 	Receta recetaPollo
+	Receta receta9
+	Receta receta10
+	Receta receta11
 
 	Condimento azucar
 	Condimento sal
@@ -49,6 +54,7 @@ class TestFiltroDeUsuario {
 	Hipertenso hipertenso
 
 	var List<Receta> recetas = new ArrayList<Receta>
+	var List<Receta> recetasTestOrden = new ArrayList<Receta>
 
 	@Before
 	def void init() {
@@ -70,6 +76,8 @@ class TestFiltroDeUsuario {
 		userPedroConExcesoCalorias = new ExcesoDeCalorias(pedro)
 		userPedroConGustos = new GustoDelUsuario(pedro)
 		userPedroConPrecondicion = new BusquedaPorCondicionPreexistente(pedro)
+		
+		userPedroTraerPrimeros10 = new PrimerosN(pedro)
 
 		carne = new Ingrediente => [
 			setNombreIngrediente("carne")
@@ -145,6 +153,9 @@ class TestFiltroDeUsuario {
 		receta6 = new Receta
 		recetaCara = new Receta
 		recetaPollo = new Receta
+		receta9 = new Receta
+		receta10 = new Receta
+		receta11 = new Receta
 
 		receta1 => [
 			agregarIngrediente(carne)
@@ -212,6 +223,21 @@ class TestFiltroDeUsuario {
 			add(receta6)
 			add(recetaCara)
 			add(recetaPollo)
+			
+		]
+		
+		recetasTestOrden =>[
+			add(receta1)
+			add(receta2)
+			add(receta3)
+			add(receta4)
+			add(receta5)
+			add(receta6)
+			add(recetaCara)
+			add(recetaPollo)
+			add(receta9)
+			add(receta10)
+			add(receta11)
 		]
 
 	}
@@ -300,6 +326,13 @@ class TestFiltroDeUsuario {
 							userPedroConIngredientesCaros.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas)))).size())
 
 	// se queda sin elementos para filtrar dando 0 finalmente
+	}
+	
+	@Test
+	def void traerPrimeras10Recetas(){
+		Assert.assertEquals(10,userPedroTraerPrimeros10.ordenamientoDeRecetas(recetasTestOrden).size())
+		
+		// trae 10 recetas, habiendo 11 en total
 	}
 
 }
