@@ -1,9 +1,10 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
 import ar.edu.frba.anothercat.receta.Receta
+import java.util.List
 
-interface Ordenamiento {
+public interface Ordenamiento {
 	
-	def Iterable<Receta> ordenamientoDeRecetas (Iterable<Receta> recetas)
+	def List<Receta> ordenamientoDeRecetas (List<Receta> recetas)
 	
 }

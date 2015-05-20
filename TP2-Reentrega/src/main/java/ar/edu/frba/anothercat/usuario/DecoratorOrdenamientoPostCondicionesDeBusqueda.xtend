@@ -1,10 +1,21 @@
 package ar.edu.frba.anothercat.usuario
 
-import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.filtrosDeUsuario.Ordenamiento
+import org.eclipse.xtend.lib.annotations.Accessors
 
-public abstract class DecoratorOrdenamientoPostCondicionesDeBusqueda implements Ordenamiento {
+@Accessors
+public	abstract  class DecoratorOrdenamientoPostCondicionesDeBusqueda implements Ordenamiento {
 	
-	override Iterable<Receta> ordenamientoDeRecetas (Iterable<Receta> recetas)
+	Ordenamiento decorado
+	
+	new (Ordenamiento ordenado){
+		decorado=ordenado
+	}
+	
+
+	
+	
+	
+	
 	
 }

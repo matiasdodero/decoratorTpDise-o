@@ -1,24 +1,38 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
-import java.util.HashSet
 import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.usuario.DecoratorOrdenamientoPostCondicionesDeBusqueda
+import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 
+@Accessors
 class OrdenarAlfabeticamente extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
 	
-	override ordenamientoDeRecetas (Iterable<Receta> recetas){
+	new (Ordenamiento decorado){
+		super(decorado)
+	}
+	
+	override ordenamientoDeRecetas(List<Receta>  recetas) {
+		var List<Receta>  recetasFiltradas 
 		
-		var Iterable<Receta> recetasFiltradas = new HashSet<Receta>
-        var HashSet<Receta> setRecetas = new HashSet<Receta>
-        
-        for (item: recetas) {
-			setRecetas.add(item)
-		  }
+		recetasFiltradas = decorado.ordenamientoDeRecetas(recetas)
 		
-		recetasFiltradas = setRecetas
-
-    	return recetasFiltradas.sortBy[ nombrePlato]
+		if(recetas.isEmpty()){
+			throw new ExceptionFiltro("lista vacia")
+		}
+		
+		else
+		{
+			var List<Receta> recetasFiltroFinal
+			
+			return recetasFiltroFinal = recetasFiltradas.sortBy[nombrePlato]
+		}
 		
 	}
+	
+	
+	
+
 	
 }

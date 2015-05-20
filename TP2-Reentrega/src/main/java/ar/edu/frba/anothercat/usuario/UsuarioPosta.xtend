@@ -29,7 +29,7 @@ class UsuarioPosta implements Usuario, Ordenamiento {
 	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> favoritas = new ArrayList<Receta>
 	private tipoRutina rutinaE
-	double imc
+	
 		
 	new(){
 		
@@ -271,7 +271,9 @@ class UsuarioPosta implements Usuario, Ordenamiento {
 	}
 
 	
-	override Iterable<Receta> ordenamientoDeRecetas (Iterable<Receta> recetas){
+	override List<Receta> ordenamientoDeRecetas (List<Receta> recetas){
+		
+		return recetas
 		
 	}
 
