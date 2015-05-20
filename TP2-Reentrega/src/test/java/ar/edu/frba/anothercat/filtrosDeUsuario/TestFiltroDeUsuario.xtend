@@ -24,6 +24,7 @@ class TestFiltroDeUsuario {
 	PrimerosN userPedroTraerPrimeros10
 	OrdenarPorPares userPedroConOrdenPar
 	OrdenarPorCalorias userPedroConOrdenCalorias
+	OrdenarAlfabeticamente userPedroConOrdenAlfabetico
 	
 
 	Ingrediente carne
@@ -83,6 +84,7 @@ class TestFiltroDeUsuario {
 		userPedroTraerPrimeros10 = new PrimerosN(pedro)
 		userPedroConOrdenPar = new OrdenarPorPares(pedro)
 		userPedroConOrdenCalorias = new OrdenarPorCalorias(pedro)
+		userPedroConOrdenAlfabetico = new OrdenarAlfabeticamente(pedro)
 
 		carne = new Ingrediente => [
 			setNombreIngrediente("carne")
@@ -167,6 +169,7 @@ class TestFiltroDeUsuario {
 			agregarIngrediente(agua)
 			agregarCondimento(azucar)
 			sumarCalorias(carne.calorias)
+			setNombrePlato("churrascos")
 			validar()
 		]
 
@@ -175,6 +178,7 @@ class TestFiltroDeUsuario {
 			agregarIngrediente(pollo)
 			agregarCondimento(sal)
 			sumarCalorias(pure.calorias)
+			setNombrePlato("polloConPure")
 			validar()
 		]
 
@@ -183,6 +187,7 @@ class TestFiltroDeUsuario {
 			agregarCondimento(aceite)
 			agregarCondimento(vinagre)
 			sumarCalorias(pescado.calorias)
+			setNombrePlato("pescadoCondimentado")
 			validar()
 		]
 
@@ -190,6 +195,7 @@ class TestFiltroDeUsuario {
 			agregarIngrediente(berenjena)
 			agregarCondimento(azucar)
 			sumarCalorias(berenjena.calorias)
+			setNombrePlato("berenjenasAlAzucar")
 			validar()
 		]
 
@@ -197,6 +203,7 @@ class TestFiltroDeUsuario {
 			agregarIngrediente(pan)
 			agregarCondimento(levadura)
 			sumarCalorias(pan.calorias)
+			setNombrePlato("pan")
 			validar()
 		]
 
@@ -206,6 +213,7 @@ class TestFiltroDeUsuario {
 			agregarCondimento(vinagre)
 			agregarCondimento(harina)
 			sumarCalorias(pan.calorias)
+			setNombrePlato("carneConPan")
 			validar()
 		]
 
@@ -213,10 +221,12 @@ class TestFiltroDeUsuario {
 			agregarIngrediente(salmon)
 			agregarCondimento(vinagre)
 			sumarCalorias(salmon.calorias)
+			setNombrePlato("filetDeSalmon")
 		]
 		recetaPollo => [
 			agregarIngrediente(pollo)
 			sumarCalorias(pollo.calorias)
+			setNombrePlato("pollo")
 		]
 
 		recetas => [
@@ -353,6 +363,16 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals(615,(userPedroConOrdenCalorias.ordenamientoDeRecetas(recetas).get(7).caloriasFinales))
 		// la primera tiene 25 calorias y la ultima 615
 	
+	}
+	
+	@Test
+	def void ordenarAlfabeticamente(){
+		
+		Assert.assertEquals("berenjenasAlAzucar",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(recetas).get(0).getNombrePlato))
+		Assert.assertEquals("polloConPure",(userPedroConOrdenAlfabetico.ordenamientoDeRecetas(recetas).get(7).getNombrePlato))
+		
+		
+		
 	}
 
 }
