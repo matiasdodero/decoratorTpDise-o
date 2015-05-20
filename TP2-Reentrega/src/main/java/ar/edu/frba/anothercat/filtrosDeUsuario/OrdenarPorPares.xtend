@@ -1,33 +1,54 @@
 package ar.edu.frba.anothercat.filtrosDeUsuario
 
-import java.util.ArrayList
-import java.util.HashSet
+
 import java.util.List
 import ar.edu.frba.anothercat.receta.Receta
 import ar.edu.frba.anothercat.usuario.DecoratorOrdenamientoPostCondicionesDeBusqueda
+import ar.edu.frba.anothercat.excepciones.ExceptionFiltro
 
 class OrdenarPorPares extends DecoratorOrdenamientoPostCondicionesDeBusqueda {
-
-	override ordenamientoDeRecetas(Iterable<Receta> recetas) {
-
-		var Iterable<Receta> recetasFiltro = new HashSet<Receta>
-		var HashSet<Receta> setRecetas = new HashSet<Receta>
-		var List<Receta> setRecetasAux = new ArrayList<Receta>
-
-		for (var int i = 0; i < recetas.size; i++) {
+	
+	new (Ordenamiento decorado){
+		super(decorado)
+	}
+	
+	override ordenamientoDeRecetas(List<Receta> recetas) {
+		
+		var List<Receta> recetasFiltradas
+		recetasFiltradas = decorado.ordenamientoDeRecetas(recetas)
+		var List<Receta> setRecetas
+		var List<Receta> recetasAux
+		var List<Receta> recetasFiltroFinal
+		
+		if(recetas.isEmpty()){
+			throw new ExceptionFiltro("lista vacia")
+		}
+		
+		else{
+			
+			
+			for (var int i = 0; i < recetasFiltradas.size; i++) {
 			if (i % 2 == 0) {
-				setRecetasAux.add(recetas.get(i))
+				recetasAux.add(recetas.get(i))
 			}
 		}
 
-		for (item : setRecetasAux) {
+		for (item : recetasAux) {
 			setRecetas.add(item)
 		}
+		recetasFiltroFinal = recetasAux
 
-		recetasFiltro = setRecetasAux
-
-		return recetasFiltro
-
+		return recetasFiltroFinal
+			
+			
+		}
+		
+		
+		
 	}
-	
+
+
+
+
+
 }
