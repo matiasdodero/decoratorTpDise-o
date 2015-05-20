@@ -22,6 +22,8 @@ class TestFiltroDeUsuario {
 	BusquedaPorCondicionPreexistente userPedroConPrecondicion
 	
 	PrimerosN userPedroTraerPrimeros10
+	OrdenarPorPares userPedroConOrdenPar
+	
 
 	Ingrediente carne
 	Ingrediente agua
@@ -78,6 +80,7 @@ class TestFiltroDeUsuario {
 		userPedroConPrecondicion = new BusquedaPorCondicionPreexistente(pedro)
 		
 		userPedroTraerPrimeros10 = new PrimerosN(pedro)
+		userPedroConOrdenPar = new OrdenarPorPares(pedro)
 
 		carne = new Ingrediente => [
 			setNombreIngrediente("carne")
@@ -333,6 +336,13 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals(10,userPedroTraerPrimeros10.ordenamientoDeRecetas(recetasTestOrden).size())
 		
 		// trae 10 recetas, habiendo 11 en total
+	}
+	
+	@Test
+	def void ordenarRecetasPorPares(){
+		Assert.assertEquals(6,userPedroConOrdenPar.ordenamientoDeRecetas(recetasTestOrden).size())
+		
+		// trae la de la posicion 0,2,4,6,8,10 ( 6 en total)
 	}
 
 }
