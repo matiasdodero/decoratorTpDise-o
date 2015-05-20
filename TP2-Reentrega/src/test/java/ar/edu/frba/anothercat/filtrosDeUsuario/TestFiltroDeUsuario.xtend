@@ -311,7 +311,7 @@ class TestFiltroDeUsuario {
 	def void filtrarRecetasPorIngredientesCaros(){
 		
 		Assert.assertEquals(1,userPedro.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
-		// 1 sola receta con ingrediente caro
+		// 1 sola receta con ingrediente caro//
 		
 	}
 	
@@ -321,6 +321,8 @@ class TestFiltroDeUsuario {
 		Assert.assertEquals(7,userPedroConPrecondicion.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
 		// hay 7 recetas que no contienen sal
 	}
+	
+	
 	
 	
 	
