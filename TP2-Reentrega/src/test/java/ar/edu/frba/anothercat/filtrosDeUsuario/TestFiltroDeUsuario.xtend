@@ -16,10 +16,12 @@ class TestFiltroDeUsuario {
 	
 	
 	UsuarioPosta pedro
-	Usuario userPedro
-	Usuario userAux
-	Usuario userAux2
-	Usuario userAux3
+	
+	
+	IngredientesCaros userPedro
+	ExcesoDeCalorias userPedroConExcesoCalorias
+	GustoDelUsuario userPedroConGustos	
+	BusquedaPorCondicionPreexistente userPedroConPrecondicion
 	
 	
 	
@@ -54,7 +56,9 @@ class TestFiltroDeUsuario {
 	
 	
 
-	List<Receta> recetas = new ArrayList<Receta>
+	var List<Receta> recetas = new ArrayList<Receta>
+	
+	
 	
 		
 	
@@ -64,6 +68,26 @@ class TestFiltroDeUsuario {
 
 	@Before
 	def void init() {
+		
+		pollo = new Ingrediente => [
+			setNombreIngrediente("pollo")
+			setCalorias(25)
+		]
+		
+		hipertenso = new Hipertenso
+		
+		pedro= new UsuarioPosta
+		pedro.altura=1.7
+		pedro.peso=120		
+		pedro.agregarIngredientePreferido(pollo)
+		pedro.agregarCondicionPreexistente(hipertenso)
+		
+		userPedro = new IngredientesCaros(pedro)
+		userPedroConExcesoCalorias = new ExcesoDeCalorias(pedro)
+		userPedroConGustos = new GustoDelUsuario(pedro)
+		userPedroConPrecondicion = new BusquedaPorCondicionPreexistente(pedro)
+		
+		
 		carne = new Ingrediente => [
 			setNombreIngrediente("carne")
 			setCalorias(600)
@@ -79,10 +103,7 @@ class TestFiltroDeUsuario {
 			setCalorias(20)
 		]
 		
-		pollo = new Ingrediente => [
-			setNombreIngrediente("pollo")
-			setCalorias(25)
-		]
+		
 		
 		pescado = new Ingrediente => [
 			setNombreIngrediente("pescado")
@@ -139,13 +160,7 @@ class TestFiltroDeUsuario {
 			setCantidad(150)
 			
 		]
-		
-		
-				
-		
-		
-		
-		
+			
 		
 		
 		receta1 = new Receta		
@@ -159,7 +174,7 @@ class TestFiltroDeUsuario {
 		
 		
 		
-		hipertenso = new Hipertenso
+		
 		
 		
 		
@@ -232,11 +247,9 @@ class TestFiltroDeUsuario {
 		]
 		
 		
-		pedro= new UsuarioPosta
-		pedro.altura=1.7
-		pedro.peso=120		
-		pedro.agregarIngredientePreferido(pollo)
-		pedro.agregarCondicionPreexistente(hipertenso)
+		
+		
+		
 		
 		
 
@@ -280,56 +293,37 @@ class TestFiltroDeUsuario {
 	@Test
 	def void filtrarRecetasExcesoDeCalorias(){
 		
-		userPedro = new ExcesoDeCalorias(pedro)
-		Assert.assertEquals(6,userPedro.filtrarRecetas(recetas).size())
+		
+		Assert.assertEquals(6,userPedroConExcesoCalorias.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
+		
+		// como tiene sobrepeso son 6 las recetas que puede ver con calorias < 500
 	}
 	
 	@Test
 	def void filtrarRecetasPorIngredientesPreferidos(){
-		userPedro = new GustoDelUsuario(pedro)
-		Assert.assertEquals(2,userPedro.filtrarRecetas(recetas).size())
+	
+		Assert.assertEquals(2,userPedroConGustos.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
 		
 		// hay 2 recetas que contienen pollo
 	}
 	
 	@Test 
 	def void filtrarRecetasPorIngredientesCaros(){
-		userPedro = new IngredientesCaros(pedro)
-		Assert.assertEquals(1,userPedro.filtrarRecetas(recetas).size())
 		
+		Assert.assertEquals(1,userPedro.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
+		// 1 sola receta con ingrediente caro
 		
 	}
 	
 	@Test
 	def void filtrarRecetasSegunCondicionPreexistente(){
-		userPedro = new BusquedaPorCondicionPreexistente(pedro)
-		Assert.assertEquals(7,userPedro.filtrarRecetas(recetas).size())
 		
+		Assert.assertEquals(7,userPedroConPrecondicion.filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(recetas).size())
+		// hay 7 recetas que no contienen sal
 	}
 	
-	@Test 
-	def void filtrarRecetasConTodosLosFiltros(){
-		
-		
-		userPedro = new BusquedaPorCondicionPreexistente(pedro)		
-		
-		userAux = new ExcesoDeCalorias(userPedro)		
-				
-		
-		userAux2 = new IngredientesCaros(userAux)
-		
-		
-		userAux3 = new GustoDelUsuario(userAux2)	
-		
-					
-		
-		Assert.assertEquals(0,userAux3.filtrarRecetas(userAux2.filtrarRecetas((userAux.filtrarRecetas(userPedro.filtrarRecetas(recetas))))).size())		
-		
-		
-		
-		
-		
-	}
+	
+	
 	
 	
 	

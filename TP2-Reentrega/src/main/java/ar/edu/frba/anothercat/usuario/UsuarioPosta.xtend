@@ -15,6 +15,8 @@ import ar.edu.frba.anothercat.filtrosDeUsuario.Ordenamiento
 @Accessors
 class UsuarioPosta implements Usuario, Ordenamiento {
 
+	
+	
 	String nombre
 	String sexo
 	Date fechaDeNacimiento
@@ -30,9 +32,9 @@ class UsuarioPosta implements Usuario, Ordenamiento {
 	double imc
 		
 	new(){
-		altura=0
-		peso=0
-		imc=0
+		
+		
+		
 	}
 	
 	new(int unPeso){
@@ -265,7 +267,7 @@ class UsuarioPosta implements Usuario, Ordenamiento {
 	}
 	
 	override filtrarRecetasSegunCondicionesDeBusquedaDelUsuario(List<Receta> recetas) {
-		
+		return recetas
 	}
 
 	

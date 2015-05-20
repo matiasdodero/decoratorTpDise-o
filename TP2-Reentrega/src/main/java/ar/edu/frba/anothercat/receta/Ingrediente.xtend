@@ -16,8 +16,8 @@ class Ingrediente {
 		return tipoIngrediente
 	}
 	
-	public def boolean  ingredienteCaro(){
-		
-		ingredienteCaro
-	}
+//	public def boolean  ingredienteCaro(){
+//		
+//		ingredienteCaro
+//	}
 }

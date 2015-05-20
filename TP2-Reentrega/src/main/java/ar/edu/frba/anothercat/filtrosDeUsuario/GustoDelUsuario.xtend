@@ -29,7 +29,7 @@ class GustoDelUsuario extends DecoratorUsuarioCondicionesBusqueda {
 		else{
 			
 		var List<Receta> recetasFiltroFinal
-		return recetasFiltroFinal = (recetasFiltradas.filter[ receta | receta.getIngredientes.exists(ingrediente | decorado.getIngredientesPreferidos.exists[pref | ingrediente == pref])]).toList()
+		return recetasFiltroFinal = (recetasFiltradas.filter[ receta | receta.getIngredientes.exists(ingrediente | decorado.getIngredientesPreferidos.contains(ingrediente))]).toList()
 	}
 	
 	}
